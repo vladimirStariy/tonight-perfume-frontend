@@ -1,0 +1,68 @@
+.tonightButtonSimple {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    padding: 16px 24px;
+    outline: 0;
+    border: 0;
+    background-color: #1e1e1e;
+    color: white;
+    transition: all .3s;
+}
+
+.tonightButtonSimple:hover {
+    background-color: #D0BEE5;
+    color: #1e1e1e;
+}
+
+.tonightButton {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 24px;
+    outline: 0;
+    border: 0;
+    background-color: #1e1e1e;
+    color: white;
+    transition: all .3s;
+}
+
+.tonightButton svg {
+    fill: white;
+    transition: all .3s;
+}
+
+.tonightButton:hover {
+    background-color: #D0BEE5;
+    color: #1e1e1e;
+}
+
+.tonightButton:hover svg {
+    fill: #1e1e1e;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

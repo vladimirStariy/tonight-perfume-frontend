@@ -1,0 +1,23 @@
+[
+    {
+      "image": "https://smartprogress.do/uploadImages/001251289.jpg",
+      "title": "Test",
+      "id": 1,
+      "subTitle": "subTest",
+      "interval": 1000
+    },
+    {
+      "image": "https://smartprogress.do/uploadImages/001251289.jpg",
+      "title": "Test",
+      "id": 2,
+      "subTitle": "subTest",
+      "interval": 1000
+    },
+    {
+      "image": "https://smartprogress.do/uploadImages/001251289.jpg",
+      "title": "Test",
+      "id": 3,
+      "subTitle": "subTest",
+      "interval": 1000
+    }
+]

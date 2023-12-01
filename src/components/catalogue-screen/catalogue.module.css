@@ -1,0 +1,27 @@
+.catalogueContent {
+    max-width: 1216px;
+    padding: 0;
+}
+
+.productsWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+}
+
+@media only screen and (max-width: 375px) {
+    
+}
+
+@media only screen and (min-width: 375px) {
+    .productsWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+        grid-column-gap: 15px;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .productsWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-column-gap: 32px;
+    }
+}

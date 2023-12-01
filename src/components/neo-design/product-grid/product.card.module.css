@@ -1,0 +1,182 @@
+a {
+    text-decoration: none;
+    color: #1e1e1e;
+}
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.brandName {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.productCardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.productCardImgBlock {
+    background: url(../../../../public/796f6a6b37bd8558da5970af67f3e46c.png), #F2F2F2 no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 130% 75%;
+    aspect-ratio: 7 / 8;
+}
+
+.productCardImgBlock svg {
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.productCardImgBlock svg:hover {
+    fill: #D0BEE5;
+    stroke: #D0BEE5;
+}
+
+.productCardBrand {
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.productCardName {
+    font-size: 20px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.productCardPrice {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+    font-style: normal;
+}
+
+.productCardFavorite {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.productCardFavoriteDiscount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+}
+
+.discountLabel {
+    color: #D0BEE5;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.crossedPrice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nonDiscountPrice {
+    text-decoration-line: line-through;
+}
+
+.discountPrice {
+    color: #D0BEE5;
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (min-width: 375px) {
+    .productCard {
+        gap: 16px;
+    }
+    .productCardBrand {
+        font-size: 14px;
+    }
+    .productCardName {
+        font-size: 16px;
+    }
+    .productCardPrice {
+        font-size: 16px;
+    }
+    .brandName {
+        gap: 4px;
+    }
+    .productCardDetails {
+        gap: 8px;
+    }
+    .productCardFavorite {
+        padding: 12px;
+    }
+    .productCardFavoriteDiscount {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 6px;
+    }
+    .discountLabel {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    
+}
+
+@media only screen and (min-width: 936px) {
+    .productCard {
+        gap: 20px;
+    }
+    .brandName {
+        gap: 4px;
+    }
+    .productCardDetails {
+        gap: 12px;
+    }
+    .productCardBrand {
+        font-size: 16px;
+    }
+    .productCardName {
+        font-size: 20px;
+    }
+    .productCardPrice {
+        font-size: 20px;
+    }
+    .productCardFavorite {
+        padding: 20px;
+    }
+    .productCardFavoriteDiscount {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 12px;
+    }
+    .discountLabel {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+
+}

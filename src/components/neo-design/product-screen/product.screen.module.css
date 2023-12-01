@@ -1,0 +1,354 @@
+.productWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+}
+
+.buttonWrapper {
+    max-width: 276px;
+}
+
+.buttonLink {
+    cursor: pointer;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-bottom: 1px solid #1E1E1E;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+}
+
+.cardImg {
+    width: 520px;
+    aspect-ratio: 1 / 1;
+    background-color: #B3B3B3;
+    background: url(../../../../public/796f6a6b37bd8558da5970af67f3e46c.png), #F2F2F2 no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.cardData {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.valueData {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.volume {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.volumeLabel {
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cardBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.underCard {
+    color: #B3B3B3;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.price {
+    color: #1E1E1E;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.brandName {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand {
+    color: #1E1E1E;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.name {
+    color: #1E1E1E;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.articul {
+    color: #B3B3B3;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 12px;
+}
+
+.descriptionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.descriptionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.characteristicBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.characteristics {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; 
+}
+
+.descriptionLabel {
+    color: #1E1E1E;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 28.8px */
+}
+
+.description {
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+}
+
+.dataLink {
+    color:#1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 24px */
+    transition: all .3s;
+}
+
+.dataLink:hover {
+    color: #D0BEE5;
+}
+
+.priceVolume {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.breadcrumb {
+    color: #1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.commonPadding {
+    padding-top: 80px;
+    margin-top: 120px
+}
+
+@media only screen and (min-width: 375px) {
+    .productWrapper {
+        gap: 32px;
+    }
+    .cardImg {
+        width: 100%;
+    }
+    .cardWrapper {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .cardBlock {
+        gap: 20px;
+    }
+    .buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .descriptionWrapper {
+        gap: 20px;
+    }
+    .description {
+        font-size: 14px;
+    }
+    .descriptionBlock {
+        gap: 12px;
+    }
+    .descriptionLabel {
+        font-size: 20px;
+    }
+    .volume {
+        gap: 4px;
+    }
+    .volumeLabel {
+        font-size: 14px;
+    }
+    .price {
+        font-size: 24px;
+    }
+    .brand {
+        font-size: 16px;
+    }
+    .name {
+        font-size: 24px;
+    }
+    .articul {
+        padding-top: 0px;
+    }
+    .commonPadding {
+        padding-top: 32px;
+        margin-top: 0px;
+    }
+    .characteristicBlock {
+        gap: 8px;
+    }
+    .characteristics {
+        font-size: 14px;
+    }
+    .dataLink {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .cardBlock {
+        width: 337px;
+        gap: 20px;
+    }
+    .cardWrapper {
+        flex-direction: row;
+        gap: 20px;
+    }
+    .buttons {
+        gap: 12px;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .description {
+        font-size: 16px;
+    }
+    .characteristics {
+        font-size: 16px;
+    }
+    .dataLink {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .cardBlock {
+        width: 412px;
+        gap: 20px;
+    }
+    .cardWrapper {
+        flex-direction: row;
+        gap: 32px;
+    }
+    .descriptionLabel {
+        font-size: 24px;
+    }
+    .description {
+        font-size: 20px;
+    }
+    .characteristics {
+        font-size: 20px;
+    }
+    .dataLink {
+        font-size: 20px;
+    }
+    .descriptionBlock {
+        gap: 24px;
+    }
+    .characteristicBlock {
+        gap: 20px;
+    }
+    .descriptionWrapper {
+        gap: 32px;
+    }
+    .volume {
+        gap: 12px;
+    }
+    .volumeLabel {
+        font-size: 20px;
+    }
+    .price {
+        font-size: 36px;
+    }
+    .brand {
+        font-size: 24px;
+    }
+    .name {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .cardBlock {
+        width: 520px;
+        gap: 20px;
+    }
+    .cardWrapper {
+        gap: 72px;
+    }
+    .buttons {
+        flex-direction: row;
+        gap: 32px;
+        align-items: center;
+    }
+}

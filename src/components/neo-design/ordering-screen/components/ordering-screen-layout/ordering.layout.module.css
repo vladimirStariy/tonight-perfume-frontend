@@ -1,0 +1,42 @@
+.blockHeader {
+    color: #1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.blockHeaderMain {
+    padding-bottom: 20px;
+    color: #1E1E1E;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; 
+}
+
+@media only screen and (max-width: 375px) {
+    .blockHeaderMain {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .blockHeaderMain {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .blockHeaderMain {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+
+}
+
+@media only screen and (min-width: 1248px) {
+    
+}

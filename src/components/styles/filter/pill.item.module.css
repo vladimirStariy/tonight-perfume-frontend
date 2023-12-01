@@ -1,0 +1,15 @@
+.volumePill {
+    background-color: #f3f3f3;
+    --bs-nav-pills-border-radius: 0px;
+    --bs-nav-link-padding-y: 5px;
+    --bs-nav-link-padding-x: 5px;
+    border-radius: 0px;
+}
+
+.volumePillLabel {
+    color: var(--dark, #1E1E1E);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

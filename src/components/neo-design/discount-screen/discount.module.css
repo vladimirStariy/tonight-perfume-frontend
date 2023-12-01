@@ -1,0 +1,122 @@
+.portraitImageBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 320px;
+    background-image: url('../../../../public/Stock.png');
+    background-size: 100%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+.mainDiscountCard {
+    height: 332px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: #F2F2F2;
+}
+
+.mainDiscountImage {
+    background: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    width: 100%;
+}
+
+.secondaryDiscountCardWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    width: 100%;
+}
+
+.secondaryDiscountCard {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    width: 100%;
+}
+
+.secondaryCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.secondaryCardTitle {
+    color: #1E1E1E;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.secondaryCardDescription {
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.secondaryCardImage {
+    background: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background-size: 160%;
+    background-position: 40% -10%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 331px;
+}
+
+.secondaryCardButton {
+    width: 100%;
+}
+
+@media only screen and (max-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .secondaryDiscountCardWrapper {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .secondaryDiscountCardWrapper {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .portraitImageBlock {
+        height: 320px;
+    }
+    .secondaryDiscountCardWrapper {
+        flex-direction: row;
+        gap: 32px;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+
+}
+
+@media only screen and (min-width: 1248px) {
+
+}

@@ -1,0 +1,36 @@
+.dropdownLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownLink svg {
+    cursor: pointer;
+}
+
+.dropdownContainer {
+    top: 53px;
+    width: 229px;
+    left: -100px;
+    text-align: center;
+    padding: 16px 34px;
+    background-color: aqua;
+    position: absolute;
+    color: #1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-right: 1px solid var(--Light-grey, #F2F2F2);
+    border-bottom: 1px solid var(--Light-grey, #F2F2F2);
+    border-left: 1px solid var(--Light-grey, #F2F2F2);
+    background: var(--White, #FFF);
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}

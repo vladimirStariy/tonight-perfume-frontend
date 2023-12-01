@@ -1,0 +1,44 @@
+.swiper-wrapper {
+  background-color: blue;
+}
+.swiper-pagination-bullet {
+    position: relative;
+    width: 156px;
+    text-align: left;
+    border-radius: 0;
+    opacity: 1;
+    margin-right: 20px;
+}
+.swiper-custom-bullet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 10px;
+    background-color: hotpink;
+}
+.swiper-pagination-bullet-active {
+    background-color: transparent;
+}
+.swiper-pagination-bullet-active b {
+    position: absolute;
+    bottom: 0;
+    left:  0;
+    z-index: 2;
+    width: 0%;
+    height: 10px;
+    background-color: rgba(17, 17, 17, 1);
+}
+.swiper-pagination-bullet-active b {  
+    animation-name: countingBar;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: alternate ;
+    animation-fill-mode:forwards;
+}
+@keyframes countingBar {
+    0% {width: 0;}
+    100% {width:100%;}
+}

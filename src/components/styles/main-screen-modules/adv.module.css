@@ -1,0 +1,92 @@
+.fgrid {
+    display: flex;
+    flex-direction: row;
+    max-width: 1216px;
+    gap: 20px;
+}
+
+.fbig {
+    width: 100%;
+    height: 362px;
+    background-color: #F2F2F2;
+}
+
+.fsecbig {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.smWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.fmid {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+
+.fsm1 {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+.fsm2 {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (min-width: 375px) {
+    .fgrid {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .fgrid {
+        flex-direction: row;
+        gap: 24px;
+    }
+    .fsecbig {
+        gap: 24px;
+    }
+    .smWrapper {
+        gap: 24px;
+    }
+    .fbig {
+        width: 357px;
+        height: 362px;
+        background-color: #F2F2F2;
+    }
+    .fmid {
+        width: 313px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+    .fsm1 {
+        width: 145px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+    .fsm2 {
+        width: 145px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+
+}
+
+@media only screen and (min-width: 1248px) {
+
+}

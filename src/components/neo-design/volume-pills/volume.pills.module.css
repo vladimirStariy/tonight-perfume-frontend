@@ -1,0 +1,49 @@
+.volumePills {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.default {
+    background-color: #F2F2F2;
+}
+
+.active {
+    background-color: #D0BEE5;
+}
+
+.volumePill {
+    padding: 10px 12px;
+    color:#1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 375px) {
+    .volumePill {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .volumePill {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+
+}
+
+@media only screen and (min-width: 936px) {
+
+}
+
+@media only screen and (min-width: 1248px) {
+    .volumePill {
+        font-size: 16px;
+    }
+}

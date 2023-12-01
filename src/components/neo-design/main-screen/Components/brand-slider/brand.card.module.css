@@ -1,0 +1,8 @@
+.brandCard {
+    width: 100%;
+    background: url('/public/dc9b519edc4cfd1f69bee2ac15651c66.png'), #F2F2F2;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 1 / 1;
+}

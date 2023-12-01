@@ -1,0 +1,146 @@
+.accordionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+}
+
+.answerLabel {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.title {
+    margin: 0;
+}
+
+.left {
+    padding-right: 0px;
+    width: 50%;
+}
+
+.right {
+    padding-left: 0px;
+    width: 50%;
+}
+
+.imageBlock {
+    width: 100%;
+    height: 425px;
+    background-color: #F2F2F2;
+}
+
+.accItemHeader {
+    border-top: 1px;
+}
+
+.labelBlock {
+    font-style: normal;
+    font-weight: 800;
+    line-height: 120%;
+}
+
+.answersRow {
+    gap: 32px;
+}
+
+.answersWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.imgHolder {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: #F2F2F2;
+}
+
+.imageBlock {
+    width: 485px;
+    height: 312px;
+    background: 150% -50% url('../../../../public/68575f23b7a11860ed9039ef381554e8.png') #F2F2F2 no-repeat;
+    background-size: cover;
+}
+
+.accordion {
+    border-top: 1px solid #B3B3B3;
+    border-bottom: 1px solid #B3B3B3;
+    height: 100%;
+}
+
+.customAcc:not(:first-of-type) {
+    border-top: 1px solid #B3B3B3;
+}
+
+.customAcc {
+    --bs-accordion-body-padding-x: 0rem;
+    --bs-accordion-btn-padding-x: 0rem;
+    --bs-accordion-btn-icon-width: 10px;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-active-color: black;
+    border-top: 1px solid #B3B3B3;
+    --bs-accordion-border-color: none;
+    
+}
+
+.customAcc button::after {
+    width: 10px;
+    height: 6px;
+}
+
+.btnSvg {
+    fill: 'black';
+}
+
+.filterShowButton:hover btnSvg {
+    fill: black;
+}
+
+.filterShowButton {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    --bs-btn-bg: #1E1E1E;
+    --bs-btn-border-color: #1E1E1E;
+    --bs-border-radius: 0rem;
+    --bs-btn-hover-bg: #D0BEE5;
+    --bs-btn-hover-border-color: #D0BEE5;
+    --bs-btn-hover-color: #1E1E1E;
+}
+
+@media only screen and (max-width: 600px) {
+    .title {
+        color: #1E1E1E;
+        font-size: 24px;
+        font-weight: 900;
+        line-height: 120%;
+    }
+    .left {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .answerLabel {
+        color: #1E1E1E;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; /* 24px */
+    }
+    .answerText {
+        color: #B3B3B3;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; 
+    }
+}

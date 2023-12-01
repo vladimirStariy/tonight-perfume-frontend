@@ -1,0 +1,103 @@
+.catalogueContent {
+    max-width: 1216px;
+}
+
+.col-mine {
+    padding-right: 0px;
+}
+
+.product-row {
+    --bs-gutter-x: 0rem;
+}
+
+.img-hld-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1216px;
+    position: relative;
+    gap: 20px;
+    top: 40px;
+}
+
+.leftFilterLabel {
+    padding-left: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.rightFilterLabel {
+    padding-left: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+@media only screen and (min-width: 375px) {
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .catalogueContent {
+        width: 100%;
+        margin-top: 24px;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    .img-hld-container {
+        width: 100%;
+    }
+    .leftFilterLabel {
+        font-size: 1rem;
+    }
+    .rightFilterLabel {
+        font-size: 1rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .img-hld-container {
+        max-width: 768px;
+    }
+    .catalogueContent {
+        max-width: 768px;
+        margin-top: 32px;
+    }
+    .leftFilterLabel {
+      font-size: 1.5rem;
+    }
+    .rightFilterLabel {
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .img-hld-container {
+        max-width: 768px;
+    }
+    .catalogueContent {
+        max-width: 768px;
+        margin-top: 40px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1240px) {
+    .img-hld-container {
+        max-width: 1216px;
+    }
+    .catalogueContent {
+        margin-top: 40px;
+        max-width: 1216px;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+}

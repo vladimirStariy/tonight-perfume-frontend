@@ -1,0 +1,118 @@
+@keyframes fadein {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.collapsedWrapper {
+    width: 100%;
+}
+
+.paddingTopActive {
+    padding-top: 160px;
+}
+
+.liWrap{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.categoriesWrapper {
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoriesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.smCategoreis {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    
+}
+
+.smCategory1 {
+    background-image: url('../../../../public/dropdown-navbar/1sm.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 140px;
+    background-color: #B3B3B3;
+    padding-top: 17px;
+    padding-left: 17px;
+}
+
+.smCategory2 {
+    background-image: url('../../../../public/dropdown-navbar/2sm.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 140px;
+    background-color: #B3B3B3;
+    padding-top: 17px;
+    padding-left: 17px;
+}
+
+.lgCategory {
+    background-image: url('../../../../public/dropdown-navbar/3mm.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 140px;
+    background-color: #B3B3B3;
+    padding-top: 17px;
+    padding-left: 17px;
+}
+
+.boxBlock {
+    background-image: url('../../../../public/dropdown-navbar/4bm.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 140px;
+    background-color: #B3B3B3;
+    padding-top: 17px;
+    padding-left: 17px;
+}
+
+.catalogueLabel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.showed svg {
+    transform: rotate(-180deg);
+    transition: all .3s;
+}
+
+.collapsed svg {
+    transform: rotate(0deg);
+    transition: all .3s;
+}

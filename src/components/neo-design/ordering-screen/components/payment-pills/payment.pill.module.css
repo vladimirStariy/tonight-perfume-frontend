@@ -1,0 +1,15 @@
+.active {
+    background-color: #D0BEE5;
+}
+
+.default {
+    background-color: #F2F2F2;
+}
+
+.paymentPill {
+    width: 100%;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}

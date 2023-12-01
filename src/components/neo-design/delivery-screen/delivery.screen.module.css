@@ -1,0 +1,251 @@
+.portraitImageBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 320px;
+    background-image: url('../../../../public/DeliveryPortrait.png');
+    background-size: 100%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+.deliveryInfoXl {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+
+.infoGap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.boldInfoText {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.infoHeader {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 100%;
+}
+
+.deliveryCardXl {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardBody {
+    width: 100%;
+    background-color: #F2F2F2;
+}
+
+.cardFooter {
+    display: flex;
+    align-items: center;
+    flex-grow: 3;
+    width: 100%;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    color: white;
+    padding: 24px;
+    background-color: #1E1E1E;
+}
+
+.bodyInfo {
+    width: 100%;
+    padding: 16px 24px;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardLabel {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.cardText {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.payInfoXl {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.payCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: #F2F2F2;
+    padding: 16px 24px;
+}
+
+.payCardHeader {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.payCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bodyHeader {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.bodyText {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.payList {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.payGapper {
+    display: flex;
+    flex-direction: column; 
+    gap: 4px;
+}
+
+@media only screen and (max-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .deliveryInfoXl {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cardFooter {
+        text-align: center;
+        justify-content: center;
+        flex-grow: 0;
+    }
+    .infoHeader {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+    }
+    .payCardHeader {
+        font-size: 20px;
+    }
+    .cardLabel {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .deliveryInfoXl {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .cardFooter {
+        text-align: center;
+        justify-content: center;
+        flex-grow: 0;
+    }
+    .infoHeader {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+    }
+    .bodyInfo {
+        gap: 24px;
+    }
+    .cardLabel {
+        font-size: 20px;
+    }
+    .payCardHeader {
+        font-size: 20px;
+    }
+    .cardText {
+        font-size: 16px;
+    }
+    .boldInfo {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .portraitImageBlock {
+        height: 320px;
+    }
+    .infoHeader {
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+    }
+    .cardLabel {
+        font-size: 32px;
+    }
+    .payCardHeader {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .infoHeader {
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .deliveryInfoXl {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+    }
+    .bodyInfo {
+        gap: 40px
+    }
+    .deliveryCardXl {
+        height: 284px;
+        aspect-ratio: 96 / 71;
+    }
+    .cardFooter {
+        flex-grow: 3;
+        text-align: start;
+        justify-content: flex-start;
+    }
+}

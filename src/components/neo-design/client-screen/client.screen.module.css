@@ -1,0 +1,167 @@
+.portraitImageBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 320px;
+    background-image: url('../../../../public/ForClient.png');
+    background-size: 100%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+.mapCard {
+    background-color: rebeccapurple;
+    width: 100%;
+    height: 480px;
+}
+
+.mapFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F2F2;
+    width: 100%;
+    height: 120px;
+    padding-left: 72px;
+    padding-right: 72px;
+}
+
+.mapFooterItem {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.mapFooterIcon {
+    display: flex;
+    align-items: center;
+}
+
+.mapFooterItemUpperText {
+    color: #B3B3B3;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.mapFooterItemBottomText {
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.mapTextAreaContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.checkPhoto {
+    width: 400px;
+    height: 600px;
+    background-image: url(../../../../public/Чек.png);
+    background-size: cover;
+}
+
+.mapTextArea {
+    max-width: 800px;
+    color:#1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fontPurp {
+    color: #D0BEE5;
+}
+
+@media only screen and (max-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .mapFooterItemUpperText {
+        font-size: 12px;
+    }
+    .mapFooterItemBottomText {
+        font-size: 14px;
+    }
+    .mapFooter {
+        flex-direction: column;
+        gap: 36px;
+        height: 243px;
+        align-items: flex-start;
+        padding: 24px;
+    }
+    .mapTextArea {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .portraitImageBlock {
+        height: 240px;
+    }
+    .mapFooterItemUpperText {
+        font-size: 12px;
+    }
+    .mapFooterItemBottomText {
+        font-size: 14px;
+    }
+    .mapFooter {
+        flex-direction: column;
+        gap: 36px;
+        height: 243px;
+        align-items: flex-start;
+        padding: 24px;
+    }
+    .checkPhoto {
+        width: 343px;
+        height: 500px;
+        background-image: url(../../../../public/Чек.png);
+        background-size: cover;
+    }
+    .mapTextArea {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .portraitImageBlock {
+        height: 320px;
+    }
+    .mapFooter {
+        flex-direction: row;
+        align-items: center;
+        gap: 0px;
+        height: 120px;
+    }
+    .checkPhoto {
+        width: 400px;
+        height: 600px;
+        background-image: url(../../../../public/Чек.png);
+        background-size: cover;
+    }
+    .mapTextArea {
+        font-size: 20px;
+    }    
+}
+
+@media only screen and (min-width: 936px) {
+    .mapFooterItemUpperText {
+        font-size: 14px;
+    }
+    .mapFooterItemBottomText {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+
+}

@@ -1,0 +1,47 @@
+.accordionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.accordion {
+    margin-top: 2rem;
+}
+
+.customAcc {
+    --bs-accordion-body-padding-x: 0rem;
+    --bs-accordion-btn-padding-x: 0rem;
+    --bs-accordion-btn-icon-width: 10px;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-active-color: black;
+}
+
+.customAcc button::after {
+    width: 10px;
+    height: 6px;
+}
+
+.btnSvg {
+    fill: 'black';
+}
+
+.filterShowButton:hover btnSvg {
+    fill: black;
+}
+
+.filterShowButton {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    --bs-btn-bg: #1E1E1E;
+    --bs-btn-border-color: #1E1E1E;
+    --bs-border-radius: 0rem;
+    --bs-btn-hover-bg: #D0BEE5;
+    --bs-btn-hover-border-color: #D0BEE5;
+    --bs-btn-hover-color: #1E1E1E;
+}

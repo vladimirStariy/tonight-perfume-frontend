@@ -1,0 +1,42 @@
+.accordion {
+    width: 100%;
+
+    --bs-accordion-border-width: 0rem;
+    --bs-accordion-btn-padding-x: 0rem;
+    --bs-accordion-btn-padding-y: 1rem;
+    --bs-accordion-btn-icon-width: 10px;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5 6L0 0H10L5 6Z' fill='%231E1E1E'/%3E%3C/svg%3E");
+    --bs-accordion-active-color: #1E1E1E;
+
+    --bs-accordion-body-padding-x: 0rem;
+    --bs-accordion-body-padding-y: 0rem;
+}
+
+.accordionItem {
+    border: none;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.accordion button {
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 24px */
+}
+
+.accordion button::after {
+    width: 10px;
+    height: 6px;
+}
+
+.accordionBody {
+    padding-bottom: 1rem;
+}
+
+.fullWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}

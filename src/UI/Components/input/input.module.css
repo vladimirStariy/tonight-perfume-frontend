@@ -1,0 +1,25 @@
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.inputWrapper input {
+    width: 100%;
+    font-size: 16px;
+    padding: 4px 30px 4px 8px;
+    border: 1px solid #B3B3B3;
+    outline: 0;
+}
+
+.inputWrapper span {
+    position: absolute;
+    right: 8px; 
+    top: 4px;
+    bottom: 4px;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.inputWrapper span:hover {
+    transform: scale(1.2);
+}

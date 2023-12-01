@@ -1,0 +1,25 @@
+.filterContent {
+    width: 100%;
+    max-width: 280px;
+    background-color: white;
+    text-align: start;
+    padding-left: 0;
+}
+
+
+
+.checkBtnGroup {
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: flex-start;
+    padding-left: 0.75rem;
+}
+
+.rangeSliderContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+}

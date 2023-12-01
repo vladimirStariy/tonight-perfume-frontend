@@ -1,0 +1,29 @@
+.productCard {
+    max-height: 430px;
+    max-width: 280px;
+    margin: 5px;
+    border: none;
+    
+}
+
+.productImage {
+    background-color: lightgray;
+    text-align: end;
+    position: relative;
+    background-size: cover;
+    width: 100%;
+    height: 320px;
+}
+
+.productImage span {
+    padding-top: 0px;
+    padding-right: 10px;
+}
+
+.productBrandLink {
+    text-decoration: none;
+}
+
+.productLink {
+    text-decoration: none;
+}

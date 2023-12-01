@@ -1,0 +1,35 @@
+.active {
+    background-color: #D0BEE5;
+}
+
+.default {
+    background-color: #F2F2F2;
+}
+
+.deliveryPill {
+    width: 100%;
+    cursor: pointer;
+}
+
+.deliveryPillBody {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.deliveryName {
+    color: #1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 16px */
+}
+
+.deliveryPrice {
+    color: #1E1E1E;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 16px */
+}

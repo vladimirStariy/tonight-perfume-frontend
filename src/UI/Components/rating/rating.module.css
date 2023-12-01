@@ -1,0 +1,7 @@
+.ratingStarActive svg {
+    fill: #EFCD1D;
+}
+
+.ratingStarDisabled svg {
+    fill: #B3B3B3
+}

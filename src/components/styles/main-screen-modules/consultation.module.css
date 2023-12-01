@@ -1,0 +1,108 @@
+.consultWrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.consultButton {
+    padding-top: 10px;
+    position: absolute;
+    font-size: 20px;
+    right: 0;
+}
+
+.consultBlock {
+    width: 100%;
+    height: 302px;
+    background-color: #F2F2F2;
+    padding-left: 0px;
+    padding-right: 0px;
+    position: relative;
+}
+
+.imageBlock {
+    background: 195% -5% url("../../../../public/145cc059750eab16ceb758618a0fba43.png") #F2F2F2 no-repeat;
+    width: 44%;
+    height: 260px;
+    background-size: cover;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.infoBlock {
+    z-index: 1;
+    right: 0;
+    height: 100%;
+    position: absolute;
+    max-width: 641px;
+    margin-right: 32px;
+}
+
+.infoSubBlock {
+    padding-top: 54px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-align: end;
+    gap: 12px
+}
+
+.blockInfoText {
+    font-size: 24px;
+}
+
+.modalSett {
+    --bs-modal-border-radius: 0px;
+    --bs-modal-header-border-width: 0px;
+    --bs-modal-footer-border-width: 0px;
+    --bs-border-width: 0px;
+    --bs-modal-width: 598px;
+    --bs-btn-close-bg: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.89604 20.8779L1.47177 21.3022C1.31556 21.4584 1.31556 21.7117 1.47177 21.8679L2.3203 22.7164C2.47651 22.8726 2.72978 22.8726 2.88599 22.7164L3.31025 22.2922L11.6986 13.9038C11.8548 13.7476 12.1081 13.7476 12.2643 13.9038L20.6527 22.2922L21.077 22.7165C21.2332 22.8727 21.4864 22.8727 21.6426 22.7165L22.4912 21.868C22.6474 21.7118 22.6474 21.4585 22.4912 21.3023L22.0669 20.878L13.6785 12.4896C13.5223 12.3334 13.5223 12.0801 13.6785 11.9239L21.896 3.70637L22.3203 3.2821C22.4765 3.12589 22.4765 2.87263 22.3203 2.71642L21.4718 1.86789C21.3156 1.71168 21.0623 1.71168 20.9061 1.86789L20.4818 2.29215L12.2643 10.5097C12.1081 10.6659 11.8548 10.6659 11.6986 10.5097L3.48112 2.29223L3.05686 1.86796C2.90065 1.71175 2.64738 1.71175 2.49118 1.86796L1.64265 2.71649C1.48644 2.8727 1.48644 3.12597 1.64265 3.28218L2.06691 3.70644L10.2844 11.9239C10.4406 12.0801 10.4406 12.3334 10.2844 12.4896L1.89604 20.8779Z' fill='%23B3B3B3'/%3E%3C/svg%3E%0A");
+    --bs-modal-footer-gap: 0px;
+}
+
+.inputSett {
+    --bs-border-width: 1px solid;
+}
+
+.modalButton {
+    width: 100%;
+    border-radius: 0px;
+    --bs-btn-bg: #1E1E1E;
+    --bs-btn-border-color: #1E1E1E;
+    --bs-border-radius: 0rem;
+    --bs-btn-hover-bg: #D0BEE5;
+    --bs-btn-hover-border-color: #D0BEE5;
+    --bs-btn-hover-color: #1E1E1E;
+}
+
+@media only screen and (max-width: 320px) {
+ 
+}
+
+@media only screen and (max-width: 600px) {
+ 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 769px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

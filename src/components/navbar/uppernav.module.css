@@ -1,0 +1,22 @@
+.mlmk {
+    max-width: 136px;
+} 
+
+.mlmrightitem {
+    margin-right: 32px;
+}
+
+.mlmleftitem {
+    margin-left: 32px;
+}
+
+.mlmlCollapsed {
+    width: 100%;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.mlmlItemCollapsed {
+    padding-left: 16px;
+}
+

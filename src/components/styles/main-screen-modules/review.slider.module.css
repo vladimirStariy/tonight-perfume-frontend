@@ -1,0 +1,12 @@
+.commonReviews {
+    width: 384px;
+    height: 225px;
+    background-color: #F2F2F2;
+}
+
+.sliderContentRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 32px;
+}

@@ -1,0 +1,47 @@
+.brandCard {
+    width: 100%;
+    max-height: 318px;
+    background-image: url('../../../../public/dc9b519edc4cfd1f69bee2ac15651c66.png');
+    background-position: center center;
+    background-size: cover;
+    background-color: #F2F2F2;
+}
+
+@media only screen and (max-width: 320px) {
+    .brandCard {
+        height: 178px;
+    }   
+}
+
+@media only screen and (max-width: 600px) {
+    .brandCard {
+        
+        height: 238px;
+    }    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .brandCard {
+        height: 238px;
+    } 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 769px) {
+    .brandCard {
+        height: 174px;
+    } 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .brandCard {
+        height: 280px;
+    } 
+}

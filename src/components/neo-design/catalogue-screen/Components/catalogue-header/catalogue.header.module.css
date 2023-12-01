@@ -1,0 +1,134 @@
+.catalogueHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.w100 {
+    
+}
+
+.headerInput {
+    width: 567px;
+}
+
+.catalogueHeaderItem {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdownGap {
+    gap: 12px;
+}
+
+.alignEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.headerLabel {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.dropdownList {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    background: #1bc2a2;
+}
+
+.dropdownItem {
+    display: block;
+    position: relative;
+    float: left;
+    background: #1bc2a2;
+}
+
+.dropdownItem a {
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.catalogueHeaderSecItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdownItem a:hover 
+{
+    background: #2c3e50;
+}
+
+li:hover > ul 
+{
+    display: block; 
+    position: absolute;
+}
+
+@media only screen and (max-width: 375px) {
+    .headerLabel {
+        font-size: 16px;
+    }
+    .headerInput {
+        width: 100%;
+    }
+    .catalogueHeader {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .headerLabel {
+        font-size: 16px;
+    }
+    .headerInput {
+        width: 100%;
+    }
+    .catalogueHeader {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .headerLabel {
+        font-size: 20px;
+    }
+    .headerInput {
+        width: 277px;
+    }
+    .catalogueHeader {
+        flex-direction: row;
+        gap: 0px;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .headerLabel {
+        font-size: 24px;
+    }
+    .headerInput {
+        width: 277px;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .headerInput {
+        width: 567px;
+    }
+}

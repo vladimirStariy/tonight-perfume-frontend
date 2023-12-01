@@ -1,0 +1,42 @@
+.rangeFilterSlider {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.rangeFilterLabel {
+    font-size: 1.25rem;
+    color: var(--dark, #1E1E1E);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.startPrice {
+    display: flex;
+    justify-content: flex-start;
+    color: var(--dark, #1E1E1E);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.endPrice {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--dark, #1E1E1E);
+    font-family: Manrope;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.sliderOpt {
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+.rngFltValues {
+
+}

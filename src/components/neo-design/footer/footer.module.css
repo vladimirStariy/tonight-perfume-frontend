@@ -1,0 +1,435 @@
+.footerWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerMainBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E1E1E;
+}
+
+.footerSecondaryBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #282828;
+}
+
+.footerContainer {
+    width: 100%;
+    height: 431px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footerSecondaryBg {
+    background-color: #1E1E1E;
+}
+
+.footerMain {
+    height: 85%;
+    background-color: #1E1E1E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerInfo {
+    height: 15%;
+    background-color: var(--dark-grey, #282828);
+}
+
+.footerLinkGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.blockHeader {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.footerBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.footerLink {
+    color: #B3B3B3;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contentRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.socialLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logoHolder {
+    color:white;
+}
+
+.infoHolder {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.secondaryWrapper {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.secondaryLogoBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    align-items: center;
+}
+
+.expressPay {
+    width: 217px;
+    height: 58px;
+    background: url('../../../../public/footer/expresspay.png');
+    background-size: cover;
+    filter: invert(100%);
+}
+
+.pos {
+    width: 108px;
+    height: 58px;
+    background: url('../../../../public/footer/pos.png');
+    background-size: cover;
+    filter: invert(100%);
+}
+
+.secondaryTextBlock {
+    align-items: center;
+    max-width: 701px;
+    color: #B3B3B3;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.63;
+}
+
+@media only screen and (max-width: 375px) {
+    .contentRow {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .logoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        color:white;
+        border-bottom: 1px solid#B3B3B3;
+        padding-bottom: 8px;
+    }
+    .infoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .footerBlock {
+        align-items: center;
+        gap: 8px;
+    }
+    .footerLinkGroup {
+        align-items: center;
+        gap: 4px;
+    }
+    .blockHeader {
+        font-size: 24px;
+    }
+    .footerLink {
+        font-size: 16px;
+    }
+
+    .secondaryWrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .secondaryLogoBlock {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .expressPay {
+        width: 181px;
+        height: 48px;
+    }
+    
+    .pos {
+        width: 91px;
+        height: 48px;
+    }
+    
+    .secondaryTextBlock {
+        align-items: center;
+        text-align: start;
+        width: 100%;
+        color: #B3B3B3;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .contentRow {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .logoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        color:white;
+        border-bottom: 1px solid#B3B3B3;
+        padding-bottom: 8px;
+    }
+    .infoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .footerBlock {
+        align-items: center;
+        gap: 8px;
+    }
+    .footerLinkGroup {
+        align-items: center;
+        gap: 4px;
+    }
+    .blockHeader {
+        font-size: 24px;
+    }
+    .footerLink {
+        font-size: 16px;
+    }
+
+    .secondaryWrapper {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .secondaryLogoBlock {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .expressPay {
+        width: 181px;
+        height: 48px;
+    }
+    
+    .pos {
+        width: 91px;
+        height: 48px;
+    }
+    
+    .secondaryTextBlock {
+        align-items: center;
+        text-align: start;
+        width: 100%;
+        color: #B3B3B3;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .contentRow {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .logoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        color:white;
+        border-bottom: 1px solid#B3B3B3;
+        padding-bottom: 8px;
+    }
+    .infoHolder {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 0px;
+    }
+    .footerBlock {
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .footerLinkGroup {
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .blockHeader {
+        font-size: 20px;
+    }
+    .footerLink {
+        font-size: 14px;
+    }
+
+    .secondaryWrapper {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .secondaryLogoBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .expressPay {
+        width: 181px;
+        height: 48px;
+    }
+    
+    .pos {
+        width: 91px;
+        height: 48px;
+    }
+    
+    .secondaryTextBlock {
+        align-items: center;
+        max-width: 446px;
+        color: #B3B3B3;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .secondaryWrapper {
+        gap: 60px;
+    }
+    .secondaryTextBlock {
+        align-items: center;
+        max-width: 701px;
+        color: #B3B3B3;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .secondaryLogoBlock {
+        display: flex;
+        flex-direction: row;
+        gap: 60px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .contentRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0px;
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+    .logoHolder {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: none;
+        gap: 12px;
+        padding-bottom: 0px;
+        align-items: center;
+        color:white;
+    }
+    .infoHolder {
+        width: fit-content;
+        gap: 100px;
+        display: flex;
+        flex-direction: row;
+    }
+    .blockHeader {
+        font-size: 24px;
+    }
+    .footerLink {
+        font-size: 15px;
+    }
+}

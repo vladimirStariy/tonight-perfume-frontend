@@ -1,0 +1,191 @@
+.fgrid {
+    display: flex;
+    flex-direction: row;
+    max-width: 1216px;
+    gap: 20px;
+}
+
+.fbig {
+    width: 100%;
+    height: 362px;
+    background: url('/public/advantages.png'), #F2F2F2;
+    background-size: 60% 70%;
+    background-position: -10% 140%;
+    background-repeat: no-repeat;
+}
+
+.fsecbig {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.smWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.fmid {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+
+.fsm1 {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+.fsm2 {
+    width: 100%;
+    height: 169px;
+    background-color: #F2F2F2;
+}
+
+.purple {
+    color: #D0BEE5;
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (min-width: 375px) {
+    .fgrid {
+        flex-direction: column;
+    }
+    .fbig {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+
+        padding: 20px;
+
+        background-position: left -10%;
+        background-size: cover;
+    }
+    .fmid {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+
+        padding: 20px;
+    }
+    .fsm1 {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+
+        padding: 20px;
+    }
+    .fsm2 {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 120%;
+
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .fgrid {
+        flex-direction: row;
+        gap: 24px;
+    }
+    .fsecbig {
+        gap: 24px;
+    }
+    .smWrapper {
+        gap: 24px;
+    }
+    .fbig {
+        background-size: 70%;
+        background-position: 0% 140%;
+        width: 357px;
+        height: 362px;
+        background-color: #F2F2F2;
+    }
+    .fmid {
+        width: 313px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+    .fsm1 {
+        width: 144px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+    .fsm2 {
+        width: 144px;
+        height: 169px;
+        background-color: #F2F2F2;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .fbig {
+        font-size: 20px;
+
+        padding: 20px;
+
+        width: 440px;
+        height: 432px;
+        background-color: #F2F2F2;
+    }
+    .fmid {
+        width: 440px;
+        height: 204px;
+        background-color: #F2F2F2;
+    }
+    .fsm1 {
+        width: 208px;
+        height: 204px;
+        background-color: #F2F2F2;
+    }
+    .fsm2 {
+        width: 208px;
+        height: 204px;
+        background-color: #F2F2F2;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .fgrid {
+        gap: 32px;
+    }
+    .fsecbig {
+        gap: 32px;
+    }
+    .smWrapper {
+        gap: 32px;
+    }
+    .fbig {
+        width: 592px;
+        height: 532px;
+        font-size: 24px;
+        background-color: #F2F2F2;
+    }
+    .fmid {
+        width: 592px;
+        height: 250px;
+        font-size: 24px;
+        background-color: #F2F2F2;
+    }
+    .fsm1 {
+        width: 280px;
+        height: 250px;
+        font-size: 24px;
+        background-color: #F2F2F2;
+    }
+    .fsm2 {
+        width: 280px;
+        height: 250px;
+        font-size: 24px;
+        background-color: #F2F2F2;
+    }
+}

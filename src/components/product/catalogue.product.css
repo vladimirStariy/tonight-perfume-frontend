@@ -1,0 +1,11 @@
+.product-card-image-block {
+    background: url(../../../public/796f6a6b37bd8558da5970af67f3e46c.png), #F2F2F2 no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 130% 75%;
+    aspect-ratio: 7 / 8;
+}
+
+.product-card {
+    aspect-ratio: 10 / 16;
+}

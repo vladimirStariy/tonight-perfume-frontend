@@ -1,0 +1,9 @@
+.arrow svg {
+    fill: #1E1E1E;
+    transition: all .3s;
+}
+
+.arrow svg:hover {
+    fill: #D0BEE5;
+    cursor: pointer;
+}

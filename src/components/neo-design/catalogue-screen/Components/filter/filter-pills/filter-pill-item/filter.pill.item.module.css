@@ -1,0 +1,21 @@
+.filterPill {
+    background-color: #F2F2F2;
+    cursor: pointer;
+}
+
+.filterPill input {
+    display: none;
+}
+
+.filterPill > input:checked {
+    background-color: #D0BEE5;
+}
+
+.filterLabel {
+    padding: 8px;
+    color: #1E1E1E;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

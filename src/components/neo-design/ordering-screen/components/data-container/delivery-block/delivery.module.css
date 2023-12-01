@@ -1,0 +1,56 @@
+.deliveryPillsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.deliveryWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.addNewBtn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E1E1E;
+    color: white;
+    padding: 1rem;
+    transition: all .3s;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.adressCard {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    background-color: #F2F2F2;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.activeAdressCard {
+    background-color: #D0BEE5;
+}
+
+.addNewBtn:hover {
+    background-color: #D0BEE5;
+    color: black;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

@@ -1,0 +1,186 @@
+.portraitImageBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 320px;
+    background-size: 100%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+.socialSlide {
+    width: 100%;
+    height: 500px;
+   
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.yellowSlide {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 500px;
+    
+    background-image: url(../../../../../../public/slider/Slide1.png);
+   
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.swiperBulletCustom {
+    width: 40px;
+    height: 10px;
+    background-color: #111;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+  
+.swiper-slide {
+    background: pink;
+    font-size: 100px;
+    text-align: center;
+    line-height: 100vh;
+    font-weight: 900;
+}
+
+.swiper-slide.con2 {
+    background: skyblue;
+}
+.swiper-slide.con3 {
+    background: green;
+}
+  
+.swiper-container-horizontal
+    > .swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin: 0;
+    margin-right: 20px;
+}
+.swiper-pagination-bullet {
+    position: relative;
+    width: 156px;
+    height: auto;
+    text-align: left;
+    border-radius: 0;
+    opacity: 1;
+    margin-right: 20px;
+    background-color: transparent;
+}
+.em {
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: bold;
+    letter-spacing: -0.38px;
+    color: #111;
+}
+.i {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 10px;
+    background-color: hotpink;
+}
+.b {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 0%;
+    height: 10px;
+    background-color: rgba(17, 17, 17, 1);
+}
+
+.swiper-pagination-bullet-active {
+    background-color: transparent;
+}
+
+.b {
+    animation-name: countingBar;
+    animation-duration: 3s; 
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (min-width: 375px) {
+    .yellowSlide {
+        height: 542px;
+
+        background-image: url(/public/slide1.png);
+        
+
+        background-size: 160%;
+
+
+        background-position: 27%;
+        background-repeat: no-repeat;
+    }
+    .socialSlide {
+        height: 542px;
+        background-size: cover;
+        background-position: 100% 100%;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .yellowSlide {
+        height: 361px;
+
+        background-image: url(../../../../../../public/slider/Slide1.png);
+        background-size: cover;
+        background-position: 0px 100%;
+        background-repeat: no-repeat;
+    }
+    .socialSlide {
+        height: 361px;
+        background-position: 33%;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+    .socialSlide {
+        height: 500px;
+        background-position: 33%;
+    }
+}
+
+@media only screen and (min-width: 1248px) {
+    .yellowSlide {
+        background-image: url(../../../../../../public/slider/Slide1.png);
+        background-size: cover;
+        background-position: 0px 100%;
+        background-repeat: no-repeat;
+    }
+    .socialSlide {
+        background-position: 50%;
+    }
+}
+
+@keyframes countingBar {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+}

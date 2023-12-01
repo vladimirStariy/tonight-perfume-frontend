@@ -1,0 +1,60 @@
+.navLogoLink {
+    --bs-navbar-brand-padding-x: 0px;
+    --bs-navbar-brand-padding-y: 0px;
+    width: 108px;
+    height: 40px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: black;
+}
+
+.navLink {
+    --bs-nav-link-color: #1E1E1E;
+    --bs-nav-link-hover-color: #1E1E1E;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: 400;
+    color: var(--dark, #1E1E1E);
+    font-family: Manrope;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    --bs-nav-underline-border-width: 1px;
+}
+
+.zvzcROW {
+    display: flex;
+    flex-direction: row;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 2rem;
+}
+
+.zvzcCOL {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.linkFont {
+    font-weight: 100;
+}
+
+.logo {
+    padding-left: 1rem;
+    margin-right: 0;
+}
+
+.navBar {
+    background-color: white;
+}
+
+.fullwidt {
+    position: relative;
+    justify-content: center;
+    width: 100%;
+}

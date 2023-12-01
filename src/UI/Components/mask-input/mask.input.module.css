@@ -1,0 +1,42 @@
+.dataInput {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 0px;
+    outline: none;
+    background-color: #F2F2F2;
+
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+
+    border: 1px solid #F2F2F2;
+}
+
+.dataInput:focus {
+    border: 1px solid #1E1E1E;
+}
+
+.textArea {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 0px;
+    outline: none;
+    background-color: #F2F2F2;
+
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+
+    resize: none;
+    height: 120px;
+
+    border: 1px solid #F2F2F2;
+}
+
+.textArea:focus {
+    border: 1px solid #1E1E1E;
+}
