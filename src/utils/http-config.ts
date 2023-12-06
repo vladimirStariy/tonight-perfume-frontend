@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://vh333.by2040.ihb.by';
+export const BASE_URL = 'https://clever-swirles.178-124-131-24.plesk.page';
