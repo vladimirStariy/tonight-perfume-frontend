@@ -15,7 +15,6 @@ const baseQuery = fetchBaseQuery({
         if(token) {
             headers.set('authorization', `Bearer ${token}`);
         }
-        headers.set('Access-Control-Allow-Headers', '*')
         return headers;
     }
 })
