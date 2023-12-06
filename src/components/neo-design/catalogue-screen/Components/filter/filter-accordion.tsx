@@ -62,11 +62,18 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
             <Accordion.Item className={styles.customAcc} eventKey="2">
                 <Accordion.Header>Страна бренда</Accordion.Header>
                 <Accordion.Body>
-                    <Form.Check 
-                        type='checkbox'
-                        id={`default-checkbox-1`}
-                        label={`default checkbox`}
-                    />
+                    {
+                        filter?.countries.map((country, index) => (
+                            <Form.Check
+                                onChange={(e) => props.handleCountry(e)}
+                                key={index}
+                                type='checkbox'
+                                value={`${country}`}
+                                id={`brand-checkbox-${country}`}
+                                label={`${country}`}
+                            />
+                        ))
+                    }
                     <Link to='' style={{textDecoration: 'underline'}}>Показать все</Link>
                 </Accordion.Body>
             </Accordion.Item>

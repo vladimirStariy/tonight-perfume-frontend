@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useSendFilterMutation } from "../../../services/filter.service";
 import { IFilterRequest } from "../../../store/models/filter/IFIlterRequest";
 import { IProductsWithPagination } from "../../../store/models/product/IProductsWithPagination";
+import Loader from "../../../UI/Components/loader/loader";
 
 const CatalogueScreen: FC = () => {
     const screenSize = useScreenSize();
@@ -21,22 +22,27 @@ const CatalogueScreen: FC = () => {
 
     const MIN = 0; const MAX = 10000;
     const [values, setValues] = useState([MIN, MAX]);
-    const [volumeInfo, setVolumeInfo] = useState<Array<any>>([]);
     const [brandInfo, setBrandInfo] = useState<Array<any>>([]);
     const [categoryInfo, setCategoryInfo] = useState<Array<any>>([]);
     const [groupInfo, setGroupInfo] = useState<Array<any>>([]);
     const [countriesInfo, setCountriesInfo] = useState<Array<any>>([]);
     const [notesInfo, setNotesInfo] = useState<Array<any>>([]);
+    const [selectedVolumes, setSelectedVolumes] = useState<number[]>([]);
 
     const filterRequestData: IFilterRequest = {
         page: page,
-        volumes: volumeInfo,
+        volumes: selectedVolumes,
         prices: values,
         brands: brandInfo,
         aromaGroups: groupInfo,
         categories: categoryInfo,
         perfumeNotes: notesInfo,
         countries: countriesInfo
+    }
+
+    const handleSelectVolumes = (value: number) => {
+        if(selectedVolumes.includes(value)) setSelectedVolumes(selectedVolumes.filter((item) => item !== value))
+        else setSelectedVolumes((prev) => [...prev, value])
     }
 
     const handleCheckBrand = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +54,6 @@ const CatalogueScreen: FC = () => {
             idCollection.push(e.target.value);
             setBrandInfo(idCollection);
         }
-        console.log('workinh');
     }
 
     const handleCheckCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,12 +98,13 @@ const CatalogueScreen: FC = () => {
             idCollection.push(e.target.value);
             setNotesInfo(idCollection);
         }
-        console.log('workinh');
     }
 
     const handleCheckData = async () => {
-        const returned = await sendFilter(filterRequestData).unwrap();
-        setfetchedData(returned);
+        try {
+            const returned = await sendFilter(filterRequestData).unwrap();
+            setfetchedData(returned);
+        } catch {}
     }
 
     const handleNextPage = () => {
@@ -117,6 +123,7 @@ const CatalogueScreen: FC = () => {
     }, [page])
 
     return <>
+        
         <div className={styles.portraitImageBlock}>
             <div className={layout.tonightContainer}>
                 <div className={layout.breadcrumbContainer}>
@@ -142,18 +149,21 @@ const CatalogueScreen: FC = () => {
                                 handleCountry={handleCheckCountry}
                                 handleNotes={handleCheckNotes}
                                 handleCheckData={handleCheckData}
+                                selectedPills={selectedVolumes}
+                                handlePrice={setValues}
+                                handleSelectVolumes={handleSelectVolumes}
                             />
                         </div>
                     }
                     <div className={styles.catalogueProductContainer}>
-                        {isError ? <>
-                            Not found
-                        </> : <>
+                        {isError ? <div className={styles.errorPlaceholder}>
+                            <b>Ошибка соединения</b>
+                        </div> : <>
                             {fetchedData !== undefined ? 
                                 <ProductGrid products={fetchedData.items} />
                                     :
                                 <>
-                                    NOT FOUND
+                                    <div className={styles.loaderWrapper}><Loader /></div>
                                 </>
                             }
                         </>}

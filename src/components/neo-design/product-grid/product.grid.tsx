@@ -23,7 +23,7 @@ const ProductGrid: FC<IProductGrid> = props => {
                             <ProductCard refetch={props.refetch} data={item} key={item.id} />
                         ))
                     :
-                    <>NOT FOUND</>
+                    <>Не найдено подходящих ароматов</>
                 }
             </>
         }

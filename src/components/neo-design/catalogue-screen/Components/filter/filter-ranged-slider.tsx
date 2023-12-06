@@ -9,10 +9,17 @@ import Col from "react-bootstrap/Col";
 const MIN = 0;
 const MAX = 1000;
 
+interface RangedSliderProps {
+    handleSetPrice: (value: number[]) => void;
+}
 
-
-const FilterRangedSlider: FC = () => {
+const FilterRangedSlider: FC<RangedSliderProps> = (props) => {
     const [values, setValues] = useState([MIN, MAX])
+
+    const handleChangePrice = (e: number[]) => {
+        props.handleSetPrice(e)
+        setValues(e)
+    }
 
     return <>
         <b className={styles.rangeFilterLabel}>Цена и объём</b>
@@ -25,7 +32,7 @@ const FilterRangedSlider: FC = () => {
             
             <RangeSlider
                 className={`rangeSlider ${styles.sliderOpt}`}
-                onChange={setValues}
+                onChange={handleChangePrice}
                 value={values}
                 min={MIN}
                 max={MAX}

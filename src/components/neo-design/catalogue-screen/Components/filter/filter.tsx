@@ -1,18 +1,14 @@
-import { FC, useState } from 'react'
-
-import FilterPills from "./filter-pills";
+import { FC } from 'react'
 
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button';
 
 import styles from '../../../../styles/filter/filter.module.css'
 
 import FilterAccordion from './filter-accordion';
 import FilterRangedSlider from './filter-ranged-slider';
 
-import { IFilterRequest } from "../../../../../store/models/filter/IFIlterRequest";
-import { filterAPI } from '../../../../../services/filter.service';
 import FilterPillItem from './filter-pills/filter-pill-item/filter.pill.item';
+import FilterPills from './filter-pills/filter-pill/filter.pills';
 
 interface IProductFilter {
     handleBrand: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -21,17 +17,27 @@ interface IProductFilter {
     handleNotes: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
+    handlePrice: (value: number[]) => void;
+
+    selectedPills: number[];
+    handleSelectVolumes: (value: number) => void;
 }
 
 const ProductFilter: FC<IProductFilter> = (props) => {
+
     return <>
-        <FilterPillItem value={2}/>
         <div className={styles.filterContent}>
             <div className={styles.rangeSliderContainer}>
-                <FilterRangedSlider />
-                <Row className={styles.checkBtnGroup}>
-                    <FilterPills />
-                </Row>
+                <FilterRangedSlider 
+                    handleSetPrice={props.handlePrice}
+                />
+                <div className={styles.checkBtnGroup}>
+                    <FilterPills 
+                        initialValues={[2, 5, 8, 10, 15]}
+                        selected={props.selectedPills} 
+                        handleSelectValues={props.handleSelectVolumes}
+                    />
+                </div>
             </div>
             <FilterAccordion
                 handleBrand={props.handleBrand}

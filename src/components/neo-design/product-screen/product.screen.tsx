@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 
 import layout from '../layout/layout.module.css'
 import styles from './product.screen.module.css'
@@ -14,7 +14,7 @@ import { addToCart } from '../../../store/slices/cartSlice';
 const ProductScreen: FC = () => {
     const {id} = useParams();
     const screenSize = useScreenSize();
-    const {data: productData, isLoading} = useGetProductByIdQuery(Number(id));
+    const {data: productData, isLoading, isSuccess} = useGetProductByIdQuery(Number(id));
     
     const dispatcher = useDispatch();
 
@@ -44,14 +44,14 @@ const ProductScreen: FC = () => {
 
     const summaryPrice = useMemo(() => {
         let _price = 0;
+        if(productData) _price = productData.prices[0].value;
         productData?.prices.map((item) => {
             if(item.volume_ID === volume) {
                 _price = item.value * quantity
             }
         })
         return _price;
-    }, [volume, quantity])
-
+    }, [volume, quantity, []])
 
     return <>
         <div className={`${layout.tonightWrapper} ${styles.commonPadding}`}>
