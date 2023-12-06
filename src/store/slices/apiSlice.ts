@@ -4,11 +4,11 @@ import { RootState } from "../store";
 import type {BaseQueryFn, FetchArgs, FetchBaseQueryError} from '@reduxjs/toolkit/query'
 import { logOut, setCredentials } from "./authSlice";
 import { createApi } from "@reduxjs/toolkit/dist/query/react";
-import { REHYDRATE } from "redux-persist";
 
 
 const baseQuery = fetchBaseQuery({
     credentials: "include",
+    mode: 'cors',
     baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).auth.access;
