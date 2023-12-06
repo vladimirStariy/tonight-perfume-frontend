@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://vh333.by2040.ihb.by';
+export const BASE_URL = 'https://localhost:7226';
