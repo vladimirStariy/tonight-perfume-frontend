@@ -92,7 +92,7 @@ const LoginScreen: FC = () => {
                         </>
                         : <>
                             <div className={layout.cardLabel}>Регистрация</div>
-                            <div className={styles.loginForm}>
+                            <form onSubmit={handleSubmit} className={styles.loginForm}>
                                 {successAction === 0 ? <>
                                     <div className={styles.shadowedLabel}>Мы отправим на номер SMS-сообщение с данными для входа</div>
                                     <div className={styles.inputBlock}>
@@ -107,7 +107,7 @@ const LoginScreen: FC = () => {
                                     <TonightButton 
                                         isDisabled={regLoading ? true : false} 
                                         isLoading={regLoading} 
-                                        onClick={handleSubmit} 
+                                        onClick={handleSubmit}
                                         text="Отправить"/>
                                     <div onClick={handleChangeForm} className={styles.ctaLink}>Уже зарегистрированы? Войти в аккаунт!</div>
                                 </> : successAction === 1 ? <>
@@ -126,7 +126,7 @@ const LoginScreen: FC = () => {
                                     <div onClick={handleChangeForm} className={styles.ctaLink}>Уже зарегистрированы? Войти в аккаунт!</div>
                                 </>
                                 }
-                            </div> 
+                            </form> 
                         </>
                     }
                 </div>

@@ -168,7 +168,6 @@ const CatalogueScreen: FC = () => {
                             }
                         </>}
                     </div>
-
                 </div>
             </div>
             <div className={layout.tonightContainer}>
