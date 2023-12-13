@@ -9,13 +9,15 @@ import { Link, useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../../services/product-service';
 import Counter from '../cart/counter/counter';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../store/slices/cartSlice';
+import { addToCart, removeCartItemById, selectCartItems } from '../../../store/slices/cartSlice';
+import { useSelector } from 'react-redux';
+import Loader from '../../../UI/Components/loader/loader';
 
 const ProductScreen: FC = () => {
     const {id} = useParams();
     const screenSize = useScreenSize();
-    const {data: productData, isLoading, isSuccess} = useGetProductByIdQuery(Number(id));
-    
+    const {data: productData, isLoading, isError} = useGetProductByIdQuery(Number(id));
+    const cart = useSelector(selectCartItems);
     const dispatcher = useDispatch();
 
     const handleAddToCart = () => {
@@ -53,6 +55,10 @@ const ProductScreen: FC = () => {
         return _price;
     }, [volume, quantity, []])
 
+    const handleRemoveFromCart = () => {
+        dispatcher(removeCartItemById({productId: Number(id)}))
+    }
+
     return <>
         <div className={`${layout.tonightWrapper} ${styles.commonPadding}`}>
             <div className={layout.tonightContainer}>
@@ -60,8 +66,13 @@ const ProductScreen: FC = () => {
                     <div className={styles.breadcrumb}>
                         <Link to='/'>Главная</Link> / <Link to='/catalogue'>Каталог</Link> / Blanche
                     </div>
-                    {isLoading ? <>
-                    
+                    {isError ? <>
+                        <div className={styles.loaderWrapper}>Ошибка соединения</div>
+                    </> : 
+                    isLoading ? <>
+                        <>
+                            <div className={styles.loaderWrapper}><Loader /></div>
+                        </>
                     </> : <>
                         <div className={styles.cardWrapper}>
                             { screenSize.width < 726 ? 
@@ -78,7 +89,7 @@ const ProductScreen: FC = () => {
                                     </div>
                                     <div className={styles.cardImg}></div>
                                     <div className={styles.priceVolume}>
-                                        <div className={styles.price}>75,00 BYN</div>
+                                        <div className={styles.price}>{summaryPrice / 100} BYN</div>
                                         <div className={styles.volume}>
                                             <div className={styles.volumeLabel}>Объем</div>
                                             <VolumePills 
@@ -89,7 +100,11 @@ const ProductScreen: FC = () => {
                                     </div>                     
                                 </div>
                                 <div className={styles.buttons}>
-                                    <TonightButton text='Добавить в корзину'/>
+                                    {cart?.find(product => product.productId === Number(id)) !== undefined ? <>
+                                        <TonightButton onClick={handleRemoveFromCart} text='Удалить из корзины' />
+                                    </> : <>
+                                        <TonightButton onClick={handleAddToCart} text='Добавить в корзину' />
+                                    </>}
                                     <Link to='/' className={styles.buttonLink}>
                                         Узнать остаток и стоимость
                                     </Link>
@@ -130,10 +145,11 @@ const ProductScreen: FC = () => {
                                         <div className={styles.price}>{summaryPrice / 100} BYN</div>
                                         <div className={styles.buttons}>
                                             <div className={styles.buttonWrapper}>
-                                                <TonightButton 
-                                                    text='Добавить в корзину'
-                                                    onClick={handleAddToCart}    
-                                                />
+                                            {cart?.find(product => product.productId === Number(id)) !== undefined ? <>
+                                                <TonightButton onClick={handleRemoveFromCart} text='Удалить из корзины' />
+                                            </> : <>
+                                                <TonightButton onClick={handleAddToCart} text='Добавить в корзину' />
+                                            </>}
                                             </div>
                                             <Link to='/' className={styles.buttonLink}>
                                                 Узнать остаток и стоимость

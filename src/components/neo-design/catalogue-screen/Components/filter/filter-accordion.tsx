@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
@@ -9,18 +9,24 @@ import TonightInput from "../../../../../UI/Components/input/tonight-input";
 import TonightButton from "../../../../../UI/Components/button/tonight-button";
 
 import { filterAPI } from "../../../../../services/filter.service";
+import { IFilter } from "../../../../../store/models/filter/IFilter";
 
 interface IFilterAccordion {
+    filter: IFilter | undefined;
+    checkedBrands: any[];
     handleBrand: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    checkedCategories: any[];
     handleCategory: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    checkedCountries: any[];
     handleCountry: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    checkedNotes: any[];
     handleNotes: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    checkedGroups: any[];
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
 }
 
 const FilterAccordion: FC<IFilterAccordion> = (props) => {
-    const {data: filter, error, isLoading} = filterAPI.useFetchFilterQuery(7);
 
     return <div className={styles.accordionContainer}>
         <Accordion className={styles.accordion} defaultActiveKey={['0']} alwaysOpen flush>
@@ -28,7 +34,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Категория</Accordion.Header>
                 <Accordion.Body>
                     {
-                        filter?.categories.map((category, index) => (
+                        props.filter?.categories.map((category, index) => (
                             <Form.Check 
                                 onChange={(e) => props.handleCategory(e)}
                                 key={index}
@@ -45,7 +51,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Бренд</Accordion.Header>
                 <Accordion.Body>
                     {
-                        filter?.brands.map((brand, index) => (
+                        props.filter?.brands.map((brand, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleBrand(e)}
                                 key={index}
@@ -63,7 +69,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Страна бренда</Accordion.Header>
                 <Accordion.Body>
                     {
-                        filter?.countries.map((country, index) => (
+                        props.filter?.countries.map((country, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleCountry(e)}
                                 key={index}
@@ -81,7 +87,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Группа ароматов</Accordion.Header>
                 <Accordion.Body>
                     {
-                        filter?.aromaGroups.map((aromaGroup, index) => (
+                        props.filter?.aromaGroups.map((aromaGroup, index) => (
                             <Form.Check 
                                 key={index}
                                 type='checkbox'
@@ -98,7 +104,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Body>
                     <TonightInput />
                     {
-                        filter?.perfumeNotes.map((note, index) => (
+                        props.filter?.perfumeNotes.map((note, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleNotes(e)}
                                 key={index}

@@ -6,7 +6,6 @@ import useScreenSize from "../../utils/use-screen-size";
 import CatalogueHeader from "./Components/catalogue-header/catalogue.header";
 import ProductFilter from "../catalogue-screen/Components/filter/filter";
 import ProductGrid from "../product-grid/product.grid";
-import { Link } from "react-router-dom";
 import { useSendFilterMutation } from "../../../services/filter.service";
 import { IFilterRequest } from "../../../store/models/filter/IFIlterRequest";
 import { IProductsWithPagination } from "../../../store/models/product/IProductsWithPagination";
@@ -138,18 +137,45 @@ const CatalogueScreen: FC = () => {
         </div>
         <div className={layout.tonightWrapper}>
             <div className={`${layout.tonightContainer} ${layout.gap}`}>
-                <CatalogueHeader />
+                <CatalogueHeader
+                    brandsInfo={brandInfo}
+                    handleBrand={handleCheckBrand}
+                    categoriesInfo={categoryInfo}
+                    handleCategory={handleCheckCategory}
+                    groupsInfo={groupInfo}
+                    handleGroup={handleCheckGroup}
+                    countriesInfo={countriesInfo}
+                    handleCountry={handleCheckCountry}
+                    notesInfo={notesInfo}
+                    handleNotes={handleCheckNotes}
+
+                    handleCheckData={handleCheckData}
+
+                    selectedPills={selectedVolumes}
+                    minPrice={values[0]}
+                    maxPrice={values[1]}
+                    handlePrice={setValues}
+                    handleSelectVolumes={handleSelectVolumes}
+                />
                 <div className={styles.catalogueContentFull}>
                     {screenSize.width < 1248 ? <></> : 
                         <div className={styles.catalogueFilterContainer}>
                             <ProductFilter 
+                                brandsInfo={brandInfo}
                                 handleBrand={handleCheckBrand}
+                                categoriesInfo={categoryInfo}
                                 handleCategory={handleCheckCategory}
+                                groupsInfo={groupInfo}
                                 handleGroup={handleCheckGroup}
+                                countriesInfo={countriesInfo}
                                 handleCountry={handleCheckCountry}
+                                notesInfo={notesInfo}
                                 handleNotes={handleCheckNotes}
+
                                 handleCheckData={handleCheckData}
                                 selectedPills={selectedVolumes}
+                                minPrice={values[0]}
+                                maxPrice={values[1]}
                                 handlePrice={setValues}
                                 handleSelectVolumes={handleSelectVolumes}
                             />
@@ -183,7 +209,7 @@ const CatalogueScreen: FC = () => {
                         {
                             fetchedData ? 
                                 Array.from({length:fetchedData.pagination.totalPages}, (_, i) => 
-                                    <div onClick={() => setPage(i+1)} className={styles.pageTab}><b>{i+1}</b></div>
+                                    <div key={i} onClick={() => setPage(i+1)} className={styles.pageTab}><b>{i+1}</b></div>
                                 )
                             :
                                 <></>

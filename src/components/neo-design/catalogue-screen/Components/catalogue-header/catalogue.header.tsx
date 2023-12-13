@@ -8,7 +8,29 @@ import styles from './catalogue.header.module.css';
 import SortButton from './header components/sort.button';
 import TonightInput from '../../../../../UI/Components/input/tonight-input';
 
-const CatalogueHeader: FC = () => {
+interface CatalogueHeaderProps {
+    brandsInfo: any[];
+    handleBrand: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    categoriesInfo: any[];
+    handleCategory: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    countriesInfo: any[]
+    handleCountry: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    notesInfo: any[];
+    handleNotes: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    groupsInfo: any[]
+    handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+    handleCheckData: () => void;
+
+    minPrice: number;
+    maxPrice: number;
+    handlePrice: (value: number[]) => void;
+
+    selectedPills: number[];
+    handleSelectVolumes: (value: number) => void;
+}
+
+const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
     const screenSize = useScreenSize();
 
     const [show, setShow] = useState(false);
@@ -28,7 +50,29 @@ const CatalogueHeader: FC = () => {
                             screenSize.width <= 1247 ? 
                             <>
                                 <div className={styles.headerLabel}><span onClick={handleShow}>Фильтры</span></div>
-                                <FilterOffcanvas handleClose={handleClose} show={show}/>
+                                <FilterOffcanvas 
+                                    brandsInfo={props.brandsInfo}
+                                    categoriesInfo={props.categoriesInfo}
+                                    countriesInfo={props.countriesInfo}
+                                    notesInfo={props.notesInfo}
+                                    groupsInfo={props.groupsInfo}
+
+                                    handleBrand={props.handleBrand}
+                                    handleCategory={props.handleCategory}
+                                    handleCountry={props.handleCountry}
+                                    handleNotes={props.handleNotes}
+                                    handleGroup={props.handleGroup}
+                                    handleCheckData={props.handleCheckData}
+
+                                    minPrice={props.minPrice}
+                                    maxPrice={props.maxPrice}
+                                    handlePrice={props.handlePrice}
+                                
+                                    selectedPills={props.selectedPills}
+                                    handleSelectVolumes={props.handleSelectVolumes}
+
+                                    handleClose={handleClose} show={show}
+                                />
                             </>
                             :
                                 <div className={styles.headerLabel}>Фильтры</div>
@@ -52,7 +96,29 @@ const CatalogueHeader: FC = () => {
                         screenSize.width <= 1247 ? 
                         <>
                             <div className={styles.headerLabel}><span onClick={handleShow}>Фильтры</span></div>
-                            <FilterOffcanvas handleClose={handleClose} show={show}/>
+                            <FilterOffcanvas 
+                                brandsInfo={props.brandsInfo}
+                                categoriesInfo={props.categoriesInfo}
+                                countriesInfo={props.countriesInfo}
+                                notesInfo={props.notesInfo}
+                                groupsInfo={props.groupsInfo}
+                                
+                                handleBrand={props.handleBrand}
+                                handleCategory={props.handleCategory}
+                                handleCountry={props.handleCountry}
+                                handleNotes={props.handleNotes}
+                                handleGroup={props.handleGroup}
+                                handleCheckData={props.handleCheckData}
+
+                                minPrice={props.minPrice}
+                                maxPrice={props.maxPrice}
+                                handlePrice={props.handlePrice}
+                                
+                                selectedPills={props.selectedPills}
+                                handleSelectVolumes={props.handleSelectVolumes}
+
+                                handleClose={handleClose} show={show}
+                            />
                         </>
                         :
                             <div className={styles.headerLabel}>Фильтры</div>

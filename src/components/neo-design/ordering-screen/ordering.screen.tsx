@@ -11,7 +11,7 @@ import CartItem from "../cart/cart-item/cart.item";
 import { IOrder, IOrderProduct } from "../../../store/models/order/order";
 import { useCreateOrderUnauthorizedMutation, useGetPromocodeDataMutation } from "../../../services/order.service";
 import SuccessModal from "./components/modal-window/order.modal";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "../../../store/slices/authSlice";
 import { useGetProfileDataQuery } from "../../../services/profile.service";
@@ -34,7 +34,9 @@ export interface IFormError {
 
 const OrderingScreen: FC = () => {
     const screenSize = useScreenSize();
+
     const cart = useSelector(selectCartItems);
+
     const token = useSelector(selectCurrentToken);
 
     const { data } = useGetProfileDataQuery();
@@ -43,17 +45,15 @@ const OrderingScreen: FC = () => {
 
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
-
+    
     const [formErrors, setFormError] = useState<IFormError>({
         fistname_error: false,
         surname_error: false,
         phone_error: false,
-        
         city_error: false,
         region_error: false,
         appartaments_error: false,
         postNumber_error: false,
-
         hasErrors: false
     });
 
@@ -69,7 +69,6 @@ const OrderingScreen: FC = () => {
             lastname: null,
             phone: '',
             email: null,
-            
             city: null,
             region: null,
             appartaments: null,
@@ -77,13 +76,10 @@ const OrderingScreen: FC = () => {
             entrance: null,
             floor: null,
             postNumber: null,
-
             promocode: '',
-
             paymentType: '0',
             deliveryType: '0',
             note: null,
-
             products: []
         }
     );
@@ -93,7 +89,6 @@ const OrderingScreen: FC = () => {
     }
     
     const handleChangeDelivery = (value: string) => {
-        console.log(value)
         setFormData((prev) => ({ ...prev, deliveryType: value}));
         setFormData((prev) => ({ ...prev, city: null}));
         setFormData((prev) => ({ ...prev, region: null}));
@@ -107,12 +102,9 @@ const OrderingScreen: FC = () => {
     const handleSetAuthDelivery = (value: IAdress) => {
         if(value.deliveryType === 1) {
             setFormData((prev) => ({ ...prev, deliveryType: value.deliveryType.toString()}));
-
             setFormData((prev) => ({ ...prev, city: null}));
-
             setFormData((prev) => ({ ...prev, city: value.city}));
             setFormData((prev) => ({ ...prev, postNumber: value.postNumber}));
-
             setFormData((prev) => ({ ...prev, region: null}));
             setFormData((prev) => ({ ...prev, appartaments: null}));
             setFormData((prev) => ({ ...prev, domophoneCode: null}));
@@ -121,23 +113,18 @@ const OrderingScreen: FC = () => {
             
         } else if (value.deliveryType === 2) {
             setFormData((prev) => ({ ...prev, deliveryType: value.deliveryType.toString()}));
-            
             setFormData((prev) => ({ ...prev, city: null}));
-
             setFormData((prev) => ({ ...prev, city: value.city}));
             setFormData((prev) => ({ ...prev, region: value.region}));
             setFormData((prev) => ({ ...prev, appartaments: value.appartaments}));
             setFormData((prev) => ({ ...prev, domophoneCode: value.domophoneCode}));
             setFormData((prev) => ({ ...prev, entrance: value.entrance}));
             setFormData((prev) => ({ ...prev, floor: value.floor}));
-
             setFormData((prev) => ({ ...prev, postNumber: null}));
         }
-        console.log(formData)
     }
 
     const handleChangePhone = (e: any) => {
-        console.log(e)
         setFormData({...formData, phone: e.detail.input});
     }
 
@@ -261,7 +248,6 @@ const OrderingScreen: FC = () => {
                 _price += item.prices[item.volumeId - 1].value * item.quantity;
             })
             setSummaryPrice(_price);
-        
             let orderProducts: IOrderProduct[] = [];
             cart.forEach(item => {
                 orderProducts.push({
@@ -270,7 +256,6 @@ const OrderingScreen: FC = () => {
                     quantity: item.quantity
                 } as IOrderProduct)
             });
-            
             setFormData((prev) => ({ ...prev, products: orderProducts}))
         }
     }, [cart])
@@ -290,104 +275,104 @@ const OrderingScreen: FC = () => {
         </div>
         <div className={layout.tonightWrapper}>
             <div className={layout.tonightContainer}>
-                <div className={styles.orderingWrapper}>
-                    <div className={styles.dataWrapper}>
-                        <CommonDataBlock 
-                            handleChangeData={handleChangeFormData} 
-                            handleChangeDelivery={handleChangeDelivery}
-                            handleChangeAdress={handleSetAuthDelivery}
-                            handleChangePayment={handleChangePayment}
-                            handleChangeComment={handleChangeComment}
-                            handleChangePhone={handleChangePhone}
-                            isAuth={isAuth}
-                            formErrors={formErrors}
-                            formData={formData}
-                            adresses={adresses}
-                            activeDeliveryPill={Number(formData.deliveryType)} 
-                        />
-                        {screenSize.width <= 726 ? <></> :
-                            <TonightButton isLoading={isLoading} isDisabled={isLoading} onClick={handleCreateOrder} text='Оформить заказ'/>
-                        }
+                {!cart || cart.length <= 0 ? <>
+                    <div className={styles.emptyCartMessage}>
+                        Ваша корзина пуста! 
+                        <Link style={{color: '#D0BEE5'}} to='/catalogue'>Перейти в Каталог</Link>
                     </div>
-                    <div className={styles.cartWrapper}>
-                        <div className={styles.cartOrder}>
-                            <div className={secLayout.blockHeaderMain}>Ваш заказ</div>
-                            <div className={styles.deleteAll}>Удалить все</div>
-                        </div>
-                        
-                        <div className={styles.cartItems}>
-                            {cart ? 
-                                <>
-                                    {cart.map((item) => {
-                                        return <CartItem promocodeDiscount={promocodeDiscount} product={item} />
-                                    })}
-                                </>
-                            :
-                                <>
-                                </>
+                </> : <>
+                    <div className={styles.orderingWrapper}>
+                        <div className={styles.dataWrapper}>
+                            <CommonDataBlock 
+                                handleChangeData={handleChangeFormData} 
+                                handleChangeDelivery={handleChangeDelivery}
+                                handleChangeAdress={handleSetAuthDelivery}
+                                handleChangePayment={handleChangePayment}
+                                handleChangeComment={handleChangeComment}
+                                handleChangePhone={handleChangePhone}
+                                isAuth={isAuth}
+                                formErrors={formErrors}
+                                formData={formData}
+                                adresses={adresses}
+                                activeDeliveryPill={Number(formData.deliveryType)} 
+                            />
+                            {screenSize.width <= 726 ? <></> :
+                                <TonightButton isLoading={isLoading} isDisabled={isLoading} onClick={handleCreateOrder} text='Оформить заказ'/>
                             }
                         </div>
+                        <div className={styles.cartWrapper}>
+                            <div className={styles.cartOrder}>
+                                <div className={secLayout.blockHeaderMain}>Ваш заказ</div>
+                                <div className={styles.deleteAll}>Удалить все</div>
+                            </div>
+                            
+                            <div className={styles.cartItems}>    
+                                {cart.map((item) => {
+                                    return <CartItem promocodeDiscount={promocodeDiscount} product={item} />
+                                })}
+                            </div>
 
-                        <div className={styles.summary}>
-                            <div className={styles.promocodeBlock}>
-                                <div className={styles.promoLabel}>
-                                    У вас есть промокод? Примените его!
-                                </div>
-                                <div className={styles.promocodeFuncBlock}>
-                                    <div className={styles.promoInput}>
-                                        <DataInput onChange={handleSetupPromocode}/>
+                            <div className={styles.summary}>
+                                <div className={styles.promocodeBlock}>
+                                    <div className={styles.promoLabel}>
+                                        У вас есть промокод? Примените его!
                                     </div>
-                                    <div className={styles.promoSubmit}>
-                                        <TonightButton onClick={handleSetPromocodeToOrder} text="Применить" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.orderDelivery}>
-                                <div className={styles.orderSum}>
-                                    <div>
-                                        Сумма заказа
-                                    </div>
-                                    <div>
-                                        {promocodeDiscount && promocodeDiscount > 0 ? 
-                                            <>
-                                                {((summaryPrice - (summaryPrice / 100) * promocodeDiscount) / 100).toFixed(2)} BYN
-                                            </> 
-                                            :
-                                            <>
-                                                {summaryPrice / 100} BYN
-                                            </>
-                                        }
+                                    <div className={styles.promocodeFuncBlock}>
+                                        <div className={styles.promoInput}>
+                                            <DataInput onChange={handleSetupPromocode}/>
+                                        </div>
+                                        <div className={styles.promoSubmit}>
+                                            <TonightButton onClick={handleSetPromocodeToOrder} text="Применить" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={styles.deliveryPrice}>
-                                    <div>
-                                        Доставка
+                                <div className={styles.orderDelivery}>
+                                    <div className={styles.orderSum}>
+                                        <div>
+                                            Сумма заказа
+                                        </div>
+                                        <div>
+                                            {promocodeDiscount && promocodeDiscount > 0 ? 
+                                                <>
+                                                    {((summaryPrice - (summaryPrice / 100) * promocodeDiscount) / 100).toFixed(2)} BYN
+                                                </> 
+                                                :
+                                                <>
+                                                    {summaryPrice / 100} BYN
+                                                </>
+                                            }
+                                        </div>
                                     </div>
-                                    <div>
-                                        Бесплатно
+                                    <div className={styles.deliveryPrice}>
+                                        <div>
+                                            Доставка
+                                        </div>
+                                        <div>
+                                            Бесплатно
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.finalSum}>
-                                {promocodeDiscount && promocodeDiscount > 0 ? 
-                                    <>
-                                        ИТОГО: {((summaryPrice - (summaryPrice / 100) * promocodeDiscount) / 100).toFixed(2)} BYN
-                                    </> 
-                                :
-                                    <>
-                                        ИТОГО: {summaryPrice / 100} BYN
-                                    </>
-                                }
+                                <div className={styles.finalSum}>
+                                    {promocodeDiscount && promocodeDiscount > 0 ? 
+                                        <>
+                                            ИТОГО: {((summaryPrice - (summaryPrice / 100) * promocodeDiscount) / 100).toFixed(2)} BYN
+                                        </> 
+                                    :
+                                        <>
+                                            ИТОГО: {summaryPrice / 100} BYN
+                                        </>
+                                    }
+                                </div>
                             </div>
                         </div>
+                        <SuccessModal show={show} handleClose={handleClose} />
+                        {screenSize.width <= 726 ?  
+                            <TonightButton onClick={handleCreateOrder} arrow={false} text='Оформить заказ' />
+                        :
+                            <></>
+                        }
                     </div>
-                    <SuccessModal show={show} handleClose={handleClose} />
-                    {screenSize.width <= 726 ?  
-                        <TonightButton onClick={handleCreateOrder} arrow={false} text='Оформить заказ' />
-                    :
-                        <></>
-                    }
-                </div>
+                </> }
             </div>
         </div>
     </>

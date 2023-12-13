@@ -1,22 +1,28 @@
 import { FC } from 'react'
 
-import Row from 'react-bootstrap/Row'
-
 import styles from '../../../../styles/filter/filter.module.css'
 
 import FilterAccordion from './filter-accordion';
 import FilterRangedSlider from './filter-ranged-slider';
 
-import FilterPillItem from './filter-pills/filter-pill-item/filter.pill.item';
 import FilterPills from './filter-pills/filter-pill/filter.pills';
+import { useFetchFilterQuery } from '../../../../../services/filter.service';
 
 interface IProductFilter {
+    brandsInfo: any[];
     handleBrand: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    categoriesInfo: any[];
     handleCategory: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    countriesInfo: any[]
     handleCountry: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    notesInfo: any[];
     handleNotes: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    groupsInfo: any[]
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
+
+    minPrice: number;
+    maxPrice: number;
     handlePrice: (value: number[]) => void;
 
     selectedPills: number[];
@@ -24,11 +30,14 @@ interface IProductFilter {
 }
 
 const ProductFilter: FC<IProductFilter> = (props) => {
+    const {data: filter, error, isLoading} = useFetchFilterQuery(7)
 
     return <>
         <div className={styles.filterContent}>
             <div className={styles.rangeSliderContainer}>
                 <FilterRangedSlider 
+                    minPrice={props.minPrice}
+                    maxPrice={props.maxPrice}
                     handleSetPrice={props.handlePrice}
                 />
                 <div className={styles.checkBtnGroup}>
@@ -40,6 +49,12 @@ const ProductFilter: FC<IProductFilter> = (props) => {
                 </div>
             </div>
             <FilterAccordion
+                filter={filter ? filter : undefined}
+                checkedBrands={props.brandsInfo}
+                checkedCategories={props.categoriesInfo}
+                checkedCountries={props.countriesInfo}
+                checkedGroups={props.groupsInfo}
+                checkedNotes={props.notesInfo}
                 handleBrand={props.handleBrand}
                 handleCategory={props.handleCategory}
                 handleGroup={props.handleGroup}

@@ -1,4 +1,5 @@
 .volumePills {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -25,17 +26,22 @@
 @media only screen and (max-width: 375px) {
     .volumePill {
         font-size: 10px;
+        padding: 5px 6px;
     }
 }
 
 @media only screen and (min-width: 375px) {
     .volumePill {
-        font-size: 10px;
+        font-size: 12px;
+        padding: 6px 5px;
     }
 }
 
 @media only screen and (min-width: 726px) {
-
+    .volumePill {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
 }
 
 @media only screen and (min-width: 936px) {

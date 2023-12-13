@@ -34,4 +34,6 @@ export const filterAPI = apiSlice.injectEndpoints({
     })
 })
 
-export const { useSendFilterMutation } = filterAPI;
+export const { useSendFilterMutation, 
+               useFetchFilterQuery
+} = filterAPI;

@@ -222,14 +222,28 @@ interface ITrashIcon {
 export const TrashIcon: FC<ITrashIcon> = (props) => {
     return <>
         <svg {...props} style={{cursor: 'pointer'}} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip0_1049_39163)">
-                <path d="M13.1431 6.28548L12.0002 15.4283H4.00021L2.85735 6.28548M1.14307 3.99977H14.8574M5.09735 3.66834V1.6912C5.09735 1.38809 5.21776 1.0974 5.43209 0.883075C5.64641 0.668748 5.9371 0.54834 6.24021 0.54834H9.66878C9.97188 0.54834 10.2626 0.668748 10.4769 0.883075C10.6912 1.0974 10.8116 1.38809 10.8116 1.6912V3.97691" stroke="#1E1E1E" stroke-width="1.14286" stroke-linecap="round" stroke-linejoin="round"/>
+            <g clipPath="url(#clip0_1049_39163)">
+                <path d="M13.1431 6.28548L12.0002 15.4283H4.00021L2.85735 6.28548M1.14307 3.99977H14.8574M5.09735 3.66834V1.6912C5.09735 1.38809 5.21776 1.0974 5.43209 0.883075C5.64641 0.668748 5.9371 0.54834 6.24021 0.54834H9.66878C9.97188 0.54834 10.2626 0.668748 10.4769 0.883075C10.6912 1.0974 10.8116 1.38809 10.8116 1.6912V3.97691" stroke="#1E1E1E" strokeWidth="1.14286" strokeLinecap="round" strokeLinejoin="round"/>
             </g>
             <defs>
                 <clipPath id="clip0_1049_39163">
                 <rect width="16" height="16" fill="white"/>
                 </clipPath>
             </defs>
+        </svg>
+    </>
+}
+
+export const SuccessIcon = () => {
+    return <>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" fill="none">
+            <path 
+                d="M6.5 11L9.5 14L15.5 8M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z" 
+                stroke="white"
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+            />
         </svg>
     </>
 }

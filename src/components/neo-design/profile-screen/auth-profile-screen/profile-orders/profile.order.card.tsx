@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const ProfileOrderCard: FC<IProps> = (props) => {
-    const {data, isLoading, isFetching, isSuccess, refetch} = useGetOrdersQuery();
+    const {data, refetch} = useGetOrdersQuery();
     
     const handleDate = (item: Date) => {
         let curr = new Date(item);

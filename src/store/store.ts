@@ -5,7 +5,6 @@ import { apiSlice } from "./slices/apiSlice";
 import { TypedUseSelectorHook, useSelector, useDispatch } from "react-redux";
 import storage from 'redux-persist/lib/storage';
 import {
-    persistStore,
     persistReducer,
     FLUSH,
     REHYDRATE,

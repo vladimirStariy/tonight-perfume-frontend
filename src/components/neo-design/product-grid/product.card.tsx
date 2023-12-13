@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./product.card.module.css";
@@ -7,9 +7,12 @@ import { IProductCard } from "../../../store/models/product/IProductCard";
 import { useAddToFavoriteMutation, useRemoveFavoriteMutation } from "../../../services/product-service";
 import TonightButton from "../../../UI/Components/button/tonight-button";
 import { useDispatch } from "react-redux";
-import { addToCart, selectCartItems } from "../../../store/slices/cartSlice";
+import { addToCart, removeCartItem, removeCartItemById, selectCartItems } from "../../../store/slices/cartSlice";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "../../../store/slices/authSlice";
+import { SuccessIcon } from "../icons/icons";
+
+import { v4 as uuidv4 } from 'uuid'
 
 interface IProductCardScreen {
     data: IProductCard;
@@ -23,6 +26,7 @@ const ProductCard: FC<IProductCardScreen> = props => {
     const [remove] = useRemoveFavoriteMutation();
 
     const auth = useSelector(selectCurrentToken);
+    const cart = useSelector(selectCartItems);
 
     const dispatcher = useDispatch();
 
@@ -48,6 +52,10 @@ const ProductCard: FC<IProductCardScreen> = props => {
         setIsFavorite(false);
         if(props.refetch !== undefined)
             props.refetch();
+    }
+
+    const handleRemoveFromCart = () => {
+        dispatcher(removeCartItemById({productId: props.data.id}))
     }
 
     return <>
@@ -98,7 +106,13 @@ const ProductCard: FC<IProductCardScreen> = props => {
                     }
                     
                 </div>
-                <TonightButton onClick={handleAddToCart} text="В корзину" />
+                 {cart?.find(product => product.productId === props.data.id) !== undefined ? <>
+                    <div onClick={handleRemoveFromCart} className={styles.counter}>
+                        Удалить из корзины
+                    </div>
+                 </> : <>
+                    <TonightButton onClick={handleAddToCart} text="В корзину" />
+                 </>}
             </div>
         </div>
     </>

@@ -66,3 +66,29 @@
         transform: rotate(360deg);
     }
 }
+
+@media only screen and (max-width: 375px) {
+    .tonightButtonSimple {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .tonightButtonSimple {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 726px) {
+    .tonightButtonSimple {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 936px) {
+
+}
+
+@media only screen and (min-width: 1248px) {
+
+}

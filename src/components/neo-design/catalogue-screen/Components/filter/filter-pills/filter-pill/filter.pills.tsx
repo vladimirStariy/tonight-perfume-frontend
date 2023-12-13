@@ -16,6 +16,7 @@ const FilterPills: FC<FilterPillsProps> = (props) => {
             {props.initialValues.map((item, index) => (
                 <FilterPillItem 
                     key={index}
+                    isActive={props.selected.includes(item)}
                     value={item}
                     handleClick={props.handleSelectValues}
                 />

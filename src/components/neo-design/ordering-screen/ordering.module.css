@@ -22,6 +22,19 @@
     width: 592px;
 }
 
+.emptyCartMessage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
 .cartItems {
     display: flex;
     flex-direction: column;

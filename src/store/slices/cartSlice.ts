@@ -46,12 +46,18 @@ const cartSlice = createSlice({
                 if(newProducts) state.products = newProducts;
             }
         },
+        removeCartItemById: (state, { payload: { productId } }: PayloadAction<{productId: number}>) => {
+            if(current(state).products && current(state).products !== null) {
+                const newProducts = current(state)?.products?.filter(obj => {return obj.productId !== productId})
+                if(newProducts) state.products = newProducts;
+            }
+        },
         clearCart: (state) => {
             state.products = null;
         }
     }
 })
 
-export const { addToCart, removeCartItem, updateCartItem, clearCart } = cartSlice.actions;
+export const { addToCart, removeCartItem, updateCartItem, clearCart, removeCartItemById } = cartSlice.actions;
 export default cartSlice.reducer;
 export const selectCartItems = (state: RootState) => state.cart.products;

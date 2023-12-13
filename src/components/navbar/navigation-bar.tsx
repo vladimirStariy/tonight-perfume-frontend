@@ -36,7 +36,6 @@ const NavBar: FC = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', controlNavbar);
 
-      // cleanup function
       return () => {
         window.removeEventListener('scroll', controlNavbar);
       };

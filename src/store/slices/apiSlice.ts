@@ -1,4 +1,4 @@
-import { BaseQueryApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 import { BASE_URL } from "../../utils/http-config";
 import { RootState } from "../store";
 import type {BaseQueryFn, FetchArgs, FetchBaseQueryError} from '@reduxjs/toolkit/query'

@@ -105,8 +105,63 @@ a {
     color: #D0BEE5;
 }
 
-@media only screen and (max-width: 375px) {
+.counter {
+    cursor: pointer;
+    width: 100%;
+    height: 52px;
+    color: white;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+}
 
+.counter:hover {
+    background-color: #D0BEE5;
+    color: #1e1e1e;
+}
+
+.counter svg path {
+    transition: all .3s;
+    stroke: white;
+}
+
+.counter:hover svg path {
+    stroke: black;
+}
+
+.funcButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    color: white;
+    min-width: 52px;
+    height: 52px;
+}
+
+.countBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+@media only screen and (max-width: 375px) {
+    .counter {
+        font-size: 16px;
+    }
 }
 
 @media only screen and (min-width: 375px) {
@@ -139,10 +194,18 @@ a {
     .discountLabel {
         font-size: 24px;
     }
+    .counter {
+        font-size: 14px;
+        height: 48px;
+    }
+
 }
 
 @media only screen and (min-width: 726px) {
-    
+    .counter {
+        font-size: 20px;
+        height: 52px;
+    }
 }
 
 @media only screen and (min-width: 936px) {

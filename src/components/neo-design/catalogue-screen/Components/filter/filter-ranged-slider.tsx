@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import RangeSlider from 'react-slider';
 
@@ -10,6 +10,8 @@ const MIN = 0;
 const MAX = 1000;
 
 interface RangedSliderProps {
+    minPrice: number,
+    maxPrice: number,
     handleSetPrice: (value: number[]) => void;
 }
 
@@ -20,6 +22,10 @@ const FilterRangedSlider: FC<RangedSliderProps> = (props) => {
         props.handleSetPrice(e)
         setValues(e)
     }
+
+    useEffect(() => {
+        setValues([props.minPrice, props.maxPrice])
+    }, [props.maxPrice, props.minPrice])
 
     return <>
         <b className={styles.rangeFilterLabel}>Цена и объём</b>
