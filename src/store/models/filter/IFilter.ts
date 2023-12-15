@@ -8,5 +8,7 @@ export interface IFilter {
     aromaGroups: IAromaGroup[],
     categories: ICategory[],
     perfumeNotes: INote[],
-    countries: string[]
+    countries: string[],
+    minPrice: number,
+    maxPrice: number
 }

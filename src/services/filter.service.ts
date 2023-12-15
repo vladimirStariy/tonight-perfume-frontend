@@ -4,6 +4,7 @@ import { IFilterRequest } from "../store/models/filter/IFIlterRequest"
 import { IProductCard } from "../store/models/product/IProductCard"
 import { IProductsWithPagination } from "../store/models/product/IProductsWithPagination"
 import { apiSlice } from "../store/slices/apiSlice"
+import { IBrand } from "../models/IBrand"
 
 export const filterAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
@@ -30,10 +31,17 @@ export const filterAPI = apiSlice.injectEndpoints({
                     items: apiResponse,
                 }
             }
-        })
+        }),
+        fetchFilterBrands: build.mutation<IBrand[], void>({
+            query: () => ({
+                url: `/sorted-brands`,
+                method: 'GET'
+            })
+        }), 
     })
 })
 
 export const { useSendFilterMutation, 
-               useFetchFilterQuery
+               useFetchFilterQuery,
+               useFetchFilterBrandsMutation
 } = filterAPI;

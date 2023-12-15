@@ -86,7 +86,7 @@ const NavBar: FC = () => {
         }
 
         {
-          screenSize.width > 768 ? 
+          screenSize.width >= 768 ? 
             <></> : 
               <Navbar.Collapse className={styles.topPadding} id="navbarSupportedContent">
                 <Nav navbarScroll className={styles.subBottomNav}>

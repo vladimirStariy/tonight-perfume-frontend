@@ -6,7 +6,7 @@ import useScreenSize from "../../utils/use-screen-size";
 import CatalogueHeader from "./Components/catalogue-header/catalogue.header";
 import ProductFilter from "../catalogue-screen/Components/filter/filter";
 import ProductGrid from "../product-grid/product.grid";
-import { useSendFilterMutation } from "../../../services/filter.service";
+import { useFetchFilterBrandsMutation, useFetchFilterQuery, useSendFilterMutation } from "../../../services/filter.service";
 import { IFilterRequest } from "../../../store/models/filter/IFIlterRequest";
 import { IProductsWithPagination } from "../../../store/models/product/IProductsWithPagination";
 import Loader from "../../../UI/Components/loader/loader";
@@ -15,18 +15,25 @@ const CatalogueScreen: FC = () => {
     const screenSize = useScreenSize();
 
     const [sendFilter, {data, isError}] = useSendFilterMutation();
+    const {data: filter, error, isLoading: filterIsLoading, refetch} = useFetchFilterQuery(7)
+    const [showAllBrands, {isError: brandsError}] = useFetchFilterBrandsMutation();
+
     const [fetchedData, setfetchedData] = useState<IProductsWithPagination>();
 
     const [page, setPage] = useState(1);
 
-    const MIN = 0; const MAX = 10000;
-    const [values, setValues] = useState([MIN, MAX]);
+    const [values, setValues] = useState<number[]>([]);
     const [brandInfo, setBrandInfo] = useState<Array<any>>([]);
     const [categoryInfo, setCategoryInfo] = useState<Array<any>>([]);
     const [groupInfo, setGroupInfo] = useState<Array<any>>([]);
     const [countriesInfo, setCountriesInfo] = useState<Array<any>>([]);
     const [notesInfo, setNotesInfo] = useState<Array<any>>([]);
     const [selectedVolumes, setSelectedVolumes] = useState<number[]>([]);
+
+    const [accordionBrands, setAccordionBrands] = useState<Array<any>>([]);
+    const [accordionCountries, setAccordionCountries] = useState<Array<any>>([]);
+    const [accordionAromaGroups, setAccordionAromaGroups] = useState<Array<any>>([]);
+    const [accordionNotes, setAccordionNotes] = useState<Array<any>>([]);
 
     const filterRequestData: IFilterRequest = {
         page: page,
@@ -117,6 +124,25 @@ const CatalogueScreen: FC = () => {
             setPage(page-1)
     }
 
+    const handleShowAllBrands = async () => {
+        const response = await showAllBrands().unwrap();
+        setAccordionBrands(response)
+    }
+    const handleCollapseBrands = async () => {
+        if(filter) setAccordionBrands(filter?.brands)
+    }
+
+    useEffect(() => {
+        if(filter) {
+            setValues([filter.minPrice, filter.maxPrice])
+
+            setAccordionAromaGroups(filter.aromaGroups);
+            setAccordionBrands(filter.brands);
+            setAccordionCountries(filter.countries)
+            setAccordionNotes(filter.perfumeNotes)
+        } 
+    }, [filter])
+
     useEffect(() => {
         handleCheckData();
     }, [page])
@@ -137,49 +163,80 @@ const CatalogueScreen: FC = () => {
         </div>
         <div className={layout.tonightWrapper}>
             <div className={`${layout.tonightContainer} ${layout.gap}`}>
-                <CatalogueHeader
-                    brandsInfo={brandInfo}
-                    handleBrand={handleCheckBrand}
-                    categoriesInfo={categoryInfo}
-                    handleCategory={handleCheckCategory}
-                    groupsInfo={groupInfo}
-                    handleGroup={handleCheckGroup}
-                    countriesInfo={countriesInfo}
-                    handleCountry={handleCheckCountry}
-                    notesInfo={notesInfo}
-                    handleNotes={handleCheckNotes}
+                {filter ? <>
+                    <CatalogueHeader
+                        brandsInfo={brandInfo}
+                        handleBrand={handleCheckBrand}
+                        categoriesInfo={categoryInfo}
+                        handleCategory={handleCheckCategory}
+                        groupsInfo={groupInfo}
+                        handleGroup={handleCheckGroup}
+                        countriesInfo={countriesInfo}
+                        handleCountry={handleCheckCountry}
+                        notesInfo={notesInfo}
+                        handleNotes={handleCheckNotes}
 
-                    handleCheckData={handleCheckData}
+                        handleShowAllBrands={handleShowAllBrands}
+                        handleCollapseBrands={handleCollapseBrands}
 
-                    selectedPills={selectedVolumes}
-                    minPrice={values[0]}
-                    maxPrice={values[1]}
-                    handlePrice={setValues}
-                    handleSelectVolumes={handleSelectVolumes}
-                />
+                        handleCheckData={handleCheckData}
+
+                        selectedPills={selectedVolumes}
+                        
+                        filter={filter}
+                        values={values}
+
+                        handlePrice={setValues}
+                        handleSelectVolumes={handleSelectVolumes}
+
+                        accordionBrands={accordionBrands}
+                        accordionCountries={accordionCountries}
+                        accordionGroups={accordionAromaGroups}
+                        accordionNotes={accordionNotes}
+                    />
+                </> : <></>}
                 <div className={styles.catalogueContentFull}>
-                    {screenSize.width < 1248 ? <></> : 
-                        <div className={styles.catalogueFilterContainer}>
-                            <ProductFilter 
-                                brandsInfo={brandInfo}
-                                handleBrand={handleCheckBrand}
-                                categoriesInfo={categoryInfo}
-                                handleCategory={handleCheckCategory}
-                                groupsInfo={groupInfo}
-                                handleGroup={handleCheckGroup}
-                                countriesInfo={countriesInfo}
-                                handleCountry={handleCheckCountry}
-                                notesInfo={notesInfo}
-                                handleNotes={handleCheckNotes}
+                    {screenSize.width < 1248 ? <></> : <>
+                        {filterIsLoading ? <>
+                            <div className={styles.loaderWrapper}><Loader /></div>
+                        </> : <>
+                            {filter ? <>
+                                <div className={styles.catalogueFilterContainer}>
+                                    <ProductFilter 
+                                        brandsInfo={brandInfo}
+                                        handleBrand={handleCheckBrand}
+                                        categoriesInfo={categoryInfo}
+                                        handleCategory={handleCheckCategory}
+                                        groupsInfo={groupInfo}
+                                        handleGroup={handleCheckGroup}
+                                        countriesInfo={countriesInfo}
+                                        handleCountry={handleCheckCountry}
+                                        notesInfo={notesInfo}
+                                        handleNotes={handleCheckNotes}
 
-                                handleCheckData={handleCheckData}
-                                selectedPills={selectedVolumes}
-                                minPrice={values[0]}
-                                maxPrice={values[1]}
-                                handlePrice={setValues}
-                                handleSelectVolumes={handleSelectVolumes}
-                            />
-                        </div>
+                                        filter={filter}
+
+                                        handleCheckData={handleCheckData}
+                                        selectedPills={selectedVolumes}
+                                        priceValues={values}
+                                        handlePrice={setValues}
+                                        handleSelectVolumes={handleSelectVolumes}
+
+                                        handleShowAllBrands={handleShowAllBrands}
+                                        handleCollapseBrands={handleCollapseBrands}
+                                        
+                                        accordionBrands={accordionBrands}
+                                        accordionCountries={accordionCountries}
+                                        accordionGroups={accordionAromaGroups}
+                                        accordionNotes={accordionNotes}
+                                    />
+                                </div>
+                            </> : <>
+                            
+                            </>}
+                        </>}
+                    </>
+                        
                     }
                     <div className={styles.catalogueProductContainer}>
                         {isError ? <div className={styles.errorPlaceholder}>
@@ -208,8 +265,15 @@ const CatalogueScreen: FC = () => {
                     <div className={styles.pages}>
                         {
                             fetchedData ? 
-                                Array.from({length:fetchedData.pagination.totalPages}, (_, i) => 
-                                    <div key={i} onClick={() => setPage(i+1)} className={styles.pageTab}><b>{i+1}</b></div>
+                                Array.from({length: fetchedData.pagination.totalPages}, (_, i) => 
+                                    <div 
+                                        style={page === i+1 ? {color: '#D0BEE5'} : {color: '#1E1E1E'}} 
+                                        key={i} 
+                                        onClick={() => setPage(i+1)} 
+                                        className={styles.pageTab}
+                                    >
+                                            <b>{i+1}</b>
+                                    </div>
                                 )
                             :
                                 <></>

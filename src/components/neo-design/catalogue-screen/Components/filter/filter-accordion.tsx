@@ -10,6 +10,7 @@ import TonightButton from "../../../../../UI/Components/button/tonight-button";
 
 import { filterAPI } from "../../../../../services/filter.service";
 import { IFilter } from "../../../../../store/models/filter/IFilter";
+import TonightCheckbox from "../../../../../UI/Components/custom-checkbox/tonight.checkbox";
 
 interface IFilterAccordion {
     filter: IFilter | undefined;
@@ -24,9 +25,31 @@ interface IFilterAccordion {
     checkedGroups: any[];
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
+
+    handleShowAllBrands: () => void;
+    handleCollapseBrands: () => void;
+
+    accordionBrands: any[];
+    accordionNotes: any[];
+    accordionCountries: any[];
+    accordionGroups: any[];
 }
 
 const FilterAccordion: FC<IFilterAccordion> = (props) => {
+    const [isBrandsShowed, setIsBrandsShowed] = useState(false);
+    const [isCountriesShowed, setIsCountriesShowed] = useState(false);
+    const [isGroupsShowed, setIsGroupsShowed] = useState(false);
+    const [isNotesShowed, setIsNotesShowed] = useState(false);
+
+    const handleShowAllBrands = () => {
+        setIsBrandsShowed(true);
+        props.handleShowAllBrands();
+    }
+
+    const handleCollapseAllBrands = () => {
+        setIsBrandsShowed(false)
+        props.handleCollapseBrands();
+    }
 
     return <div className={styles.accordionContainer}>
         <Accordion className={styles.accordion} defaultActiveKey={['0']} alwaysOpen flush>
@@ -35,13 +58,14 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Body>
                     {
                         props.filter?.categories.map((category, index) => (
-                            <Form.Check 
+                            <Form.Check
                                 onChange={(e) => props.handleCategory(e)}
                                 key={index}
                                 type='checkbox'
                                 value={`${category.category_ID}`}
                                 id={`category-checkbox-${category.category_ID}`}
                                 label={`${category.name}`}
+                                checked={props.checkedCategories.includes(category.category_ID.toString())}
                             />
                         ))
                     }
@@ -51,7 +75,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Бренд</Accordion.Header>
                 <Accordion.Body>
                     {
-                        props.filter?.brands.map((brand, index) => (
+                        props.accordionBrands.map((brand, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleBrand(e)}
                                 key={index}
@@ -59,10 +83,15 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                                 value={`${brand.brand_ID}`}
                                 id={`brand-checkbox-${brand.brand_ID}`}
                                 label={`${brand.name}`}
+                                checked={props.checkedBrands.includes(brand.brand_ID.toString())}
                             />
                         ))
                     }
-                    <Link to='' style={{textDecoration: 'underline'}}>Показать все</Link>
+                    {isBrandsShowed ? <>
+                        <div onClick={handleCollapseAllBrands} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
+                    </> : <>
+                        <div onClick={handleShowAllBrands} style={{textDecoration: 'underline', cursor: 'pointer'}}>Показать все</div>
+                    </>}
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item className={styles.customAcc} eventKey="2">
@@ -77,6 +106,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                                 value={`${country}`}
                                 id={`brand-checkbox-${country}`}
                                 label={`${country}`}
+                                checked={props.checkedCountries.includes(country)}
                             />
                         ))
                     }
@@ -93,6 +123,9 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                                 type='checkbox'
                                 id={`aromaGroup-checkbox-${aromaGroup.aromaGroup_ID}`}
                                 label={`${aromaGroup.aromaGroup_Name}`}
+                                value={aromaGroup.aromaGroup_ID}
+                                onChange={(e) => props.handleGroup(e)}
+                                checked={props.checkedGroups.includes(aromaGroup.aromaGroup_ID.toString())}
                             />
                         ))
                     }
@@ -112,6 +145,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                                 value={`${note.note_ID}`}
                                 id={`notes-checkbox-${note.note_ID}`}
                                 label={`${note.name}`}
+                                checked={props.checkedNotes.includes(note.note_ID.toString())}
                             />
                         ))
                     }
@@ -119,7 +153,7 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
-        <TonightButton onClick={props.handleCheckData} text="Показать 130 товаров" />
+        <TonightButton onClick={props.handleCheckData} text="Применить фильтр" />
     </div>
 }
 

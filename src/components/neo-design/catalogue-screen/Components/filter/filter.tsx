@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import styles from '../../../../styles/filter/filter.module.css'
 
@@ -6,7 +6,7 @@ import FilterAccordion from './filter-accordion';
 import FilterRangedSlider from './filter-ranged-slider';
 
 import FilterPills from './filter-pills/filter-pill/filter.pills';
-import { useFetchFilterQuery } from '../../../../../services/filter.service';
+import { IFilter } from '../../../../../store/models/filter/IFilter';
 
 interface IProductFilter {
     brandsInfo: any[];
@@ -21,23 +21,31 @@ interface IProductFilter {
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
 
-    minPrice: number;
-    maxPrice: number;
+    priceValues: number[];
     handlePrice: (value: number[]) => void;
+
+    filter: IFilter;
 
     selectedPills: number[];
     handleSelectVolumes: (value: number) => void;
+
+    handleShowAllBrands: () => void;
+    handleCollapseBrands: () => void;
+
+    accordionBrands: any[];
+    accordionNotes: any[];
+    accordionCountries: any[];
+    accordionGroups: any[];
 }
 
 const ProductFilter: FC<IProductFilter> = (props) => {
-    const {data: filter, error, isLoading} = useFetchFilterQuery(7)
-
     return <>
         <div className={styles.filterContent}>
             <div className={styles.rangeSliderContainer}>
                 <FilterRangedSlider 
-                    minPrice={props.minPrice}
-                    maxPrice={props.maxPrice}
+                    values={props.priceValues}
+                    minPrice={props.filter.minPrice}
+                    maxPrice={props.filter.maxPrice}
                     handleSetPrice={props.handlePrice}
                 />
                 <div className={styles.checkBtnGroup}>
@@ -49,7 +57,7 @@ const ProductFilter: FC<IProductFilter> = (props) => {
                 </div>
             </div>
             <FilterAccordion
-                filter={filter ? filter : undefined}
+                filter={props.filter}
                 checkedBrands={props.brandsInfo}
                 checkedCategories={props.categoriesInfo}
                 checkedCountries={props.countriesInfo}
@@ -61,6 +69,14 @@ const ProductFilter: FC<IProductFilter> = (props) => {
                 handleCountry={props.handleCountry}
                 handleNotes={props.handleNotes}
                 handleCheckData={props.handleCheckData}
+
+                handleShowAllBrands={props.handleShowAllBrands}
+                handleCollapseBrands={props.handleCollapseBrands}
+
+                accordionBrands={props.accordionBrands}
+                accordionCountries={props.accordionCountries}
+                accordionGroups={props.accordionGroups}
+                accordionNotes={props.accordionNotes}
             />
         </div>
     </>

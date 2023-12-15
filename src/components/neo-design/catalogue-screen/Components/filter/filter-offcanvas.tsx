@@ -3,9 +3,12 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import ProductFilter from './filter';
 
 import styles from '../../../../styles/filter/filter.module.css'
+
 import FilterRangedSlider from './filter-ranged-slider';
 import FilterPills from './filter-pills/filter-pill/filter.pills';
 import FilterAccordion from './filter-accordion';
+import { useFetchFilterQuery } from '../../../../../services/filter.service';
+import { IFilter } from '../../../../../store/models/filter/IFilter';
 
 interface IProps {
     handleClose: () => void;
@@ -23,12 +26,21 @@ interface IProps {
     handleGroup: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleCheckData: () => void;
 
-    minPrice: number;
-    maxPrice: number;
+    filter: IFilter;
+    values: number[];
+
     handlePrice: (value: number[]) => void;
 
     selectedPills: number[];
     handleSelectVolumes: (value: number) => void;
+
+    handleShowAllBrands: () => void;
+    handleCollapseBrands: () => void;
+
+    accordionBrands: any[];
+    accordionNotes: any[];
+    accordionCountries: any[];
+    accordionGroups: any[];
 }
 
 const FilterOffcanvas: FC<IProps> = (props) => {
@@ -43,8 +55,9 @@ const FilterOffcanvas: FC<IProps> = (props) => {
                 <div className={styles.filterContent}>
                     <div className={styles.rangeSliderContainer}>
                         <FilterRangedSlider 
-                            minPrice={props.minPrice}
-                            maxPrice={props.maxPrice}
+                            values={props.values}
+                            minPrice={props.filter.minPrice}
+                            maxPrice={props.filter.maxPrice}
                             handleSetPrice={props.handlePrice}
                         />
                         <div className={styles.checkBtnGroup}>
@@ -56,6 +69,7 @@ const FilterOffcanvas: FC<IProps> = (props) => {
                         </div>
                     </div>
                     <FilterAccordion
+                        filter={props.filter}
                         checkedBrands={props.brandsInfo}
                         checkedCategories={props.categoriesInfo}
                         checkedCountries={props.countriesInfo}
@@ -68,6 +82,14 @@ const FilterOffcanvas: FC<IProps> = (props) => {
                         handleCountry={props.handleCountry}
                         handleNotes={props.handleNotes}
                         handleCheckData={props.handleCheckData}
+
+                        handleShowAllBrands={props.handleShowAllBrands}
+                        handleCollapseBrands={props.handleCollapseBrands}
+
+                        accordionBrands={props.accordionBrands}
+                        accordionCountries={props.accordionCountries}
+                        accordionGroups={props.accordionGroups}
+                        accordionNotes={props.accordionNotes}
                     />
                 </div>
             </Offcanvas.Body>

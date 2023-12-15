@@ -7,6 +7,7 @@ import useScreenSize from "../../../../utils/use-screen-size";
 import styles from './catalogue.header.module.css';
 import SortButton from './header components/sort.button';
 import TonightInput from '../../../../../UI/Components/input/tonight-input';
+import { IFilter } from '../../../../../store/models/filter/IFilter';
 
 interface CatalogueHeaderProps {
     brandsInfo: any[];
@@ -22,12 +23,22 @@ interface CatalogueHeaderProps {
 
     handleCheckData: () => void;
 
-    minPrice: number;
-    maxPrice: number;
+    
+    filter: IFilter;
+    values: number[];
+    
     handlePrice: (value: number[]) => void;
-
+    
     selectedPills: number[];
     handleSelectVolumes: (value: number) => void;
+    
+    handleShowAllBrands: () => void;
+    handleCollapseBrands: () => void;
+
+    accordionBrands: any[];
+    accordionNotes: any[];
+    accordionCountries: any[];
+    accordionGroups: any[];
 }
 
 const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
@@ -64,14 +75,23 @@ const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
                                     handleGroup={props.handleGroup}
                                     handleCheckData={props.handleCheckData}
 
-                                    minPrice={props.minPrice}
-                                    maxPrice={props.maxPrice}
+                                    filter={props.filter}
+                                    values={props.values}
+
                                     handlePrice={props.handlePrice}
                                 
                                     selectedPills={props.selectedPills}
                                     handleSelectVolumes={props.handleSelectVolumes}
 
                                     handleClose={handleClose} show={show}
+
+                                    handleShowAllBrands={props.handleShowAllBrands}
+                                    handleCollapseBrands={props.handleCollapseBrands}
+
+                                    accordionBrands={props.accordionBrands}
+                                    accordionCountries={props.accordionCountries}
+                                    accordionGroups={props.accordionGroups}
+                                    accordionNotes={props.accordionNotes}
                                 />
                             </>
                             :
@@ -110,14 +130,22 @@ const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
                                 handleGroup={props.handleGroup}
                                 handleCheckData={props.handleCheckData}
 
-                                minPrice={props.minPrice}
-                                maxPrice={props.maxPrice}
+                                filter={props.filter}
+                                values={props.values}
                                 handlePrice={props.handlePrice}
                                 
                                 selectedPills={props.selectedPills}
                                 handleSelectVolumes={props.handleSelectVolumes}
 
                                 handleClose={handleClose} show={show}
+
+                                handleShowAllBrands={props.handleShowAllBrands}
+                                handleCollapseBrands={props.handleCollapseBrands}
+
+                                accordionBrands={props.accordionBrands}
+                                accordionCountries={props.accordionCountries}
+                                accordionGroups={props.accordionGroups}
+                                accordionNotes={props.accordionNotes}
                             />
                         </>
                         :
