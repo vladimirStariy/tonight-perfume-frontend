@@ -10,17 +10,18 @@ import { useDispatch } from "react-redux";
 import { addToCart, removeCartItem, removeCartItemById, selectCartItems } from "../../../store/slices/cartSlice";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "../../../store/slices/authSlice";
-import { SuccessIcon } from "../icons/icons";
-
-import { v4 as uuidv4 } from 'uuid'
 
 interface IProductCardScreen {
     data: IProductCard;
     refetch?: () => void;
 }
 
+
+
 const ProductCard: FC<IProductCardScreen> = props => {
     const [isFavorite, setIsFavorite] = useState<boolean>(props.data.isFavorite)
+
+    console.log(props.data)
 
     const [addToFavorite] = useAddToFavoriteMutation();
     const [remove] = useRemoveFavoriteMutation();

@@ -5,6 +5,9 @@ import { IProductCard } from "../store/models/product/IProductCard"
 import { IProductsWithPagination } from "../store/models/product/IProductsWithPagination"
 import { apiSlice } from "../store/slices/apiSlice"
 import { IBrand } from "../models/IBrand"
+import { INote } from "../models/INote"
+import { IGroup } from "../models/IGroup"
+import { ICountry } from "../models/ICountry"
 
 export const filterAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
@@ -38,10 +41,38 @@ export const filterAPI = apiSlice.injectEndpoints({
                 method: 'GET'
             })
         }), 
+        fetchFilterNotes: build.mutation<INote[], void>({
+            query: () => ({
+                url: `/sorted-notes`,
+                method: 'GET'
+            })
+        }), 
+        fetchFilterGroups: build.mutation<IGroup[], void>({
+            query: () => ({
+                url: `/sorted-groups`,
+                method: 'GET'
+            })
+        }), 
+        fetchFilterCountries: build.mutation<ICountry[], void>({
+            query: () => ({
+                url: `/sorted-countries`,
+                method: 'GET'
+            })
+        }), 
+        getPopularProducts: build.query<IProductCard[], void>({
+            query: () => ({
+                url: `/popular-products`,
+                method: 'GET'
+            }),
+        }),
     })
 })
 
 export const { useSendFilterMutation, 
                useFetchFilterQuery,
-               useFetchFilterBrandsMutation
+               useFetchFilterBrandsMutation,
+               useFetchFilterGroupsMutation,
+               useFetchFilterNotesMutation,
+               useFetchFilterCountriesMutation,
+               useGetPopularProductsQuery
 } = filterAPI;

@@ -12,7 +12,10 @@
 .socialSlide {
     width: 100%;
     height: 500px;
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-size: cover;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -118,42 +121,143 @@
     animation-fill-mode: forwards;
 }
 
+.labelAdsBlock {
+    display: flex;
+    flex-direction: column;
+    max-width: 556px;
+    margin-left: 30%;
+}
+
+.firstSlideLbl {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: var(--Dark, #1E1E1E);
+    font-family: Manrope;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 54px */   
+}
+
+.firstSlideLbl:hover {
+    cursor: default;   
+}
+
+.firstSlideLbl svg:hover {
+    cursor: pointer;   
+}
+
+.firstIcons {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.defaultWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 556px;
+    margin-left: 40%;
+}
+
+.slideHeaderLabel {
+    color: var(--Dark, #1E1E1E);
+    font-family: Manrope;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 54px */
+}
+
+.slideHeaderLabel:hover {
+    cursor: default;
+}
+
+.slideDescriptionLabel {
+    color: var(--Dark, #1E1E1E);
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+}
+
+.slideDescriptionLabel:hover {
+    cursor: default;
+}
+
 @media only screen and (max-width: 375px) {
 
 }
 
 @media only screen and (min-width: 375px) {
-    .yellowSlide {
-        height: 542px;
-
-        background-image: url(/public/slide1.png);
-        
-
-        background-size: 160%;
-
-
-        background-position: 27%;
-        background-repeat: no-repeat;
-    }
     .socialSlide {
+        justify-content: flex-start;
         height: 542px;
         background-size: cover;
-        background-position: 100% 100%;
+        background-position: 20% 100%;
+    }
+    .firstSlideLbl {
+        font-size: 32px;
+    }
+    .firstSlideLbl svg {
+        width: 45px;
+        height: 45px;
+    }
+    .firstIcons {
+        gap: 20px;
+    }
+    .labelAdsBlock {
+        margin: 0;
+        padding: 1rem;
+        font-size: 32px;
+    }
+    .defaultWrapper {
+        margin: 0;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .slideDescriptionLabel {
+        font-size: 1rem;
+    }
+    .slideHeaderLabel {
+        font-size: 32px;
     }
 }
 
-@media only screen and (min-width: 726px) {
-    .yellowSlide {
-        height: 361px;
-
-        background-image: url(../../../../../../public/slider/Slide1.png);
-        background-size: cover;
-        background-position: 0px 100%;
-        background-repeat: no-repeat;
-    }
+@media only screen and (min-width: 768px) {
     .socialSlide {
+        justify-content: center;
         height: 361px;
-        background-position: 33%;
+        background-position: 100% 100%;
+    }
+    .firstSlideLbl {
+        font-size: 48px;
+    }
+    .firstSlideLbl svg {
+        width: 60px;
+        height: 60px;
+    }
+    .firstIcons {
+        gap: 20px;
+    }
+    .labelAdsBlock {
+        margin-left: 40%;
+        padding: 0rem;
+        font-size: 48px;
+    }
+    .slideDescriptionLabel {
+        font-size: 24px;
+    }
+    .defaultWrapper {
+        margin-left: 30%;
+        gap: 24px;
+        padding: 0rem;
+    }
+    .slideHeaderLabel {
+        font-size: 32px;
     }
 }
 
@@ -165,12 +269,6 @@
 }
 
 @media only screen and (min-width: 1248px) {
-    .yellowSlide {
-        background-image: url(../../../../../../public/slider/Slide1.png);
-        background-size: cover;
-        background-position: 0px 100%;
-        background-repeat: no-repeat;
-    }
     .socialSlide {
         background-position: 50%;
     }

@@ -1,12 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, FC } from "react";
 
 import { register } from "swiper/element/bundle";
 import ProductCard from "../../../product-grid/product.card";
-import { fakeData } from "../../../../../fakedatas/productFakeData";
-import useScreenSize from "../../../../utils/use-screen-size";
 
+import useScreenSize from "../../../../utils/use-screen-size";
+import styles from './product.slider.module.css'
 import layout from '../../../layout/layout.module.css'
 import TonightArrowGroup from "../../../../../UI/Components/arrow-group/tonight-arrow-group";
+import Loader from "../../../../../UI/Components/loader/loader";
+import { useGetPopularProductsQuery } from "../../../../../services/filter.service";
 
 register();
 
@@ -14,6 +16,8 @@ const ProductSlider = () => {
     const screenSize = useScreenSize();
     const swiperRef = useRef(null);
     
+    const {data: products, refetch, isLoading} = useGetPopularProductsQuery();
+
     const handleNext = () => {
         swiperRef.current.swiper.slideNext()
     }
@@ -49,21 +53,29 @@ const ProductSlider = () => {
     }, []);
 
     return <>
-        <div className={layout.cardLabel}>
-            Хиты продаж
-            {screenSize.width <= 725 ? <></> :
-                <TonightArrowGroup
-                    prevHandle={handlePrev}
-                    nextHandle={handleNext}
-                />   
-            }
-        </div>
+        {isLoading ? <>
+            <div className={styles.loaderWrapper}><Loader /></div>
+        </> : <>
+            {products !== undefined ? <>
+                <div className={layout.cardLabel}>
+                    Хиты продаж
+                    {screenSize.width <= 725 ? <></> :
+                        <TonightArrowGroup
+                            prevHandle={handlePrev}
+                            nextHandle={handleNext}
+                        />   
+                    }
+                </div>
 
-        <swiper-container ref={swiperRef} init="false">
-            {fakeData.map((item) => (
-                <swiper-slide key={item.id}><ProductCard {...item}/></swiper-slide>
-            ))}
-        </swiper-container>
+                <swiper-container ref={swiperRef} init="false">
+                    {products.map((item) => (
+                        <swiper-slide key={item.id}><ProductCard data={item} refetch={refetch} /></swiper-slide>
+                    ))}
+                </swiper-container>
+            </> : <>
+                <div className={styles.loaderWrapper}><Loader /></div>
+            </>}
+        </>}
     </>
 }
 

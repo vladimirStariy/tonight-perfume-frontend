@@ -6,10 +6,11 @@ import useScreenSize from "../../utils/use-screen-size";
 import CatalogueHeader from "./Components/catalogue-header/catalogue.header";
 import ProductFilter from "../catalogue-screen/Components/filter/filter";
 import ProductGrid from "../product-grid/product.grid";
-import { useFetchFilterBrandsMutation, useFetchFilterQuery, useSendFilterMutation } from "../../../services/filter.service";
+import { useFetchFilterBrandsMutation, useFetchFilterCountriesMutation, useFetchFilterGroupsMutation, useFetchFilterNotesMutation, useFetchFilterQuery, useSendFilterMutation } from "../../../services/filter.service";
 import { IFilterRequest } from "../../../store/models/filter/IFIlterRequest";
 import { IProductsWithPagination } from "../../../store/models/product/IProductsWithPagination";
 import Loader from "../../../UI/Components/loader/loader";
+import { ICountry } from "../../../models/ICountry";
 
 const CatalogueScreen: FC = () => {
     const screenSize = useScreenSize();
@@ -17,8 +18,12 @@ const CatalogueScreen: FC = () => {
     const [sendFilter, {data, isError}] = useSendFilterMutation();
     const {data: filter, error, isLoading: filterIsLoading, refetch} = useFetchFilterQuery(7)
     const [showAllBrands, {isError: brandsError}] = useFetchFilterBrandsMutation();
+    const [showAllGroups, {isError: groupError}] = useFetchFilterGroupsMutation();
+    const [showAllNotes, {isError: notesError}] = useFetchFilterNotesMutation();
+    const [handleAllCountries, {isError: countriesError}] = useFetchFilterCountriesMutation();
 
     const [fetchedData, setfetchedData] = useState<IProductsWithPagination>();
+    
 
     const [page, setPage] = useState(1);
 
@@ -132,13 +137,47 @@ const CatalogueScreen: FC = () => {
         if(filter) setAccordionBrands(filter?.brands)
     }
 
+    const handleShowAllGroups = async () => {
+        const response = await showAllGroups().unwrap();
+        setAccordionAromaGroups(response)
+    }
+    const handleCollapseGroups = async () => {
+        if(filter) setAccordionAromaGroups(filter?.aromaGroups)
+    }
+
+    const handleShowAllNotes = async () => {
+        const response = await showAllNotes().unwrap();
+        setAccordionNotes(response)
+    }
+    const handleCollapseNotes = async () => {
+        if(filter) setAccordionNotes(filter?.perfumeNotes)
+    }
+
+    const handleShowAllCountries = async () => {
+        const response = await handleAllCountries().unwrap();
+        setAccordionCountries(response)
+    }
+    const handleCollapseCountries = () => {
+        if(filter) {
+            var countries: ICountry[] = [];
+            filter.countries.map((item) => {
+                countries.push({name: item})
+            })
+            setAccordionCountries(countries)
+        }
+    }
+
     useEffect(() => {
         if(filter) {
             setValues([filter.minPrice, filter.maxPrice])
 
             setAccordionAromaGroups(filter.aromaGroups);
             setAccordionBrands(filter.brands);
-            setAccordionCountries(filter.countries)
+            var countries: ICountry[] = [];
+            filter.countries.map((item) => {
+                countries.push({name: item})
+            })
+            setAccordionCountries(countries)
             setAccordionNotes(filter.perfumeNotes)
         } 
     }, [filter])
@@ -178,6 +217,12 @@ const CatalogueScreen: FC = () => {
 
                         handleShowAllBrands={handleShowAllBrands}
                         handleCollapseBrands={handleCollapseBrands}
+                        handleShowAllCountries={handleShowAllCountries}
+                        handleCollapseCountries={handleCollapseCountries}
+                        handleShowAllGroups={handleShowAllGroups}
+                        handleCollapseGroups={handleCollapseGroups}
+                        handleShowAllNotes={handleShowAllNotes}
+                        handleCollapseNotes={handleCollapseNotes}
 
                         handleCheckData={handleCheckData}
 
@@ -224,7 +269,13 @@ const CatalogueScreen: FC = () => {
 
                                         handleShowAllBrands={handleShowAllBrands}
                                         handleCollapseBrands={handleCollapseBrands}
-                                        
+                                        handleShowAllCountries={handleShowAllCountries}
+                                        handleCollapseCountries={handleCollapseCountries}
+                                        handleShowAllGroups={handleShowAllGroups}
+                                        handleCollapseGroups={handleCollapseGroups}
+                                        handleShowAllNotes={handleShowAllNotes}
+                                        handleCollapseNotes={handleCollapseNotes}
+
                                         accordionBrands={accordionBrands}
                                         accordionCountries={accordionCountries}
                                         accordionGroups={accordionAromaGroups}

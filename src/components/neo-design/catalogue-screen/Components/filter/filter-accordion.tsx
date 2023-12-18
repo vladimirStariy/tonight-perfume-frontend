@@ -28,6 +28,12 @@ interface IFilterAccordion {
 
     handleShowAllBrands: () => void;
     handleCollapseBrands: () => void;
+    handleShowAllCountries: () => void;
+    handleCollapseCountries: () => void;
+    handleShowAllNotes: () => void;
+    handleCollapseNotes: () => void;
+    handleShowAllGroups: () => void;
+    handleCollapseGroups: () => void;
 
     accordionBrands: any[];
     accordionNotes: any[];
@@ -41,6 +47,36 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
     const [isGroupsShowed, setIsGroupsShowed] = useState(false);
     const [isNotesShowed, setIsNotesShowed] = useState(false);
 
+    const handleShowAllGroups = () => {
+        setIsGroupsShowed(true);
+        props.handleShowAllGroups();
+    }
+
+    const handleCollapseAllGroups = () => {
+        setIsGroupsShowed(false)
+        props.handleCollapseGroups();
+    }
+
+    const handleShowAllNotes = () => {
+        setIsNotesShowed(true);
+        props.handleShowAllNotes();
+    }
+
+    const handleCollapseAllNotes = () => {
+        setIsNotesShowed(false)
+        props.handleCollapseNotes();
+    }
+
+    const handleShowAllCountries = () => {
+        setIsCountriesShowed(true);
+        props.handleShowAllCountries();
+    }
+
+    const handleCollapseAllCountries = () => {
+        setIsCountriesShowed(false)
+        props.handleCollapseCountries();
+    }
+
     const handleShowAllBrands = () => {
         setIsBrandsShowed(true);
         props.handleShowAllBrands();
@@ -49,6 +85,11 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
     const handleCollapseAllBrands = () => {
         setIsBrandsShowed(false)
         props.handleCollapseBrands();
+    }
+
+    const handleSubmitFilter = () => {
+        props.handleCheckData();
+        window.scrollTo(0, 0);
     }
 
     return <div className={styles.accordionContainer}>
@@ -98,26 +139,30 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                 <Accordion.Header>Страна бренда</Accordion.Header>
                 <Accordion.Body>
                     {
-                        props.filter?.countries.map((country, index) => (
+                        props.accordionCountries.map((country, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleCountry(e)}
                                 key={index}
                                 type='checkbox'
-                                value={`${country}`}
-                                id={`brand-checkbox-${country}`}
-                                label={`${country}`}
-                                checked={props.checkedCountries.includes(country)}
+                                value={`${country.name}`}
+                                id={`brand-checkbox-${country.name}`}
+                                label={`${country.name}`}
+                                checked={props.checkedCountries.includes(country.name)}
                             />
                         ))
                     }
-                    <Link to='' style={{textDecoration: 'underline'}}>Показать все</Link>
+                    {isCountriesShowed ? <>
+                        <div onClick={handleCollapseAllCountries} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
+                    </> : <>
+                        <div onClick={handleShowAllCountries} style={{textDecoration: 'underline', cursor: 'pointer'}}>Показать все</div>
+                    </>}
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item className={styles.customAcc} eventKey="3">
                 <Accordion.Header>Группа ароматов</Accordion.Header>
                 <Accordion.Body>
                     {
-                        props.filter?.aromaGroups.map((aromaGroup, index) => (
+                        props.accordionGroups.map((aromaGroup, index) => (
                             <Form.Check 
                                 key={index}
                                 type='checkbox'
@@ -129,15 +174,19 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                             />
                         ))
                     }
-                    <Link to='' style={{textDecoration: 'underline'}}>Показать все</Link>
+                    {isGroupsShowed ? <>
+                        <div onClick={handleCollapseAllGroups} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
+                    </> : <>
+                        <div onClick={handleShowAllGroups} style={{textDecoration: 'underline', cursor: 'pointer'}}>Показать все</div>
+                    </>}
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item className={styles.customAcc} eventKey="4">
                 <Accordion.Header>Ноты</Accordion.Header>
                 <Accordion.Body>
-                    <TonightInput />
+                    <TonightInput style={{marginBottom: '1rem'}} placeholder="Поиск по нотам..."/>
                     {
-                        props.filter?.perfumeNotes.map((note, index) => (
+                        props.accordionNotes.map((note, index) => (
                             <Form.Check
                                 onChange={(e) => props.handleNotes(e)}
                                 key={index}
@@ -149,11 +198,15 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
                             />
                         ))
                     }
-                    <Link to='' style={{textDecoration: 'underline'}}>Показать все</Link>
+                    {isNotesShowed ? <>
+                        <div onClick={handleCollapseAllNotes} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
+                    </> : <>
+                        <div onClick={handleShowAllNotes} style={{textDecoration: 'underline', cursor: 'pointer'}}>Показать все</div>
+                    </>}
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
-        <TonightButton onClick={props.handleCheckData} text="Применить фильтр" />
+        <TonightButton onClick={handleSubmitFilter} text="Применить фильтр" />
     </div>
 }
 

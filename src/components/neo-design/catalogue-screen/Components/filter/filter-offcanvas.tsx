@@ -36,6 +36,12 @@ interface IProps {
 
     handleShowAllBrands: () => void;
     handleCollapseBrands: () => void;
+    handleShowAllCountries: () => void;
+    handleCollapseCountries: () => void;
+    handleShowAllNotes: () => void;
+    handleCollapseNotes: () => void;
+    handleShowAllGroups: () => void;
+    handleCollapseGroups: () => void;
 
     accordionBrands: any[];
     accordionNotes: any[];
@@ -85,6 +91,12 @@ const FilterOffcanvas: FC<IProps> = (props) => {
 
                         handleShowAllBrands={props.handleShowAllBrands}
                         handleCollapseBrands={props.handleCollapseBrands}
+                        handleShowAllGroups={props.handleShowAllGroups}
+                        handleCollapseGroups={props.handleCollapseGroups}
+                        handleShowAllNotes={props.handleShowAllNotes}
+                        handleCollapseNotes={props.handleCollapseGroups}
+                        handleShowAllCountries={props.handleShowAllCountries}
+                        handleCollapseCountries={props.handleCollapseCountries}
 
                         accordionBrands={props.accordionBrands}
                         accordionCountries={props.accordionCountries}
