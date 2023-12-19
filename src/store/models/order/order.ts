@@ -29,6 +29,7 @@ export interface IOrderProduct {
 }
 
 export interface IUserOrderCard {
+    orderId: number;
     orderDate: Date;
     orderPrice: number;
     status: string;

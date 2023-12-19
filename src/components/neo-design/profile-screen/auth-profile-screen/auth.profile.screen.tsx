@@ -10,6 +10,7 @@ import { useGetFavoritesQuery } from "../../../../services/product-service";
 import ProfileData from './profile-data/profile.data';
 import { useGetProfileDataQuery } from '../../../../services/profile.service';
 import ProfileOrderCard from './profile-orders/profile.order.card';
+import ProfileOrders from './profile-orders/profile.orders';
 
 const AuthProfileScreen = () => {
     const tabs = ["orders", "favorites", "promocodes", "settings"]
@@ -93,7 +94,7 @@ const AuthProfileScreen = () => {
                     
                     <div className={styles.content}>
                         {tab === 0 ? 
-                            <ProfileOrderCard refetch={handleRefetchProfile}/>
+                            <ProfileOrders refetch={handleRefetchProfile}/>
                         :
                         tab === 1 ? 
                             <Favorites refetch={handleRefetch} data={data}/>

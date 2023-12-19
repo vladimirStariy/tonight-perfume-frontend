@@ -1,5 +1,5 @@
 import { IUserOrderCard } from "../store/models/order/order";
-import { IAdress, IProfileData, IUpdateProfile } from "../store/models/profile/profile";
+import { IAdress, IOrderProduct, IProfileData, IUpdateProfile } from "../store/models/profile/profile";
 import { apiSlice } from "../store/slices/apiSlice";
 
 export const profileAPI = apiSlice.injectEndpoints({
@@ -35,6 +35,12 @@ export const profileAPI = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: credentials
             })
+        }),
+        getOrderProducts: build.mutation<IOrderProduct[], number>({
+            query: (id) => ({
+                url: `order-product?orderId=${id}`,
+                method: 'GET'
+            })
         })
     })
 })
@@ -43,4 +49,6 @@ export const { useGetProfileDataQuery,
                useAddAdressMutation,
                useRemoveAdressMutation,
                useUpdateProfileDataMutation,
-               useGetOrdersQuery } = profileAPI;
+               useGetOrdersQuery,
+               useGetOrderProductsMutation
+} = profileAPI;

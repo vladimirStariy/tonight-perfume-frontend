@@ -41,3 +41,11 @@
     background-color: #F2F2F2;
     padding: 1rem;
 }
+
+.displayFlex {
+    display: flex;
+}
+
+.displayNone {
+    display: none;
+}

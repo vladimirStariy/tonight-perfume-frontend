@@ -29,3 +29,11 @@ export interface IUpdateProfile {
     email: string | null,
     phone: string | null,
 }
+
+export interface IOrderProduct {
+    productId: number;
+    price: number;
+    quantity: number;
+    productName: string;
+    productBrand: string;
+}
