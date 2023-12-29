@@ -50,8 +50,6 @@ const ProfileData: FC<IntProfileData> = (props) => {
         props.refetch();
     } 
 
-    console.log(profileData.phone)
-
     const handleChangeFirstname = (e: any) => {setProfileData({...profileData, firstname: e.target.value});}
     const handleChangeMiddlename = (e: any) => {setProfileData({...profileData, middlename: e.target.value});}
     const handleChangeLastname = (e: any) => {setProfileData({...profileData, lastname: e.target.value});}
@@ -84,7 +82,8 @@ const ProfileData: FC<IntProfileData> = (props) => {
                     </div>
                     <div className={styles.inputGroup}>
                         <label className={styles.blockHeader}>Номер телефона</label>
-                        <MaskedInput 
+                        <MaskedInput
+                            disabled 
                             type="text" 
                             mask="+375 (__) ___-__-__" 
                             replacement="_" 

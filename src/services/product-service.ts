@@ -5,6 +5,8 @@ import { IProductsWithPagination } from "../store/models/product/IProductsWithPa
 import { IAddFavoriteRequest } from "../models/IProduct"
 import { apiSlice } from "../store/slices/apiSlice"
 import { IProductDetailed } from "../store/models/product/IProduct"
+import { ProductProperties, TableProduct } from "../store/models/admin/Product"
+import { AddProductDto } from "../store/models/admin/AddProduct"
 
 export const productAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
@@ -49,12 +51,34 @@ export const productAPI = apiSlice.injectEndpoints({
                 url: `/product?id=${id}`,
                 method: 'GET'
             })
-        }) 
+        }),
+        getProductProperites: build.query<ProductProperties, void>({
+            query: () => ({
+                url: `/product-properties`,
+                method: 'GET'
+            })
+        }),
+        createProduct: build.mutation<void, AddProductDto>({
+            query: (content) => ({
+                url: `/create-product`,
+                method: 'POST',
+                body: content
+            })
+        }),
+        getTableProducts: build.query<TableProduct[], void>({
+            query: () => ({
+                url: `/table-products`,
+                method: 'GET'
+            })
+        })
     })
 })
 
 export const { useRemoveFavoriteMutation, 
                useAddToFavoriteMutation, 
                useGetFavoritesQuery,
-               useGetProductByIdQuery
+               useGetProductByIdQuery,
+               useGetProductProperitesQuery,
+               useCreateProductMutation,
+               useGetTableProductsQuery
 } = productAPI;

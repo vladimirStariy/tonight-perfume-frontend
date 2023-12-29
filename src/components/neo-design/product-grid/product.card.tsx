@@ -16,8 +16,6 @@ interface IProductCardScreen {
     refetch?: () => void;
 }
 
-
-
 const ProductCard: FC<IProductCardScreen> = props => {
     const [isFavorite, setIsFavorite] = useState<boolean>(props.data.isFavorite)
 

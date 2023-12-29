@@ -1,0 +1,64 @@
+.inputGroupBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.zxzczv {
+    margin: 0;
+}
+.dataWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.editorWrapper {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.mainDataProductWrapper {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.dataHeader {
+    max-width: 1280px;
+    padding: 1rem;
+    width: 100%;
+    background-color: #F2F2F2;
+    display: flex;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+.activeButtonsGroup {
+    display: flex;
+    gap: .5rem;
+}
+.blockHeader {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.uploadedImage {
+    width: 100%;
+    background-color: #F2F2F2;
+    aspect-ratio: 1 / 1;
+}
+
+.inputGroupImageBlock {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}

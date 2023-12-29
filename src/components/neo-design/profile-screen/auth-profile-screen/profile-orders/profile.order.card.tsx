@@ -50,8 +50,24 @@ const ProfileOrderCard: FC<IProps> = (props) => {
                     {props.status}
                 </div>
             </div>
-            <div className={`${show ? styles.displayFlex : styles.displayNone}`}>
-                Igogogo
+            <div className={`${show ? styles.displayFlex : styles.displayNone} ${styles.productsBlock}`}>
+                <div className={styles.orderProductsWrapper}>
+                    {products.map((item, index) => (
+                        <div className={styles.orderProductCard} key={index}>
+                            <div className={styles.imgBlock}></div>
+                            <div className={styles.cardBody}>
+                                <div>
+                                    <div className={styles.brandLabel}>{item.productBrand}</div>
+                                    <div className={styles.nameLabel}>{item.productName}</div>
+                                </div>
+                                <div>
+                                    <div className={styles.nameLabel}>Количество: {item.quantity} шт.</div>
+                                    <div className={styles.nameLabel}>Цена: {item.price / 100} BYN</div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
             <TonightButton onClick={handleShow} text={`${show ? "Свернуть" : "Подробнее"}`} />                
         </div>

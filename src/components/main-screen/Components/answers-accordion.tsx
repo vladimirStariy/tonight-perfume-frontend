@@ -18,33 +18,33 @@ const AnswerAccordion: FC = () => {
                     <div className={styles.accordionContainer}>
                         <Accordion className={styles.accordion} defaultActiveKey="0" flush>
                             <Accordion.Item className={styles.customAcc} eventKey="0">
-                                <Accordion.Header className={styles.accItemHeader}><b className={styles.answerLabel}>Что такое атомайзер?</b></Accordion.Header>
+                                <Accordion.Header className={styles.accItemHeader}><b className={styles.answerLabel}>Что такое парфюм в распив?</b></Accordion.Header>
                                 <Accordion.Body>
-                                    <label className={styles.answerText}>Атомайзер — это стеклянная, пластиковая или металлическая ёмкость со спреем или без, предназначенная для хранения небольшого (как правило, от 1 до 50 мл) объёма парфюмерной жидкости.</label>
+                                    <label className={styles.answerText}>Это возможность приобрести 2-15 мл аромата из оригинального флакона в удобном атомайзере.</label>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item className={styles.customAcc} eventKey="1">
-                                <Accordion.Header><b className={styles.answerLabel}>Что такое селективная парфюмерия?</b></Accordion.Header>
+                                <Accordion.Header><b className={styles.answerLabel}>Есть ли разница между мужским и женским парфюмом?</b></Accordion.Header>
                                 <Accordion.Body>
-                                    Атомайзер — это стеклянная, пластиковая или металлическая ёмкость со спреем или без, предназначенная для хранения небольшого (как правило, от 1 до 50 мл) объёма парфюмерной жидкости.
+                                    Да, основное отличие заключается в композиции аромата и том, как он воспринимается окружающими. Многие ароматы сейчас доступны как для мужчин, так и для женщин, и выбор парфюма в конечном итоге зависит от индивидуальных предпочтений и химии кожи каждого человека.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item className={styles.customAcc} eventKey="2">
-                                <Accordion.Header><b className={styles.answerLabel}>Вы продаете оригинальную парфюмерию?</b></Accordion.Header>
+                                <Accordion.Header><b className={styles.answerLabel}>Как выбрать парфюм на подарок?</b></Accordion.Header>
                                 <Accordion.Body>
-                                    Атомайзер — это стеклянная, пластиковая или металлическая ёмкость со спреем или без, предназначенная для хранения небольшого (как правило, от 1 до 50 мл) объёма парфюмерной жидкости.
+                                    Выбор парфюма для подарка может быть сложным, но даже эту задачу поможет выполнить наш консультант, задав вам несколько уточняющих вопросов.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item className={styles.customAcc} eventKey="3">
-                                <Accordion.Header><b className={styles.answerLabel}>Как я могу получить свой заказ?</b></Accordion.Header>
+                                <Accordion.Header><b className={styles.answerLabel}>Вы продаете оригинальную парфюмерию?</b></Accordion.Header>
                                 <Accordion.Body>
-                                    Атомайзер — это стеклянная, пластиковая или металлическая ёмкость со спреем или без, предназначенная для хранения небольшого (как правило, от 1 до 50 мл) объёма парфюмерной жидкости.
+                                    Да, в нашем ассортименте ТОЛЬКО оригинальная парфюмерия.
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item className={styles.customAcc} eventKey="4">
                                 <Accordion.Header><b className={styles.answerLabel}>У вас есть бонусная программа?</b></Accordion.Header>
                                 <Accordion.Body>
-                                    Атомайзер — это стеклянная, пластиковая или металлическая ёмкость со спреем или без, предназначенная для хранения небольшого (как правило, от 1 до 50 мл) объёма парфюмерной жидкости.
+                                    Да, авторизируйтесь на сайте для отслеживания ваших бонусов.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
