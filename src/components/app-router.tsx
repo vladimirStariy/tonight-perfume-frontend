@@ -19,6 +19,7 @@ import AuthProfileScreen from './neo-design/profile-screen/auth-profile-screen/a
 import AdminScreen from './admin/admin-screen/admin.screen';
 import AdminLayout from './admin/layout/admin.layout';
 import ProductEditorScreen from './admin/products-screen/product-editor/product.editor.screen';
+import BrandEditorScreen from './admin/brand-screen/brand-editor/brand.editor';
 
 const AppRouter: FC = () => {
   const {pathname} = useLocation(); 
@@ -52,6 +53,7 @@ const AppRouter: FC = () => {
         <Route path='/admin' element={<AdminLayout />}>
             <Route index element={<AdminScreen />} />
             <Route element={<ProductEditorScreen mode='insert' />} path='/admin/add-product' />
+            <Route element={<BrandEditorScreen mode='insert' />} path='/admin/add-brand' />
         </Route>
         
     </Routes>

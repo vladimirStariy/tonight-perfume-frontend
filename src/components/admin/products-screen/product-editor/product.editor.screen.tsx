@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -23,12 +23,19 @@ const ProductEditorScreen: FC<Props> = (props) => {
     const {data} = useGetProductProperitesQuery();
     const [createProduct] = useCreateProductMutation();
 
+    const uploadRef = useRef<HTMLInputElement>(null)
+    const [file, setFile] = useState<File>();
+
     const [categoryOptions, setCategoryOptions] = useState<Options[]>([]);
     const [upperNotesOptions, setUpperNotesOptions] = useState<Options[]>([]);
     const [middleNotesOptions, setMiddleNotesOptions] = useState<Options[]>([]);
     const [bottomNotesOptions, setBottomNotesOptions] = useState<Options[]>([]);
     const [aromaGroupOptions, setAromaGroupOptions] = useState<Options[]>([]);
     const [brandOptions, setBrandOptions] = useState<Options[]>([]);
+
+    const handleSetFile = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files) setFile(e.target.files[0]);
+    }
 
     const handleLeaveWithoutSaving = () => {
         navigate('/admin');
@@ -81,6 +88,7 @@ const ProductEditorScreen: FC<Props> = (props) => {
     const [middleNotes, setMiddleNotes] = useState<number[]>([])
     const [bottomNotes, setBottomNotes] = useState<number[]>([])
     const [isPopular, setIsPopular] = useState<boolean>(false);
+    const [isForOrder, setIsForOrder] = useState<boolean>(false);
     const [prices, setPrices] = useState<{volumeId: number, priceValue: number}[]>([]);
 
     const handleSelectBrand = (e: any) => { setBrand(Number(e.value)) }
@@ -94,7 +102,8 @@ const ProductEditorScreen: FC<Props> = (props) => {
     const handleChangeYear = (value: string) => { setYear(value) }
     const handleChangeCountry = (value: string) => { setCountry(value) }
     const handleSetPopular = () => { setIsPopular(!isPopular) }
-    
+    const handleSetForOrder = () => { setIsForOrder(!isForOrder) }
+
     const handleSetPrice = (volumeId: number, priceValue: number) => {
         if(prices.length > 0) {
             var flag: boolean = false;
@@ -121,32 +130,56 @@ const ProductEditorScreen: FC<Props> = (props) => {
     }
 
     const handleSubmit = async () => {
-        await createProduct({
-            name: name,
-            description: description,
-            year: year,
-            country: country,
-            groups: group,
-            upperNotes: upperNotes,
-            middleNotes: middleNotes,
-            bottomNotes: bottomNotes,
-            brand: brand,
-            category: category,
-            isPopular: isPopular,
-            prices: prices
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('country', country);
+        formData.append('year', year);
+        formData.append('brand', brand.toString());
+        formData.append('category', category.toString());
+        if(file) formData.append('file', file);
+        formData.append('isPopular', String(isPopular));
+        formData.append('isForOrder', String(isForOrder));
+        Object.entries(group).map((item) => {
+            formData.append(`groups[${item[0]}]`, JSON.stringify(item[1]))
         })
+        Object.entries(upperNotes).map((item) => {
+            formData.append(`upperNotes[${item[0]}]`, JSON.stringify(item[1]))
+        })
+        Object.entries(middleNotes).map((item) => {
+            formData.append(`middleNotes[${item[0]}]`, JSON.stringify(item[1]))
+        })
+        Object.entries(bottomNotes).map((item) => {
+            formData.append(`bottomNotes[${item[0]}]`, JSON.stringify(item[1]))
+        })
+        if(prices) {
+            Object.entries(prices).map((item) => {
+                formData.append(`Prices[${item[0]}]`, JSON.stringify(item[1]))
+            })
+        }
+
+        await createProduct(formData);
     }
 
     return <>
         <div className={styles.editorWrapper}>
             <div className={styles.dataHeader}>
-                <Form.Check
-                    type="checkbox"
-                    id={`default-popular`}
-                    label='Популярный'
-                    checked={isPopular}
-                    onChange={handleSetPopular}
-                />
+                <div style={{display:'flex', gap: '1rem'}}>
+                    <Form.Check
+                        type="checkbox"
+                        id={`default-popular`}
+                        label='Популярный'
+                        checked={isPopular}
+                        onChange={handleSetPopular}
+                    />
+                    <Form.Check
+                        type="checkbox"
+                        id={`default-forOrder`}
+                        label='Под заказ'
+                        checked={isForOrder}
+                        onChange={handleSetForOrder}
+                    />
+                </div>
                 <div className={styles.activeButtonsGroup}>
                     <Button onClick={handleSubmit}>Сохранить изменения</Button>
                     <Button onClick={handleLeaveWithoutSaving}>Выйти без сохранения</Button>
@@ -230,28 +263,38 @@ const ProductEditorScreen: FC<Props> = (props) => {
                     <div className={styles.inputGroupBlock}>
                         <Form.Group controlId="form.nameInput">
                             <Form.Label className={styles.zxzczv}>Цена за 2 мл</Form.Label>
-                            <Form.Control onChange={(e) => handleSetPrice(1, Number(e.target.value))} type="number" />
+                            <Form.Control disabled={isForOrder} onChange={(e) => handleSetPrice(1, Number(e.target.value))} type="number" />
                         </Form.Group>
                         <Form.Group controlId="form.nameInput">
                             <Form.Label className={styles.zxzczv}>Цена за 5 мл</Form.Label>
-                            <Form.Control onChange={(e) => handleSetPrice(2, Number(e.target.value))} type="number" />
+                            <Form.Control disabled={isForOrder} onChange={(e) => handleSetPrice(2, Number(e.target.value))} type="number" />
                         </Form.Group>
                         <Form.Group controlId="form.nameInput">
                             <Form.Label className={styles.zxzczv}>Цена за 8 мл</Form.Label>
-                            <Form.Control onChange={(e) => handleSetPrice(3, Number(e.target.value))} type="number" />
+                            <Form.Control disabled={isForOrder} onChange={(e) => handleSetPrice(3, Number(e.target.value))} type="number" />
                         </Form.Group>
                         <Form.Group controlId="form.nameInput">
                             <Form.Label className={styles.zxzczv}>Цена за 10 мл</Form.Label>
-                            <Form.Control onChange={(e) => handleSetPrice(4, Number(e.target.value))} type="number" />
+                            <Form.Control disabled={isForOrder} onChange={(e) => handleSetPrice(4, Number(e.target.value))} type="number" />
                         </Form.Group>
                         <Form.Group controlId="form.nameInput">
                             <Form.Label className={styles.zxzczv}>Цена за 15 мл</Form.Label>
-                            <Form.Control onChange={(e) => handleSetPrice(5, Number(e.target.value))} type="number" />
+                            <Form.Control disabled={isForOrder} onChange={(e) => handleSetPrice(5, Number(e.target.value))} type="number" />
                         </Form.Group>
                     </div>
                     <div className={styles.inputGroupImageBlock}>
-                        <div className={styles.uploadedImage}></div>
-                        <Button>Загрузить</Button>
+                        <div 
+                            className={styles.uploadedImage}
+                            style={file ? {
+                                backgroundImage: `url(${URL.createObjectURL(file)})`,
+                                backgroundSize: 'cover'
+                            } : {}}
+                        ></div>
+                        <input
+                            type='file'
+                            ref={uploadRef}
+                            onChange={(e) => handleSetFile(e)}
+                        />
                     </div>
                 </div>
             </div>

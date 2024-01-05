@@ -1,11 +1,26 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
-import { IBrandSimple } from "../store/models/brand/IBrandSimple"
-import { BASE_URL } from "../utils/http-config"
 
-export const productAPI = createApi({
-    reducerPath: 'productAPI',
-    baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
+import { IBrand } from "../store/models/brand/IBrand";
+import { apiSlice } from "../store/slices/apiSlice"
+
+export const brandAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
-        
+        getBrands: build.query<IBrand[], void>({
+            query: () => ({
+                url: `/brands`,
+                method: 'GET'
+            })
+        }),
+        createBrand: build.mutation<void, FormData>({
+            query: (content) => ({
+                url: `/create-brand`,
+                method: 'POST',
+                body: content
+            })
+        }),
     })
 })
+
+export const { 
+    useGetBrandsQuery,
+    useCreateBrandMutation
+} = brandAPI;

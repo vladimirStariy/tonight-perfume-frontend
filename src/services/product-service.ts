@@ -58,7 +58,7 @@ export const productAPI = apiSlice.injectEndpoints({
                 method: 'GET'
             })
         }),
-        createProduct: build.mutation<void, AddProductDto>({
+        createProduct: build.mutation<void, FormData>({
             query: (content) => ({
                 url: `/create-product`,
                 method: 'POST',

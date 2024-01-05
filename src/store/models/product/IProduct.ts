@@ -8,7 +8,8 @@ export interface IProductDetailed {
     category: Category;
     brand: Brand;
     aromaGroups: AromaGroup[];
-    perfumeNotes: PerfumeNote[]
+    perfumeNotes: PerfumeNote[];
+    imagePath: string;
 }
 
 interface Brand {

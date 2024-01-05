@@ -6,13 +6,14 @@ import layout from '../../../layout/layout.module.css'
 import BrandCard from "./brand-card";
 import TonightArrowGroup from "../../../../../UI/Components/arrow-group/tonight-arrow-group";
 import useScreenSize from "../../../../utils/use-screen-size";
+import { useGetBrandsQuery } from "../../../../../services/brand.service";
 
 register();
 
 const BrandSlider = () => {
     const screenSize = useScreenSize();
     const swiperRef = useRef(null);
-    
+    const {data: brands} = useGetBrandsQuery();
 
     const handleNext = () => {
         swiperRef.current.swiper.slideNext()
@@ -42,11 +43,6 @@ const BrandSlider = () => {
                 },
             },
             injectStyles: [],
-            on: {
-                init() {
-                    console.log('hello');
-                }
-            }
         }
 
         Object.assign(swiperRef.current, params);
@@ -65,15 +61,11 @@ const BrandSlider = () => {
             </div>
 
             <swiper-container ref={swiperRef} init="false">
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
-                <swiper-slide><BrandCard /></swiper-slide>
+                {brands ? brands.map((item) => (
+                    <swiper-slide>
+                        <BrandCard imagePath={`/${item.imagePath}`} />
+                    </swiper-slide>
+                )) : <></>}
             </swiper-container>
     </>
 }
