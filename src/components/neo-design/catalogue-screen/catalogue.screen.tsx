@@ -24,7 +24,6 @@ const CatalogueScreen: FC = () => {
 
     const [fetchedData, setfetchedData] = useState<IProductsWithPagination>();
     
-
     const [page, setPage] = useState(1);
 
     const [values, setValues] = useState<number[]>([]);

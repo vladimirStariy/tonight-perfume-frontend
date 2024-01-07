@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
-import styles from './aroma.group.module.module.css'
+import styles from './aroma.group.module.css'
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

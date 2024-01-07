@@ -22,7 +22,6 @@ interface Price {
     product_ID: number;
     volume_ID: number;
     value: number;
-
 }
 
 interface Category {

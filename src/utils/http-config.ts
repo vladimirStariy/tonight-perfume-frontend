@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://localhost:44374/';
+export const BASE_URL = 'https://clever-swirles.178-124-131-24.plesk.page/';

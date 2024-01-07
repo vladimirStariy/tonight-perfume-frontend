@@ -19,8 +19,6 @@ interface IProductCardScreen {
 const ProductCard: FC<IProductCardScreen> = props => {
     const [isFavorite, setIsFavorite] = useState<boolean>(props.data.isFavorite)
 
-    console.log(props.data)
-
     const [addToFavorite] = useAddToFavoriteMutation();
     const [remove] = useRemoveFavoriteMutation();
 
@@ -59,7 +57,15 @@ const ProductCard: FC<IProductCardScreen> = props => {
 
     return <>
         <div className={styles.productCard}>
-            <div className={styles.productCardImgBlock}>
+            <div 
+                style={{
+                    background: `url(${props.data.imagePath})`,
+                    backgroundPosition: 'center center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    aspectRatio: '7 / 8'
+                }}
+            >
                 <div className={props.data.discount ? styles.productCardFavoriteDiscount : styles.productCardFavorite}>
                     {props.data.discount ? 
                         <div className={styles.discountLabel}></div>
