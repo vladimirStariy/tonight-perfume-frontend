@@ -172,7 +172,9 @@ const ProductScreen: FC = () => {
                                 <div className={styles.characteristics}>
                                     <div>
                                         Категория..........................................
-                                        <Link to='/' className={styles.dataLink}>{productData?.category.name}</Link>
+                                        <Link to='/' className={styles.dataLink}>
+                                            {productData?.category.name.toLowerCase()}
+                                        </Link>
                                     </div>
                                     <div>
                                         Страна................................................
@@ -182,9 +184,18 @@ const ProductScreen: FC = () => {
                                         Год выпуска.......................................
                                         <Link to='/' className={styles.dataLink}>{productData?.year}</Link>
                                     </div>
-                                    <div>
+                                    <div style={{display: 'flex'}}>
                                         Группа ароматов..............................
-                                        <Link to='/' className={styles.dataLink}>placeholder</Link>
+                                        <div style={{display: 'flex'}}>
+                                            {productData?.aromaGroups.map((item, index) => (
+                                                <>
+                                                    <div className={styles.dataLink}>
+                                                        {item.aromaGroup_Name}
+                                                    </div>
+                                                    {index + 1 < productData.aromaGroups.length ? <>,<pre style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
+                                                </>
+                                            ))}
+                                        </div>
                                     </div>
                                     <div>
                                         Верхние ноты....................................

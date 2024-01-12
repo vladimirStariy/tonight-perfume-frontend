@@ -173,6 +173,7 @@
 
 .dataLink {
     color:#1E1E1E;
+    cursor: pointer;
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
