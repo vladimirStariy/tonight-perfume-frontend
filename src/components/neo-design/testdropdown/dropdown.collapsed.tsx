@@ -42,7 +42,6 @@ const DropDownCollapsedLink: FC<IDropdown> = (props) => {
                         <div className={styles.boxBlock}>
                             <b className={styles.categoryText}>Аромабоксы</b>
                         </div> 
-                       
                     </div>
             </div>
         </div>

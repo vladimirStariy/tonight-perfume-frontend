@@ -63,7 +63,7 @@ const BrandSlider = () => {
             <swiper-container ref={swiperRef} init="false">
                 {brands ? brands.map((item) => (
                     <swiper-slide>
-                        <BrandCard imagePath={`/${item.imagePath}`} />
+                        <BrandCard id={item.brand_ID} imagePath={`/${item.imagePath}`} />
                     </swiper-slide>
                 )) : <></>}
             </swiper-container>

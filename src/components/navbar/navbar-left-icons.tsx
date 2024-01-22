@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import useScreenSize from "../utils/use-screen-size";
 
@@ -15,7 +14,7 @@ const NavLeftIcons:FC = () => {
       <Nav>
         <Nav.Link href='https://t.me/TonightPerfume' target='_blank' className={styles.mlmrightitem}>
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.0089 2.54516C22.6869 2.54516 23.1983 3.18956 22.9247 4.38815L19.6064 21.3359C19.3744 22.5409 18.7024 22.8309 17.7747 22.2703L9.8594 15.9358C9.8287 15.912 9.80369 15.8805 9.78644 15.8441C9.76919 15.8077 9.76019 15.7673 9.76019 15.7264C9.76019 15.6855 9.76919 15.6451 9.78644 15.6087C9.80369 15.5723 9.8287 15.5408 9.8594 15.517L17.1384 7.86147L6.89189 14.1831C6.8571 14.2076 6.8176 14.2233 6.77638 14.2289C6.73517 14.2345 6.69332 14.2298 6.65402 14.2153L1.7835 12.5463C0.701163 12.2047 0.701163 11.3992 2.02732 10.8257L21.5153 2.68048C21.6699 2.60014 21.8377 2.55413 22.0089 2.54516Z" stroke="black" stroke-width="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M22.0089 2.54516C22.6869 2.54516 23.1983 3.18956 22.9247 4.38815L19.6064 21.3359C19.3744 22.5409 18.7024 22.8309 17.7747 22.2703L9.8594 15.9358C9.8287 15.912 9.80369 15.8805 9.78644 15.8441C9.76919 15.8077 9.76019 15.7673 9.76019 15.7264C9.76019 15.6855 9.76919 15.6451 9.78644 15.6087C9.80369 15.5723 9.8287 15.5408 9.8594 15.517L17.1384 7.86147L6.89189 14.1831C6.8571 14.2076 6.8176 14.2233 6.77638 14.2289C6.73517 14.2345 6.69332 14.2298 6.65402 14.2153L1.7835 12.5463C0.701163 12.2047 0.701163 11.3992 2.02732 10.8257L21.5153 2.68048C21.6699 2.60014 21.8377 2.55413 22.0089 2.54516Z" stroke="black" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </Nav.Link>
         <Nav.Link href='https://www.instagram.com/tonightperfume' target='_blank' className={styles.mlmrightitem}>

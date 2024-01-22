@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './footer.module.css';
 import layout from '../layout/layout.module.css';
 import { Link } from 'react-router-dom';
-import { ExpressPayIcon, InstagramLightIcon, LogoLight, TelegramLightIcon } from '../icons/icons';
+import { InstagramLightIcon, LogoLight, TelegramLightIcon } from '../icons/icons';
 
 const Footer: FC = () => {
     return <>

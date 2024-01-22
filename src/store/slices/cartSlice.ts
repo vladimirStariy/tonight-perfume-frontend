@@ -9,6 +9,7 @@ export interface iCartProduct {
     price: number;
     prices: iPrice[];
     quantity: number;
+    imagePath: string;
 } 
 
 export interface iPrice {
@@ -27,6 +28,7 @@ const cartSlice = createSlice({
     initialState: { products: [] } as iCartState,
     reducers: {
         addToCart: (state, { payload: { product } }: PayloadAction<{product: iCartProduct}>) => {
+            console.log('wha')
             state.products?.push(product);
         },
         updateCartItem: (state, { payload: { product } }: PayloadAction<{product: iCartProduct}>) => {
@@ -53,7 +55,7 @@ const cartSlice = createSlice({
             }
         },
         clearCart: (state) => {
-            state.products = null;
+            state.products = [];
         }
     }
 })

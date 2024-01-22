@@ -29,7 +29,8 @@ const ProductScreen: FC = () => {
                 name: productData.name,
                 brand: productData.brand.name,
                 price: summaryPrice,
-                prices: productData.prices
+                prices: productData.prices,
+                imagePath: productData.imagePath
             }}))
     }
 
@@ -43,6 +44,18 @@ const ProductScreen: FC = () => {
     const handleSetQuantity = (value: number) => {
         setQuantity(value);
     }
+
+    const upperNotes = useMemo(() => {
+        if(productData) return productData.perfumeNotes.filter(x => x.noteType === 'upper');
+    }, [productData])
+
+    const middleNotes = useMemo(() => {
+        if(productData) return productData.perfumeNotes.filter(x => x.noteType === 'middle');
+    }, [productData])
+
+    const baseNotes = useMemo(() => {
+        if(productData) return productData.perfumeNotes.filter(x => x.noteType === 'bottom');
+    }, [productData])
 
     const summaryPrice = useMemo(() => {
         let _price = 0;
@@ -64,7 +77,7 @@ const ProductScreen: FC = () => {
             <div className={layout.tonightContainer}>
                 <div className={styles.productWrapper}>
                     <div className={styles.breadcrumb}>
-                        <Link to='/'>Главная</Link> / <Link to='/catalogue'>Каталог</Link> / Blanche
+                        <Link to='/'>Главная</Link> / <Link to='/catalogue'>Каталог</Link> / {productData?.name}
                     </div>
                     {isError ? <>
                         <div className={styles.loaderWrapper}>Ошибка соединения</div>
@@ -87,7 +100,16 @@ const ProductScreen: FC = () => {
                                         </div>
                                         <div className={styles.articul}>Артикул: 22452</div>
                                     </div>
-                                    <div className={styles.cardImg}></div>
+                                    <div 
+                                        style={{
+                                            aspectRatio: '1 / 1',
+                                            background: `url(../${productData?.imagePath})`,
+                                            backgroundPosition: 'center center',
+                                            backgroundRepeat: 'no-repeat',
+                                            backgroundSize: 'cover',
+                                        }} 
+                                        
+                                    ></div>
                                     <div className={styles.priceVolume}>
                                         <div className={styles.price}>{summaryPrice / 100} BYN</div>
                                         <div className={styles.volume}>
@@ -105,15 +127,21 @@ const ProductScreen: FC = () => {
                                     </> : <>
                                         <TonightButton onClick={handleAddToCart} text='Добавить в корзину' />
                                     </>}
-                                    <Link to='/' className={styles.buttonLink}>
+                                    <a href='https://t.me/TonightPerfume' target='_blank' className={styles.buttonLink}>
                                         Узнать остаток и стоимость
-                                    </Link>
+                                    </a>
                                 </div>
                             </>
                             :
                             <>
                                 <div className={styles.cardBlock}>
-                                    <div className={styles.cardImg}></div>
+                                    <div style={{
+                                           background: `url(../${productData?.imagePath})`,
+                                           backgroundPosition: 'center center',
+                                           backgroundRepeat: 'no-repeat',
+                                           backgroundSize: 'cover',
+                                           aspectRatio: '7 / 8'
+                                       }} ></div>
                                     <div className={styles.underCard}>
                                         Предложение не является публичной офертой
                                     </div>
@@ -151,9 +179,9 @@ const ProductScreen: FC = () => {
                                                 <TonightButton onClick={handleAddToCart} text='Добавить в корзину' />
                                             </>}
                                             </div>
-                                            <Link to='/' className={styles.buttonLink}>
+                                            <a href='https://t.me/TonightPerfume' target='_blank' className={styles.buttonLink}>
                                                 Узнать остаток и стоимость
-                                            </Link>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,32 +217,52 @@ const ProductScreen: FC = () => {
                                         <div style={{display: 'flex'}}>
                                             {productData?.aromaGroups.map((item, index) => (
                                                 <>
-                                                    <div className={styles.dataLink}>
+                                                    <div key={index} className={styles.dataLink}>
                                                         {item.aromaGroup_Name}
                                                     </div>
-                                                    {index + 1 < productData.aromaGroups.length ? <>,<pre style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
+                                                    {index + 1 < productData.aromaGroups.length ? <>,<pre key={index+99} style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
                                                 </>
                                             ))}
                                         </div>
                                     </div>
-                                    <div>
-                                        Верхние ноты....................................
-                                        <Link to='/' className={styles.dataLink}>placeholder</Link>
-                                    </div>
-                                    <div>
-                                        Средние ноты...................................
-                                        <Link to='/' className={styles.dataLink}>placeholder</Link>
-                                    </div>
-                                    <div>
-                                        Базовые ноты....................................
-                                        <Link to='/' className={styles.dataLink}>placeholder</Link>
-                                    </div>
+                                    {upperNotes ? <>
+                                        <div style={{display: 'flex'}}>
+                                            Верхние ноты....................................
+                                            {upperNotes && upperNotes.map((item, index) => <>
+                                                <div key={index} className={styles.dataLink}>
+                                                    {item.perfumeNote.name}
+                                                </div>
+                                                {index + 1 < upperNotes.length ? <>,<pre key={index+99} style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
+                                            </>)}
+                                        </div>
+                                    </> : <></>}
+                                    {middleNotes ? <>
+                                        <div style={{display: 'flex'}}>
+                                            Средние ноты...................................
+                                            {middleNotes && middleNotes.map((item, index) => <>
+                                                <div key={index} className={styles.dataLink}>
+                                                    {item.perfumeNote.name}
+                                                </div>
+                                                {index + 1 < middleNotes.length ? <>,<pre key={index+99} style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
+                                            </>)}
+                                        </div>
+                                    </> : <></>}
+                                    {baseNotes ? <>
+                                        <div style={{display: 'flex'}}>
+                                            Базовые ноты....................................
+                                            {baseNotes.map((item, index) => <>
+                                                <div key={index} className={styles.dataLink}>
+                                                    {item.perfumeNote.name}
+                                                </div>
+                                                {index + 1 < baseNotes.length ? <>,<pre key={index+99} style={{margin: '0', fontSize: '.3rem'}}> </pre></> : ''}
+                                            </>)}
+                                        </div>
+                                    </> : <></>}
                                 </div>
                             </div>
                         </div>
                     </>}
                 </div>
-                
             </div>
         </div>
     </>

@@ -21,7 +21,13 @@ const ClientScreen: FC = () => {
         <div className={layout.tonightWrapper}>
             <div className={layout.tonightContainer}>
                 <div className={layout.cardLabel}>Контактная информация</div>
-                <div className={styles.mapCard}></div>
+                <div className={styles.mapCard}>
+                    <iframe 
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A68ea3bdd173df47e6007dc4db1319c4cdf0a3d3cd0f00218daa1ea6a530c8181&amp;source=constructor" 
+                        width="100%" 
+                        height="100%">
+                    </iframe>
+                </div>
                     <div className={styles.mapFooter}>
                         <div className={styles.mapFooterItem}>
                             <div className={styles.mapFooterIcon}>

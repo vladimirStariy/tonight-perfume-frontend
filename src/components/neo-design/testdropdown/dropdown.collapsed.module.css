@@ -49,6 +49,7 @@
 }
 
 .smCategory1 {
+    cursor: pointer;
     background-image: url('../../../../public/dropdown-navbar/1sm.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -61,6 +62,7 @@
 }
 
 .smCategory2 {
+    cursor: pointer;
     background-image: url('../../../../public/dropdown-navbar/2sm.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -73,6 +75,7 @@
 }
 
 .lgCategory {
+    cursor: pointer;
     background-image: url('../../../../public/dropdown-navbar/3mm.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -85,6 +88,7 @@
 }
 
 .boxBlock {
+    cursor: pointer;
     background-image: url('../../../../public/dropdown-navbar/4bm.png');
     background-repeat: no-repeat;
     background-position: center center;

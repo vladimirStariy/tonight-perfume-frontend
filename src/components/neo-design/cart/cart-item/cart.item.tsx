@@ -62,7 +62,16 @@ const CartItem: FC<CartItem> = (props) => {
     return <div className={styles.cartItemWrapper}>
         <div className={styles.cartItem}>        
             <div className={styles.cartContent}>
-                <div className={styles.imgBlock}></div>
+                <div 
+                    className={styles.imgBlock}
+                    style={{
+                        aspectRatio: '75 / 86',
+                        background: `url('../${props.product.imagePath}')`,
+                        backgroundSize: '100% 100%',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center center'
+                    }}
+                ></div>
                 <div className={styles.mainContent}>
                     <div className={styles.upperBlock}>
                         <div className={styles.brandName}>

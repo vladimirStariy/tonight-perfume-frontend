@@ -15,7 +15,7 @@ const NavRightIcons: FC = () => {
       <Nav>
         <Nav.Link>
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.0069 22.5452L2.67077 13.333C-2.40323 7.80565 5.05554 -2.8068 12.0069 5.77896C18.9583 -2.8068 26.3832 7.8425 21.3431 13.333L12.0069 22.5452Z" stroke="#1E1E1E" stroke-width="1.71429" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12.0069 22.5452L2.67077 13.333C-2.40323 7.80565 5.05554 -2.8068 12.0069 5.77896C18.9583 -2.8068 26.3832 7.8425 21.3431 13.333L12.0069 22.5452Z" stroke="#1E1E1E" strokeWidth="1.71429" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </Nav.Link>
 

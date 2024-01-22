@@ -16,8 +16,9 @@ import { useSelector } from "react-redux";
 import { selectCurrentToken } from "../../../store/slices/authSlice";
 import { useGetProfileDataQuery } from "../../../services/profile.service";
 import { IAdress } from "../../../store/models/profile/profile";
-import { selectCartItems } from "../../../store/slices/cartSlice";
+import { clearCart, selectCartItems } from "../../../store/slices/cartSlice";
 import DataInput from "../../../UI/Components/input/data.input";
+import { useDispatch } from "react-redux";
 
 export interface IFormError {
     fistname_error: boolean;
@@ -34,18 +35,14 @@ export interface IFormError {
 
 const OrderingScreen: FC = () => {
     const screenSize = useScreenSize();
-
     const cart = useSelector(selectCartItems);
-
     const token = useSelector(selectCurrentToken);
-
+    const dispatch = useDispatch();
     const { data } = useGetProfileDataQuery();
-
-    const [getPromocode] = useGetPromocodeDataMutation(); 
-
+    const [getPromocode, {isError}] = useGetPromocodeDataMutation(); 
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
-    
+
     const [formErrors, setFormError] = useState<IFormError>({
         fistname_error: false,
         surname_error: false,
@@ -61,6 +58,10 @@ const OrderingScreen: FC = () => {
 
     const [promocodeDiscount, setPromocodeDiscount] = useState<number>(0);
     const [isAuth, setIsAuth] = useState<boolean>(false);
+
+    const handleClearCart = () => {
+        dispatch(clearCart());
+    }
 
     const [formData, setFormData] = useState<IOrder>(
         {
@@ -145,18 +146,19 @@ const OrderingScreen: FC = () => {
 
     const handleCreateOrder = async () => {
         if(!validateFormData()) {
-                await createUnauthorizedOrder(formData);
+            await createUnauthorizedOrder(formData);
     
-                setFormData((prev) => ({ ...prev, city: null}));
-                setFormData((prev) => ({ ...prev, region: null}));
-                setFormData((prev) => ({ ...prev, appartaments: null}));
-                setFormData((prev) => ({ ...prev, domophoneCode: null}));
-                setFormData((prev) => ({ ...prev, entrance: null}));
-                setFormData((prev) => ({ ...prev, floor: null}));
-                setFormData((prev) => ({ ...prev, postNumber: null}));
-                setFormData((prev) => ({ ...prev, promocode: null}));
+            setFormData((prev) => ({ ...prev, city: null}));
+            setFormData((prev) => ({ ...prev, region: null}));
+            setFormData((prev) => ({ ...prev, appartaments: null}));
+            setFormData((prev) => ({ ...prev, domophoneCode: null}));
+            setFormData((prev) => ({ ...prev, entrance: null}));
+            setFormData((prev) => ({ ...prev, floor: null}));
+            setFormData((prev) => ({ ...prev, postNumber: null}));
+            setFormData((prev) => ({ ...prev, promocode: null}));
 
-                setShow(true);
+            setShow(true);
+            handleClearCart();
         }
     }
 
@@ -217,9 +219,13 @@ const OrderingScreen: FC = () => {
     const handleSetPromocodeToOrder = async () => {
         if(promo !== null) {
             setPromocodeDiscount(0);
-            let data = await getPromocode({promocode: promo}).unwrap();
-            setFormData((prev) => ({ ...prev, promocode: promo}));
-            setPromocodeDiscount(Number(data));
+            let data = await getPromocode({promocode: promo});
+            if(isError) {
+                
+            } else {
+                setFormData((prev) => ({ ...prev, promocode: promo}));
+                setPromocodeDiscount(Number(data));
+            }
         }
     }
 
@@ -303,7 +309,7 @@ const OrderingScreen: FC = () => {
                         <div className={styles.cartWrapper}>
                             <div className={styles.cartOrder}>
                                 <div className={secLayout.blockHeaderMain}>Ваш заказ</div>
-                                <div className={styles.deleteAll}>Удалить все</div>
+                                <div onClick={handleClearCart} style={{cursor: 'pointer'}} className={styles.deleteAll}>Удалить все</div>
                             </div>
                             
                             <div className={styles.cartItems}>    
@@ -325,6 +331,11 @@ const OrderingScreen: FC = () => {
                                             <TonightButton onClick={handleSetPromocodeToOrder} text="Применить" />
                                         </div>
                                     </div>
+                                    { isError ? <>
+                                        <div className={styles.promoLabel} style={{color: 'red'}}>
+                                            Промокод не действителен
+                                        </div>
+                                    </> : <></> }
                                 </div>
                                 <div className={styles.orderDelivery}>
                                     <div className={styles.orderSum}>

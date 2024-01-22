@@ -8,7 +8,7 @@ export interface IProductDetailed {
     category: Category;
     brand: Brand;
     aromaGroups: AromaGroup[];
-    perfumeNotes: PerfumeNote[];
+    perfumeNotes: ProductNotes[];
     imagePath: string;
 }
 
@@ -34,8 +34,13 @@ interface AromaGroup {
     aromaGroup_Name: string;
 }
 
+interface ProductNotes {
+    note_ID: number;
+    noteType: string;
+    perfumeNote: PerfumeNote;
+}
+
 interface PerfumeNote {
     note_ID: number;
     name: string;
-    type: string;
 }

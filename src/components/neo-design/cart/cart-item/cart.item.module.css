@@ -62,13 +62,8 @@
     justify-content: space-between;
 }
 
-.imgBlock {
-    aspect-ratio: 75 / 86;
+.imgBlock { 
     height: 172px;
-    background: url('../../../../../public/796f6a6b37bd8558da5970af67f3e46c.png'), #F2F2F2 no-repeat;
-    background-size: 130% 75%;
-    background-repeat: no-repeat;
-    background-position: center center;
 }
 
 .brandName {
