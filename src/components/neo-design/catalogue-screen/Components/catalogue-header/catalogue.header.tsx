@@ -45,6 +45,8 @@ interface CatalogueHeaderProps {
     accordionNotes: any[];
     accordionCountries: any[];
     accordionGroups: any[];
+
+    handleSetSortType: (text: string) => void;
 }
 
 const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
@@ -106,12 +108,14 @@ const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
                                     accordionNotes={props.accordionNotes}
                                 />
                             </>
-                            :
+                            : <>
                                 <div className={styles.headerLabel}>Фильтры</div>
-                            }
+                            </>}
                     </div>
                     <div className={`${styles.catalogueHeaderItem} ${styles.alignEnd} ${styles.headerLabel} ${styles.w100}`}>
-                        <SortButton />
+                        <SortButton
+                            handleSetSortType={props.handleSetSortType}
+                        />
                     </div>
                 </div>
                 <div className={`${styles.catalogueHeaderItem} ${styles.headerInput}`}>
@@ -166,15 +170,15 @@ const CatalogueHeader: FC<CatalogueHeaderProps> = (props) => {
                                 accordionNotes={props.accordionNotes}
                             />
                         </>
-                        :
+                        : <>
                             <div className={styles.headerLabel}>Фильтры</div>
+                        </>
                         }
                 </div>
-                <div className={`${styles.catalogueHeaderItem} ${styles.headerInput}`}>
-                    <TonightInput placeholder='Поиск по каталогу'/>
-                </div>
                 <div className={`${styles.catalogueHeaderItem} ${styles.alignEnd} ${styles.headerLabel} ${styles.w100}`}>
-                    <SortButton />
+                    <SortButton 
+                        handleSetSortType={props.handleSetSortType}
+                    />
                 </div>
             </div>
         }

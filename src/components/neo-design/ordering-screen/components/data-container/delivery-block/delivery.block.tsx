@@ -46,14 +46,14 @@ const DeliveryBlock: FC<IDelivery> = (props) => {
             <DeliveryPill 
                 header='Autolight Express (курьерская доставка до двери)'
                 price='12,00 BYN'
-                active={props.deliveryPillActive === 2 ? true : false}
-                onClick={() => handleActiveDeliveryPill(2)}
+                active={props.deliveryPillActive === 1 ? true : false}
+                onClick={() => handleActiveDeliveryPill(1)}
             />
             <DeliveryPill 
                 header='Европочта (доставка до отделения)'
                 price='5,00 BYN'
-                active={props.deliveryPillActive === 1 ? true : false}
-                onClick={() => handleActiveDeliveryPill(1)}
+                active={props.deliveryPillActive === 2 ? true : false}
+                onClick={() => handleActiveDeliveryPill(2)}
             />
         </div>
         <div className={styles.deliveryTypeContent}>

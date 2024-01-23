@@ -6,5 +6,6 @@ export interface IFilterRequest {
     aromaGroups: number[],
     categories: number[],
     perfumeNotes: number[],
-    countries: string[]
+    countries: string[],
+    sortType: string
 }

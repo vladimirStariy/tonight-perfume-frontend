@@ -42,7 +42,7 @@ const PaymentBlock: FC<IPaymentBlock> = (props) => {
                     active={paymentPillActive === 1 ? true : false}
                 />
             </>
-        : props.activeDeliveryPill === 2 ?
+        : props.activeDeliveryPill === 1 ?
             <>
                 <PaymentPill 
                     header='Наличный или безналичный расчёт при получении'

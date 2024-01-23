@@ -4,3 +4,10 @@
     gap: 12px;
     align-items: center;
 }
+
+.sortDropdown .dropdown-menu {
+    border-radius: 0;
+}
+.sortDropdown .dropdown-menu .sortLink:active {
+    background-color: #D0BEE5;
+}

@@ -50,6 +50,7 @@ const CatalogueScreen: FC = () => {
     const [accordionCountries, setAccordionCountries] = useState<Array<any>>([]);
     const [accordionAromaGroups, setAccordionAromaGroups] = useState<Array<any>>([]);
     const [accordionNotes, setAccordionNotes] = useState<Array<any>>([]);
+    const [sortType, setSortType] = useState<string>("none");
 
     const filterRequestData: IFilterRequest = {
         page: page,
@@ -59,7 +60,12 @@ const CatalogueScreen: FC = () => {
         aromaGroups: groupInfo,
         categories: categoryInfo,
         perfumeNotes: notesInfo,
-        countries: countriesInfo
+        countries: countriesInfo,
+        sortType: sortType
+    }
+
+    const handleSetSortType = (text: string) => {
+        setSortType(text);
     }
 
     const handleSelectVolumes = (value: number) => {
@@ -216,6 +222,10 @@ const CatalogueScreen: FC = () => {
         handleCheckData();
     }, [page, mode, brandMode])
 
+    useEffect(() => {
+        handleCheckData();
+    }, [sortType])
+
     return <>
         <div className={styles.portraitImageBlock}>
             <div className={layout.tonightContainer}>
@@ -267,6 +277,8 @@ const CatalogueScreen: FC = () => {
                         accordionCountries={accordionCountries}
                         accordionGroups={accordionAromaGroups}
                         accordionNotes={accordionNotes}
+
+                        handleSetSortType={handleSetSortType}
                     />
                 </> : <></>}
                 <div className={styles.catalogueContentFull}>
@@ -360,7 +372,6 @@ const CatalogueScreen: FC = () => {
                                     <></>
                             }
                         </div>
-                        
                         <div className={fetchedData && fetchedData.pagination.currentPage < fetchedData.pagination.totalPages ? styles.rightArrow : styles.arrowDisabled}>
                             <svg onClick={handleNextPage} xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25" fill="none">
                                 <path d="M33.0607 13.5607C33.6464 12.9749 33.6464 12.0251 33.0607 11.4393L23.5147 1.8934C22.9289 1.30761 21.9792 1.30761 21.3934 1.8934C20.8076 2.47919 20.8076 3.42893 21.3934 4.01472L29.8787 12.5L21.3934 20.9853C20.8076 21.5711 20.8076 22.5208 21.3934 23.1066C21.9792 23.6924 22.9289 23.6924 23.5147 23.1066L33.0607 13.5607ZM0 14H32V11H0V14Z"/>
