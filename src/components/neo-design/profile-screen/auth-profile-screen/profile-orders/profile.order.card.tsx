@@ -54,7 +54,15 @@ const ProfileOrderCard: FC<IProps> = (props) => {
                 <div className={styles.orderProductsWrapper}>
                     {products.map((item, index) => (
                         <div className={styles.orderProductCard} key={index}>
-                            <div className={styles.imgBlock}></div>
+                            <div style={{
+                                aspectRatio: '75 / 86',
+                                background: `url(${item.image})`, 
+                                backgroundSize: '100% 100%',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'center center'
+                              }} 
+                              className={styles.imgBlock}
+                            ></div>
                             <div className={styles.cardBody}>
                                 <div>
                                     <div className={styles.brandLabel}>{item.productBrand}</div>

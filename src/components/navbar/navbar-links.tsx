@@ -7,7 +7,7 @@ import DropDownCollapsedLink from "../neo-design/testdropdown/dropdown.collapsed
 
 interface LinkProps {
     link_type: string;
-    handleExpand?: () => void;
+    handleExpand: () => void;
     isCollapsed?: boolean;
 }
 
@@ -19,7 +19,7 @@ const NavBarLinks: FC<LinkProps> = (props) => {
             <li className="nav-item">
                 {props.isCollapsed ? 
                     <>
-                        <DropDownCollapsedLink class={styles.navLink} />
+                        <DropDownCollapsedLink handleExpand={props.handleExpand} class={styles.navLink} />
                     </> 
                 :
                 <>

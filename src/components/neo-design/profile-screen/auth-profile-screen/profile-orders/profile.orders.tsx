@@ -10,11 +10,10 @@ interface IProps {
 
 const ProfileOrders: FC<IProps> = (props) => {
     const {data, refetch} = useGetOrdersQuery();
-    
 
     useEffect(() => {
-        
-    }, [])
+        console.log(data)
+    }, [data])
 
     return <>
         <div className={styles.orderCardWrapper}>

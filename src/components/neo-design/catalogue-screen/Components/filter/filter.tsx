@@ -42,12 +42,14 @@ interface IProductFilter {
     accordionNotes: any[];
     accordionCountries: any[];
     accordionGroups: any[];
+
+    isForOrder: boolean;
 }
 
 const ProductFilter: FC<IProductFilter> = (props) => {
     return <>
         <div className={styles.filterContent}>
-            <div className={styles.rangeSliderContainer}>
+            {!props.isForOrder ? <div className={styles.rangeSliderContainer}>
                 <FilterRangedSlider 
                     values={props.priceValues}
                     minPrice={props.filter.minPrice}
@@ -61,7 +63,7 @@ const ProductFilter: FC<IProductFilter> = (props) => {
                         handleSelectValues={props.handleSelectVolumes}
                     />
                 </div>
-            </div>
+            </div> : <></>}
             <FilterAccordion
                 filter={props.filter}
                 checkedBrands={props.brandsInfo}

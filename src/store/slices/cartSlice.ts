@@ -28,7 +28,6 @@ const cartSlice = createSlice({
     initialState: { products: [] } as iCartState,
     reducers: {
         addToCart: (state, { payload: { product } }: PayloadAction<{product: iCartProduct}>) => {
-            console.log('wha')
             state.products?.push(product);
         },
         updateCartItem: (state, { payload: { product } }: PayloadAction<{product: iCartProduct}>) => {

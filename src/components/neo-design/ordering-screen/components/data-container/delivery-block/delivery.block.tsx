@@ -24,7 +24,6 @@ const DeliveryBlock: FC<IDelivery> = (props) => {
     const [active, setActive] = useState<number>(-1)
 
     const handleActiveDeliveryPill = (value: number) => {
-        console.log(value)
         props.handleSetDelivery(value);
         props.handleChangeDelivery(value.toString());
         setActive(-1);

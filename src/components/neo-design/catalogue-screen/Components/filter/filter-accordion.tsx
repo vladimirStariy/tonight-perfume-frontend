@@ -47,6 +47,9 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
     const [isGroupsShowed, setIsGroupsShowed] = useState(false);
     const [isNotesShowed, setIsNotesShowed] = useState(false);
 
+    const [brandSearchValue, setBrandSearchValue] = useState('');
+    const [noteSearchValue, setNoteSearchValue] = useState('');
+
     const handleShowAllGroups = () => {
         setIsGroupsShowed(true);
         props.handleShowAllGroups();
@@ -115,19 +118,42 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
             <Accordion.Item className={styles.customAcc} eventKey="1">
                 <Accordion.Header>Бренд</Accordion.Header>
                 <Accordion.Body>
-                    {
-                        props.accordionBrands.map((brand, index) => (
-                            <Form.Check
-                                onChange={(e) => props.handleBrand(e)}
-                                key={index}
-                                type='checkbox'
-                                value={`${brand.brand_ID}`}
-                                id={`brand-checkbox-${brand.brand_ID}`}
-                                label={`${brand.name}`}
-                                checked={props.checkedBrands.includes(brand.brand_ID.toString())}
-                            />
-                        ))
-                    }
+                    {isBrandsShowed ? <>
+                        <TonightInput 
+                            value={brandSearchValue}
+                            onChange={(e) => setBrandSearchValue(e.currentTarget.value)}
+                            style={{marginBottom: '1rem'}} 
+                            placeholder="Поиск по бренду..."
+                        />
+                    </> : <></>}
+                    <div style={{ height: '182px', overflow: 'auto'}}>
+                        {
+                            props.accordionBrands.map((brand, index) => {
+                                if(brandSearchValue.trim() === '') return <>
+                                    <Form.Check
+                                        onChange={(e) => props.handleBrand(e)}
+                                        key={index}
+                                        type='checkbox'
+                                        value={`${brand.brand_ID}`}
+                                        id={`brand-checkbox-${brand.brand_ID}`}
+                                        label={`${brand.name}`}
+                                        checked={props.checkedBrands.includes(brand.brand_ID.toString())}
+                                    />
+                                </>
+                                if(brand.name.toLowerCase().includes(brandSearchValue.toLowerCase())) return <>
+                                    <Form.Check
+                                        onChange={(e) => props.handleBrand(e)}
+                                        key={index}
+                                        type='checkbox'
+                                        value={`${brand.brand_ID}`}
+                                        id={`brand-checkbox-${brand.brand_ID}`}
+                                        label={`${brand.name}`}
+                                        checked={props.checkedBrands.includes(brand.brand_ID.toString())}
+                                    />
+                                </>
+                            })
+                        }
+                    </div>
                     {isBrandsShowed ? <>
                         <div onClick={handleCollapseAllBrands} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
                     </> : <>
@@ -184,20 +210,42 @@ const FilterAccordion: FC<IFilterAccordion> = (props) => {
             <Accordion.Item className={styles.customAcc} eventKey="4">
                 <Accordion.Header>Ноты</Accordion.Header>
                 <Accordion.Body>
-                    <TonightInput style={{marginBottom: '1rem'}} placeholder="Поиск по нотам..."/>
-                    {
-                        props.accordionNotes.map((note, index) => (
-                            <Form.Check
-                                onChange={(e) => props.handleNotes(e)}
-                                key={index}
-                                type='checkbox'
-                                value={`${note.note_ID}`}
-                                id={`notes-checkbox-${note.note_ID}`}
-                                label={`${note.name}`}
-                                checked={props.checkedNotes.includes(note.note_ID.toString())}
-                            />
-                        ))
-                    }
+                    {isNotesShowed ? <>
+                        <TonightInput 
+                            value={noteSearchValue}
+                            onChange={(e) => setNoteSearchValue(e.currentTarget.value)}
+                            style={{marginBottom: '1rem'}} 
+                            placeholder="Поиск по нотам..."
+                        />
+                    </> : <></>}
+                    <div style={{ height: '182px', overflow: 'auto'}}>
+                        {
+                            props.accordionNotes.map((note, index) => {
+                                if(noteSearchValue.trim() === '') return <>
+                                    <Form.Check
+                                        onChange={(e) => props.handleNotes(e)}
+                                        key={index}
+                                        type='checkbox'
+                                        value={`${note.note_ID}`}
+                                        id={`notes-checkbox-${note.note_ID}`}
+                                        label={`${note.name}`}
+                                        checked={props.checkedNotes.includes(note.note_ID.toString())}
+                                    />
+                                </>
+                                if(note.name.toLowerCase().includes(noteSearchValue.toLowerCase())) return <>
+                                    <Form.Check
+                                        onChange={(e) => props.handleNotes(e)}
+                                        key={index}
+                                        type='checkbox'
+                                        value={`${note.note_ID}`}
+                                        id={`notes-checkbox-${note.note_ID}`}
+                                        label={`${note.name}`}
+                                        checked={props.checkedNotes.includes(note.note_ID.toString())}
+                                    />
+                                </>
+                            })
+                        }
+                    </div>
                     {isNotesShowed ? <>
                         <div onClick={handleCollapseAllNotes} style={{textDecoration: 'underline', cursor: 'pointer'}}>Свернуть</div>
                     </> : <>

@@ -79,7 +79,7 @@ const NavBar: FC = () => {
             <Navbar className={`bg-body ${styles.mnvb}`}>
               <Container fluid>
                 <Nav className={styles.bottomNav}>
-                  <NavBarLinks link_type="ROW"/>
+                  <NavBarLinks handleExpand={() => {}} link_type="ROW"/>
                 </Nav>
               </Container>
             </Navbar> : <></> 
@@ -99,7 +99,7 @@ const NavBar: FC = () => {
         <Navbar className={`bg-body ${styles.mnvb}`}>
           <Container fluid >
             <Nav className={styles.bottomNav}>
-              <NavBarLinks link_type="ROW"/>
+              <NavBarLinks handleExpand={() => {}} link_type="ROW"/>
             </Nav>
           </Container>
         </Navbar> : <></>

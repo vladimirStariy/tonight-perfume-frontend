@@ -18,7 +18,9 @@ export interface IProfileData {
    birthday: Date | null,
    email: string | null,
    phone: string | null,
-   profileAdresses: IAdress[] | null
+   profileAdresses: IAdress[] | null,
+   accumulativeDiscount: number,
+   discountProgress: number
 }
 
 export interface IUpdateProfile {
@@ -36,4 +38,5 @@ export interface IOrderProduct {
     quantity: number;
     productName: string;
     productBrand: string;
+    image: string;
 }

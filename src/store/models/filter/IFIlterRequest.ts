@@ -7,5 +7,6 @@ export interface IFilterRequest {
     categories: number[],
     perfumeNotes: number[],
     countries: string[],
-    sortType: string
+    sortType: string,
+    isForOrder: boolean
 }

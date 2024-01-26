@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 import styles from './adress.add.modal.module.css';
@@ -24,7 +24,7 @@ const AdressAddModal: FC<IQModal>  = (props) => {
             entrance: 0,
             floor: 0,
             postNumber: '',
-            deliveryType: 1
+            deliveryType: 2
         }
     );
 
@@ -46,12 +46,16 @@ const AdressAddModal: FC<IQModal>  = (props) => {
         setFormData({...formData, entrance: 0}); 
         setFormData({...formData, floor: 0}); 
         setFormData({...formData, postNumber: ''}); 
-    }
+    };
 
     const handleSubmit = () => {
         props.handleSendForm(formData);
         props.handleClose();
     }
+
+    useEffect(() => {
+        
+    }, [formData.deliveryType])
 
     return <>
         <Modal show={props.show} 
@@ -78,19 +82,19 @@ const AdressAddModal: FC<IQModal>  = (props) => {
                                 <div className={styles.inputData}>
                                     <div className={styles.inputLabel}>Вид доставки</div>
                                     <div className={styles.deliveryTypes}>
-                                        <div onClick={() => handleChangeDel(1)} 
-                                             className={`${styles.deliveryType} ${formData.deliveryType === 1 ? styles.deliveryTypeActive : styles.deliveryTypeDisabled}`}
+                                        <div onClick={() => handleChangeDel(2)} 
+                                             className={`${styles.deliveryType} ${formData.deliveryType === 2 ? styles.deliveryTypeActive : styles.deliveryTypeDisabled}`}
                                         >
                                             Европочта (доставка до отделения)
                                         </div>
-                                        <div onClick={() => handleChangeDel(2)} 
-                                             className={`${styles.deliveryType} ${formData.deliveryType === 2 ? styles.deliveryTypeActive : styles.deliveryTypeDisabled}`}>
+                                        <div onClick={() => handleChangeDel(1)} 
+                                             className={`${styles.deliveryType} ${formData.deliveryType === 1 ? styles.deliveryTypeActive : styles.deliveryTypeDisabled}`}>
                                             Autolight Express (курьерская доставка до двери)
                                         </div>
                                     </div>
                                 </div>
                                 {
-                                    formData.deliveryType === 2 ? <>
+                                    formData.deliveryType === 1 ? <>
                                         <div className={styles.inputData}>
                                             <div className={styles.inputLabel}>Город/Населённый пункт</div>
                                             <DataInput onChange={handleChangeCity} />

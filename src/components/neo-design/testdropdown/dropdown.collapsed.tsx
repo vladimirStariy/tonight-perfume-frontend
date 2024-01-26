@@ -2,16 +2,29 @@ import { FC } from "react";
 
 import styles from './dropdown.collapsed.module.css'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface IDropdown {
     class?: string;
+    handleExpand: () => void;
 }
 
 const DropDownCollapsedLink: FC<IDropdown> = (props) => {
     const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+
+    const handleNavigate = (mode: string) => {
+        navigate('/catalogue', { replace: true, state: { mode: mode } })
+        setShow(false);
+        props.handleExpand();
+    }
 
     const handleShow = () => {
-        setShow(!show);
+        setShow(true);
+    }
+
+    const handleHide = () => {
+        setShow(false);
     }
 
     return <div className={`${styles.liWrap} ${show ? styles.paddingTopActive : ''}`}>
@@ -29,17 +42,17 @@ const DropDownCollapsedLink: FC<IDropdown> = (props) => {
             <div className={styles.categoriesWrapper}>
                     <div className={styles.categoriesContainer}>
                         <div className={styles.smCategoreis}>
-                            <div className={styles.smCategory1}>
+                            <div onClick={() => handleNavigate('forhim')} className={styles.smCategory1}>
                                 <b className={styles.categoryText}>Для него</b>
                             </div>
-                            <div className={styles.smCategory2}>
+                            <div onClick={() => handleNavigate('forher')} className={styles.smCategory2}>
                                 <b className={styles.categoryText}>Для неё</b>
                             </div>
                         </div>
-                        <div className={styles.lgCategory}>
+                        <div onClick={() => handleNavigate('unisex')} className={styles.lgCategory}>
                             <b className={styles.categoryText}>Унисекс</b>
                         </div>
-                        <div className={styles.boxBlock}>
+                        <div onClick={() => handleNavigate('aromabox')} className={styles.boxBlock}>
                             <b className={styles.categoryText}>Аромабоксы</b>
                         </div> 
                     </div>

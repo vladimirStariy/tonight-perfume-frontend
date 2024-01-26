@@ -3,7 +3,7 @@ import { apiSlice } from "../store/slices/apiSlice"
 
 export const consultationAPI = apiSlice.injectEndpoints({
     endpoints: (build) => ({
-        requestConsultation: build.mutation<void, ConsultationDto>({
+        requestConsultation: build.mutation<string, ConsultationDto>({
             query: (credentials) => ({
                 url: 'consultation/request-consultation',
                 method: 'POST',

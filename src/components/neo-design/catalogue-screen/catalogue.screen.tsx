@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 
 import layout from '../layout/layout.module.css';
 import styles from './catalogue.screen.module.css'
@@ -61,7 +61,8 @@ const CatalogueScreen: FC = () => {
         categories: categoryInfo,
         perfumeNotes: notesInfo,
         countries: countriesInfo,
-        sortType: sortType
+        sortType: sortType,
+        isForOrder: false
     }
 
     const handleSetSortType = (text: string) => {
@@ -166,7 +167,8 @@ const CatalogueScreen: FC = () => {
         const response = await showAllNotes().unwrap();
         setAccordionNotes(response)
     }
-    const handleCollapseNotes = async () => {
+    const handleCollapseNotes = () => {
+        console.log(filter);
         if(filter) setAccordionNotes(filter?.perfumeNotes)
     }
 
@@ -226,6 +228,12 @@ const CatalogueScreen: FC = () => {
         handleCheckData();
     }, [sortType])
 
+    const divRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if(divRef.current) divRef.current.scrollIntoView();
+    }, [page])
+
     return <>
         <div className={styles.portraitImageBlock}>
             <div className={layout.tonightContainer}>
@@ -233,16 +241,18 @@ const CatalogueScreen: FC = () => {
                     <div className={layout.breadcrumbLinkText}>
                         Главная / Каталог
                     </div>
-                    <div className={layout.breadcrumbHeaderText}>
+                    <div  className={layout.breadcrumbHeaderText}>
                         <b>Каталог</b>
                     </div>
                 </div>
             </div>
         </div>
+        <div ref={divRef}></div>
         <div className={layout.tonightWrapper}>
             <div className={`${layout.tonightContainer} ${layout.gap}`}>
                 {filter ? <>
-                    <CatalogueHeader
+                    <CatalogueHeader 
+                        
                         brandsInfo={brandInfo}
                         handleBrand={handleCheckBrand}
                         categoriesInfo={categoryInfo}
@@ -321,6 +331,8 @@ const CatalogueScreen: FC = () => {
                                         accordionCountries={accordionCountries}
                                         accordionGroups={accordionAromaGroups}
                                         accordionNotes={accordionNotes}
+
+                                        isForOrder={false}
                                     />
                                 </div>
                             </> : <>

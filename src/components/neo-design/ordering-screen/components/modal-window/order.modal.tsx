@@ -27,11 +27,18 @@ const SuccessModal: FC<IQModal>  = (props) => {
                 <Modal.Body className={styles.modalBody}>
                     <div className={styles.bodyWrapper}>
                         <div className={styles.bodyContainer}>
+                            <div className={styles.headerLabel} style={{
+                                    color: '#1E1E1E',
+                                    fontSize: '30px',
+                                    fontStyle: 'normal',
+                                    fontWeight: '800',
+                                    lineHeight: '100%'
+                                }}>
+                                    Ваш заказ оформлен!
+                                </div>
                             <div className={styles.headerLabel}>
-                                Ваш заказ оформлен.
-                            </div>
-                            <div>
-                                УСПЕХ
+                                Благодарим за заказ, ждём вас снова!
+                                Зарегистрируйтесь и накапливайте бонусы с каждой покупки.
                             </div>
                             <TonightButton text='ОТЛИЧНО!' onClick={handleAccept} />
                         </div>

@@ -58,41 +58,42 @@ const ProductCard: FC<IProductCardScreen> = props => {
 
     return <>
         <div className={styles.productCard}>
-            <Link to={`/product/${props.data.id}`}>
-                <div 
-                    style={{
-                        background: `url(${props.data.imagePath})`,
-                        backgroundPosition: 'center center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                        aspectRatio: '7 / 8'
-                    }}
-                >
-                    <div className={props.data.discount ? styles.productCardFavoriteDiscount : styles.productCardFavorite}>
-                        {props.data.discount ? 
-                            <div className={styles.discountLabel}></div>
-                            :
-                            <></>
-                        }
-                        {auth ? <>
-                            <svg 
-                                style={{zIndex: '999'}}
-                                onClick={isFavorite ? handleRemove : handleAddToFavorite}
-                                width="24" height="24" viewBox="0 0 24 24" 
-                                fill={isFavorite ? "#D0BEE5" : "none"} 
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.0069 22L2.67077 12.7878C-2.40323 7.26048 5.05554 -3.35197 12.0069 5.2338C18.9583 -3.35197 26.3832 7.29733 21.3431 12.7878L12.0069 22Z" 
-                                    stroke="#D0BEE5" 
-                                    strokeWidth="2" 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </> : <></> 
-                        }
+            <div style={{position: 'relative'}}>
+                <Link to={`/product/${props.data.id}`}>
+                    <div 
+                        style={{
+                            background: `url(${props.data.imagePath})`,
+                            backgroundPosition: 'center center',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                            aspectRatio: '7 / 8'
+                        }}
+                        >
+                        <div className={props.data.discount ? styles.productCardFavoriteDiscount : styles.productCardFavorite}>
+                            {props.data.discount ? 
+                                <div className={styles.discountLabel}></div>
+                                :
+                                <></>
+                            }
+                        </div>
                     </div>
-                </div>
-            </Link>
+                </Link>
+                {auth ? <div style={{cursor: 'pointer', position: 'absolute', top: '0', right: '0', padding: '12px'}}>
+                    <svg 
+                        style={{zIndex: '999'}}
+                        onClick={isFavorite ? handleRemove : handleAddToFavorite}
+                        width="24" height="24" viewBox="0 0 24 24" 
+                        fill={isFavorite ? "#D0BEE5" : "none"} 
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.0069 22L2.67077 12.7878C-2.40323 7.26048 5.05554 -3.35197 12.0069 5.2338C18.9583 -3.35197 26.3832 7.29733 21.3431 12.7878L12.0069 22Z" 
+                            stroke="#D0BEE5" 
+                            strokeWidth="2" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                    />
+                    </svg>
+                </div> : <></>}
+            </div>
             <div className={styles.productCardDetails}>
                 <div className={styles.brandName}>
                     <div className={styles.productCardBrand}>
@@ -102,7 +103,9 @@ const ProductCard: FC<IProductCardScreen> = props => {
                         <Link to={`/product/${props.data.id}`}>{props.data.name}</Link>
                     </div>
                 </div>
-                <div className={styles.productCardPrice}>
+                {props.data.isForOrder ? <>
+                    
+                </> : <div className={styles.productCardPrice}>
                     {props.data.discount ? 
                         <>
                             <div className={styles.crossedPrice}>
@@ -112,14 +115,17 @@ const ProductCard: FC<IProductCardScreen> = props => {
                     :
                         <>от {props.data.price / 100} BYN</>
                     }
-                    
-                </div>
+                </div>}
                  {cart?.find(product => product.productId === props.data.id) !== undefined ? <>
                     <div onClick={handleRemoveFromCart} className={styles.counter}>
                         Удалить из корзины
                     </div>
                  </> : <>
-                    <TonightButton onClick={handleAddToCart} text="В корзину" />
+                    {!props.data.isForOrder ? <>
+                        <TonightButton onClick={handleAddToCart} text="В корзину" />
+                    </> : <>
+                        <TonightButton onClick={handleAddToCart} text="Заказать" />
+                    </>}
                  </>}
             </div>
         </div>

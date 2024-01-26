@@ -7,4 +7,5 @@ export interface IProductCard {
     discount: number;
     isFavorite: boolean;
     imagePath: string;
+    isForOrder: boolean;
 }

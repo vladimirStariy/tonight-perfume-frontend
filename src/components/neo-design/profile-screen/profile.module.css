@@ -99,7 +99,6 @@
 .progressBarProg {
     background-color: #1E1E1E;
     border-radius: 100px;
-    width: 50%;
     height: 100%;
 }
 
@@ -146,7 +145,7 @@
     height: 72px;
     border-radius: 50%;
     background-color: #F2F2F2;
-    background: url(/public/me.jfif);
+    
     background-size: cover;
 }
 

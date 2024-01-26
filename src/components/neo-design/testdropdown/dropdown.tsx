@@ -15,8 +15,8 @@ const DropDownLink: FC<IDropdown> = (props) => {
     const navigate = useNavigate();
 
     const handleNavigate = (mode: string) => {
-        setShow(false);
         navigate('/catalogue', { replace: true, state: { mode: mode } })
+        setShow(false);
     }
 
     const handleShow = () => {

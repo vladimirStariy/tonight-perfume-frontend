@@ -20,7 +20,10 @@ const MaskedInput: FC<IInput> = ({...props}) => {
     const auth = useSelector(selectCurrentToken);
 
     const handleDetail = (event: any) => {
-        setDetail(event.detail);
+        const re = /^[0-9\b]+$/;
+        if (event.detail.input === '' || re.test(event.detail.input)) {
+            setDetail(event.detail);
+        }
         props.handleInput(event);
     }
 

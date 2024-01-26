@@ -10,6 +10,95 @@
     background-repeat: no-repeat;
 }
 
+.arrowDisabled svg {
+    fill: #B3B3B3;
+    cursor: default;
+}
+
+.rightArrow svg {
+    fill: #1e1e1e;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.rightArrow svg:hover {
+    fill: #D0BEE5;
+}
+
+.leftArrow svg {
+    fill: #1e1e1e;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.leftArrow svg:hover {
+    fill: #D0BEE5;  
+}
+
+.pageTab {
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.pageTab:hover {
+    color: #D0BEE5;
+}
+
+.catalogueContentFull {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    gap: 32px;
+}
+
+.catalogueFilterContainer {
+    max-width: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalogueProductContainer {
+    max-width: 904px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.paginationContainer {
+    width: 100%;
+    height: 57px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: #F2F2F2;
+}
+
+.pages {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.errorPlaceholder {
+    display: flex;
+    font-size: large;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.loaderWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 @media only screen and (max-width: 375px) {
     .portraitImageBlock {
         height: 240px;

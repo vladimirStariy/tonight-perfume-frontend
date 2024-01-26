@@ -33,4 +33,5 @@ export interface IUserOrderCard {
     orderDate: Date;
     orderPrice: number;
     status: string;
+    image: string;
 }

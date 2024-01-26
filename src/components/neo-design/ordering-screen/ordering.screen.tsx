@@ -281,6 +281,7 @@ const OrderingScreen: FC = () => {
         </div>
         <div className={layout.tonightWrapper}>
             <div className={layout.tonightContainer}>
+                <SuccessModal show={show} handleClose={handleClose} />
                 {!cart || cart.length <= 0 ? <>
                     <div className={styles.emptyCartMessage}>
                         Ваша корзина пуста! 
@@ -376,7 +377,7 @@ const OrderingScreen: FC = () => {
                                 </div>
                             </div>
                         </div>
-                        <SuccessModal show={show} handleClose={handleClose} />
+                        
                         {screenSize.width <= 726 ?  
                             <TonightButton onClick={handleCreateOrder} arrow={false} text='Оформить заказ' />
                         :

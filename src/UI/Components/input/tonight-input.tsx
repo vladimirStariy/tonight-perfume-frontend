@@ -4,6 +4,7 @@ import styles from './input.module.css';
 
 interface IInput extends HTMLAttributes<HTMLInputElement> {
     isSearch?: boolean;
+    value?: string; 
 } 
 
 const TonightInput: FC<IInput> = ({...props}) => {
